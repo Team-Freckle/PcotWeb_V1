@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { Login } from "../components/Auth/Login";
 import { Signin } from "../components/Auth/Signin";
-import Profile from "../components/Profile";
+import Profile from "../pages/Profile";
 import { NotFound } from "../components/NotFound";
 
 export const Router = () => {
