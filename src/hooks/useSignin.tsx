@@ -5,22 +5,22 @@ import { Toast } from "../lib/Toast";
 export const API_URL = process.env.REACT_APP_API;
 
 export const useSignin = () => {
-  const [name, SetName] = useState<string>("");
-  const [email, SetEmail] = useState<string>("");
-  const [pw1, SetPw1] = useState<string>("");
-  const [pw2, SetPw2] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [pw1, setPw1] = useState<string>("");
+  const [pw2, setPw2] = useState<string>("");
 
   const URL = `${API_URL}/signup.do`;
 
   const onSignUpChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.name === "name") {
-      SetName(e.target.value);
+      setName(e.target.value);
     } else if (e.target.name === "email") {
-      SetEmail(e.target.value);
+      setEmail(e.target.value);
     } else if (e.target.name === "password") {
-      SetPw1(e.target.value);
+      setPw1(e.target.value);
     } else if (e.target.name === "password2") {
-      SetPw2(e.target.value);
+      setPw2(e.target.value);
     }
   }, []);
 
@@ -41,7 +41,7 @@ export const useSignin = () => {
               icon: "success",
               title: "회원가입에 성공하였습니다.",
             });
-          } catch (e) {
+          } catch (error) {
             Toast.fire({
               icon: "error",
               title: "회원가입에 실패하였습니다. \n관리자에게 문의하세요",
@@ -60,7 +60,7 @@ export const useSignin = () => {
         });
       }
     },
-    [name, email, pw1, pw2],
+    [name, email, pw1, pw2, URL],
   );
   return { onSignUpChange, name, email, pw1, pw2, onSignUpSubmit };
 };
