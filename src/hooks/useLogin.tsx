@@ -1,11 +1,13 @@
 import axios from "axios";
 import React, { useCallback, useState } from "react";
 
-import { Toast } from "../lib/Toast";
+import { ToastError, ToastSuccess, ToastWarning } from "../lib/Toast";
+import { useNavigate } from "react-router-dom";
 
 export const API_URL = process.env.REACT_APP_API;
 
 export const useLogin = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState<string>("");
   const [pw, setPw] = useState<string>("");
 
@@ -29,21 +31,13 @@ export const useLogin = () => {
             password: pw,
           });
           console.log(response);
-          Toast.fire({
-            icon: "success",
-            title: "로그인에 성공하였습니다.",
-          });
+          ToastSuccess("로그인에 성공하였습니다.");
+          navigate("/");
         } catch (error) {
-          Toast.fire({
-            icon: "error",
-            title: "로그인에 실패하였습니다.",
-          });
+          ToastError("로그인에 실패했습니다.");
         }
       } else {
-        Toast.fire({
-          icon: "error",
-          title: "모든 항목을 입력해주세요",
-        });
+        ToastWarning("모든 항목을 입력해주세요");
       }
     },
     [email, pw, URL],
