@@ -15,7 +15,7 @@ export const Form = styled.form`
   border-radius: 10px;
   @media screen and (min-width: 600px) {
     width: 550px;
-    height: 800px;
+    height: 890px;
   }
   @media screen and (max-width: 600px) {
     width: 450px;

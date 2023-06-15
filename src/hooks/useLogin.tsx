@@ -26,10 +26,14 @@ export const useLogin = () => {
       e.preventDefault();
       if (email && pw) {
         try {
-          const response = await axios.post(URL, {
-            email: email,
-            password: pw,
-          });
+          const response = await axios.post(
+            URL,
+            {
+              email: email,
+              password: pw,
+            },
+            { withCredentials: true },
+          );
           console.log(response);
           ToastSuccess("로그인에 성공하였습니다.");
           navigate("/");
