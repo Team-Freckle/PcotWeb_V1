@@ -1,6 +1,8 @@
 import React, { ChangeEvent, DragEvent, useState } from "react";
 import { ToastError, ToastWarning } from "../../lib/Toast";
 
+import * as S from "./style";
+
 export const DragDropFile = () => {
   const [imageList, setImageList] = useState<Array<File>>([]);
 
@@ -35,7 +37,7 @@ export const DragDropFile = () => {
 
       const format: string = `${file.name.split(".").slice(-1)}`.toUpperCase();
 
-      if (format === "JPG" || format === "JPEG" || format === "PNG" || format === "PDF") {
+      if (format === "JPG" || format === "JPEG" || format === "PNG") {
         fileList = [...fileList, file];
       } else {
         ToastError(`이미지 포맷을 확인해주세요.업로드 된 파일 이름 ${file.name} / 포맷 ${format}`);
@@ -68,32 +70,28 @@ export const DragDropFile = () => {
   };
 
   return (
-    <div onDrop={onDropFiles} onDragOver={dragOver}>
+    <S.Canvas onDrop={onDropFiles} onDragOver={dragOver}>
       {imageList.length === 0 ? (
-        <>
-          <p>이미지 파일을 박스 안으로 드래그 혹은 버튼을 클릭 해주세요.</p>
-          <p>(파일 최대 2개, 허용 포맷: jpg/png/pdf)</p>
-          <input id="input_file" type="file" multiple onChange={onInputFile} />
-          <label htmlFor="input_file">이미지 업로드</label>
-        </>
+        <S.Text>
+          <p>
+            편집할 사진을 드래그 앤 드롭 또는{" "}
+            <S.Uploadlabel htmlFor="input_file">업로드</S.Uploadlabel> 하세요
+          </p>
+          <S.Input id="input_file" type="file" multiple onChange={onInputFile} />
+          {/* <label htmlFor="input_file">이미지 업로드</label> */}
+        </S.Text>
       ) : (
         <>
           <div className="div_preview">
             {imageList.map((e, i) => {
               return (
                 <>
-                  {e.type.includes("pdf") ? (
-                    <div key={`img-${i}`} onClick={() => openImgFile(e)}>
-                      <embed src={getImageUrl(e)} type={e.type} />
-                    </div>
-                  ) : (
-                    <img
-                      key={`img-${i}`}
-                      src={getImageUrl(e)}
-                      alt=""
-                      onClick={() => openImgFile(e)}
-                    />
-                  )}
+                  <img
+                    key={`img-${i}`}
+                    src={getImageUrl(e)}
+                    alt=""
+                    onClick={() => openImgFile(e)}
+                  />
                 </>
               );
             })}
@@ -107,6 +105,6 @@ export const DragDropFile = () => {
           </button>
         </>
       )}
-    </div>
+    </S.Canvas>
   );
 };
