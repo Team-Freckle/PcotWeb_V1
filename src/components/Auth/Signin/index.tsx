@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../../../styles/styles.css";
 import * as S from "./style";
 import { useSignin } from "../../../hooks/useSignin";
+import { EmailVerify } from "../../../pages/EmailVerify";
 
 export const Signin = () => {
   const navigate = useNavigate();
@@ -30,7 +31,8 @@ export const Signin = () => {
               value={email}
               onChange={onSignUpChange}
             />
-            <S.Input id="sign_up_email_check" type="text" />
+            {/* <S.Input id="sign_up_email_check" type="text" /> */}
+            <EmailVerify />
             <S.Input
               id="sign_up_password"
               placeholder="Password"

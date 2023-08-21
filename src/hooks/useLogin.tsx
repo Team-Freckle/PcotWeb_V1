@@ -11,7 +11,7 @@ export const useLogin = () => {
   const [email, setEmail] = useState<string>("");
   const [pw, setPw] = useState<string>("");
 
-  const URL = `${API_URL}/login.do`;
+  const URL = `${API_URL}/v2/login.do`;
 
   const onLoginChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.name === "email") {
