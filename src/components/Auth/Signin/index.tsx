@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import "../../../styles/styles.css";
 import * as S from "./style";
 import { useSignin } from "../../../hooks/useSignin";
-import { EmailVerify } from "../../../pages/EmailVerify";
+import check from "../../../assets/Check.svg";
+import sendIcon from "../../../assets/send_icon.svg";
 
 export const Signin = () => {
   const navigate = useNavigate();
@@ -23,16 +24,16 @@ export const Signin = () => {
               value={name}
               onChange={onSignUpChange}
             />
-            <S.Input
-              id="sign_up_email"
-              placeholder="Email"
-              type="email"
-              name="email"
-              value={email}
-              onChange={onSignUpChange}
-            />
-            {/* <S.Input id="sign_up_email_check" type="text" /> */}
-            <EmailVerify />
+            <S.InputLabel>
+              <S.Input
+                id="sign_up_email"
+                placeholder="Email"
+                type="email"
+                name="email"
+                value={email}
+                onChange={onSignUpChange}
+              />
+            </S.InputLabel>
             <S.Input
               id="sign_up_password"
               placeholder="Password"
