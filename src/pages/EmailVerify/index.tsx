@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import * as S from "./style";
 import useEmailVerify from "../../hooks/useEmailVerify";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -6,10 +6,17 @@ import { useLocation, useNavigate } from "react-router-dom";
 export const EmailVerify = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const Email = location.state.Email;
 
   const onEmailCodeSend = () => {
-    useEmailVerify(Email);
+    try {
+      if (location.state && location.state.Email) {
+        useEmailVerify(location.state.Email);
+      } else {
+        navigate("/");
+      }
+    } catch (error) {
+      navigate("/");
+    }
   };
 
   const onGoToLogin = () => {
