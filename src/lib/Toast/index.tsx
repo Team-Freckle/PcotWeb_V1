@@ -11,3 +11,24 @@ export const Toast = Swal.mixin({
     toast.addEventListener("mouseleave", Swal.resumeTimer);
   },
 });
+
+export const ToastSuccess = (title: string) => {
+  Toast.fire({
+    icon: "success",
+    title: title,
+  });
+};
+
+export const ToastError = (title: string) => {
+  Toast.fire({
+    icon: "error",
+    title: title,
+  });
+};
+
+export const ToastWarning = (title: string) => {
+  Toast.fire({
+    icon: "warning",
+    title: title,
+  });
+};

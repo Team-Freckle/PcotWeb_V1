@@ -15,7 +15,7 @@ export const Form = styled.form`
   border-radius: 10px;
   @media screen and (min-width: 600px) {
     width: 550px;
-    height: 800px;
+    height: 890px;
   }
   @media screen and (max-width: 600px) {
     width: 450px;
@@ -48,6 +48,7 @@ export const Inputs = styled.div`
 `;
 
 export const Input = styled.input`
+  position: relative;
   font-size: 24px;
   padding: 0 63px;
   border: none;
@@ -57,6 +58,40 @@ export const Input = styled.input`
   background: #f5f5f5;
   border-radius: 5px;
   margin-top: 20px;
+`;
+
+export const InputLabel = styled.label`
+  position: relative;
+`;
+
+export const InputButton = styled.img`
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  bottom: 5px;
+  right: 15px;
+  margin: auto 0;
+
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+
+  @media screen and (min-width: 600px) {
+    width: 5%;
+    height: 30px;
+  }
+  @media screen and (max-width: 600px) {
+    width: 5%;
+    height: 30px;
+  }
+  :active {
+    cursor: pointer;
+  }
 `;
 
 export const Button = styled.button`
