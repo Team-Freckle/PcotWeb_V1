@@ -29,15 +29,15 @@
 }
 
 #sign_up_password {
-    background-image: url(../assets/password.svg), url(../assets/password_see_icon.svg);
+    background-image: url(../assets/password.svg);
     background-repeat: no-repeat;
-    background-position: center left 20px, center right 20px;
+    background-position: center left 20px;
 }
 
 #sign_up_password_check {
-    background-image: url(../assets/password.svg), url(../assets/password_see_icon.svg);
+    background-image: url(../assets/password.svg);
     background-repeat: no-repeat;
-    background-position: center left 20px, center right 20px;
+    background-position: center left 20px;
 }
 
 @media screen and (min-width: 600px) {

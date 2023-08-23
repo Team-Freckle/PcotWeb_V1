@@ -15,7 +15,7 @@ export const Form = styled.form`
   border-radius: 10px;
   @media screen and (min-width: 600px) {
     width: 550px;
-    height: 890px;
+    height: 850px;
   }
   @media screen and (max-width: 600px) {
     width: 450px;
@@ -58,6 +58,15 @@ export const Input = styled.input`
   background: #f5f5f5;
   border-radius: 5px;
   margin-top: 20px;
+  ::placeholder {
+    font-family: "Pretendard";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 135.5%;
+    text-align: center;
+    color: #7a7a7a;
+  }
 `;
 
 export const InputLabel = styled.label`

@@ -2,6 +2,7 @@ import React, { useCallback, useState } from "react";
 import axios from "axios";
 import { ToastError, ToastSuccess, ToastWarning } from "../lib/Toast";
 import { useNavigate } from "react-router-dom";
+import useEmailVerify from "./useEmailVerify";
 
 export const API_URL = process.env.REACT_APP_API;
 
@@ -31,7 +32,6 @@ export const useSignin = () => {
       e.preventDefault();
       if (name && email && pw1 && pw2) {
         if (pw1 === pw2) {
-          const Email = email;
           try {
             const response = await axios.post(URL, {
               name: name,
@@ -41,10 +41,10 @@ export const useSignin = () => {
             });
             console.log(response);
             ToastSuccess("회원가입에 성공하였습니다.");
+            useEmailVerify(email);
             navigate("/EmailVerify", {
-              state: { email: Email },
+              state: { Email: email },
             });
-            onEmailVerify(Email);
           } catch (error) {
             ToastError("회원가입에 실패했습니다.\n관리자에게 문의해주세요");
           }
@@ -58,20 +58,20 @@ export const useSignin = () => {
     [name, email, pw1, pw2, URL],
   );
 
-  const onEmailVerify = async (Email: string) => {
-    if (email) {
-      try {
-        const response = await axios.post(`${API_URL}/v2/user/mail/auth/send`, {
-          email: Email,
-        });
-        console.log(response);
-      } catch (error) {
-        ToastError("회원가입에 실패했습니다.");
-      }
-    } else {
-      ToastWarning("이메일을 입력해주세요");
-    }
-  };
+  // const onEmailVerify = async (Email: string) => {
+  //   if (email) {
+  //     try {
+  //       const response = await axios.post(`${API_URL}/v2/user/mail/auth/send`, {
+  //         email: Email,
+  //       });
+  //       console.log(response);
+  //     } catch (error) {
+  //       ToastError("회원가입에 실패했습니다.");
+  //     }
+  //   } else {
+  //     ToastWarning("이메일을 입력해주세요");
+  //   }
+  // };
 
   return { onSignUpChange, name, email, pw1, pw2, onSignUpSubmit };
 };
