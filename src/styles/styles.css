@@ -1,51 +1,51 @@
 #input-id {
-    background-image: url(../assets/Email.svg);
-    background-repeat: no-repeat;
-    background-position: center left 15px;
+  background-image: url(../assets/Email.svg);
+  background-repeat: no-repeat;
+  background-position: center left 15px;
 }
 
 #input-pw {
-    background-image: url(../assets/password.svg);
-    background-repeat: no-repeat;
-    background-position: center left 15px;
+  background-image: url(../assets/password.svg);
+  background-repeat: no-repeat;
+  background-position: center left 15px;
 }
 
 #sign_up_name {
-    background-image: url(../assets/Name.svg);
-    background-repeat: no-repeat;
-    background-position: center left 20px;
+  background-image: url(../assets/Name.svg);
+  background-repeat: no-repeat;
+  background-position: center left 20px;
 }
 
 #sign_up_email {
-    background-image: url(../assets/Email.svg);
-    background-repeat: no-repeat;
-    background-position: center left 20px;
+  background-image: url(../assets/Email.svg);
+  background-repeat: no-repeat;
+  background-position: center left 20px;
 }
 
 #sign_up_email_check {
-    background-image: url(../assets/Email.svg);
-    background-repeat: no-repeat;
-    background-position: center left 20px;
+  background-image: url(../assets/Email.svg);
+  background-repeat: no-repeat;
+  background-position: center left 20px;
 }
 
 #sign_up_password {
-    background-image: url(../assets/password.svg), url(../assets/password_see_icon.svg);
-    background-repeat: no-repeat;
-    background-position: center left 20px, center right 20px;
+  background-image: url(../assets/password.svg), url(../assets/password_see_icon.svg);
+  background-repeat: no-repeat;
+  background-position: center left 20px, center right 20px;
 }
 
 #sign_up_password_check {
-    background-image: url(../assets/password.svg), url(../assets/password_see_icon.svg);
-    background-repeat: no-repeat;
-    background-position: center left 20px, center right 20px;
+  background-image: url(../assets/password.svg), url(../assets/password_see_icon.svg);
+  background-repeat: no-repeat;
+  background-position: center left 20px, center right 20px;
 }
 
 @media screen and (min-width: 600px) {
-    .profileLogoImg {
-        margin-top: -20px;
-    }
-    .profile_change_button {
-        margin-top: -30%;
-        margin-left: 60%;
-    }
+  .profileLogoImg {
+    margin-top: -20px;
+  }
+  .profile_change_button {
+    margin-top: -30%;
+    margin-left: 60%;
+  }
 }
