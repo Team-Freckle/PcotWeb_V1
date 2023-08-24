@@ -1,21 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "../../../styles/styles.css";
 import * as S from "./style";
 import { useSignin } from "../../../hooks/useSignin";
 import PwSee from "../../../assets/password_see_icon.svg";
+import PwOff from "../../../assets/eyeoff.svg";
 
 export const Signin = () => {
   const navigate = useNavigate();
   const { onSignUpChange, name, email, pw1, pw2, onSignUpSubmit } = useSignin();
+  const [pwIcon, setPwIcon] = useState(PwSee);
+  const [pwIcon2, setPwIcon2] = useState(PwSee);
 
   const onPwSee = () => {
     const pw = document.getElementById("sign_up_password") as HTMLInputElement;
     if (pw.type === "password") {
       pw.type = "text";
+      setPwIcon(PwOff);
     } else {
       pw.type = "password";
+      setPwIcon(PwSee);
     }
   };
 
@@ -23,8 +28,10 @@ export const Signin = () => {
     const pw = document.getElementById("sign_up_password_check") as HTMLInputElement;
     if (pw.type === "password") {
       pw.type = "text";
+      setPwIcon2(PwOff);
     } else {
       pw.type = "password";
+      setPwIcon2(PwSee);
     }
   };
 
@@ -59,7 +66,7 @@ export const Signin = () => {
                 value={pw1}
                 onChange={onSignUpChange}
               />
-              <S.InputButton src={PwSee} onClick={onPwSee}></S.InputButton>
+              <S.InputButton src={pwIcon} onClick={onPwSee}></S.InputButton>
             </S.InputLabel>
             <S.InputLabel>
               <S.Input
@@ -70,7 +77,7 @@ export const Signin = () => {
                 value={pw2}
                 onChange={onSignUpChange}
               />
-              <S.InputButton src={PwSee} onClick={onPwSeeCK}></S.InputButton>
+              <S.InputButton src={pwIcon2} onClick={onPwSeeCK}></S.InputButton>
             </S.InputLabel>
 
             <S.Button type="submit">회원가입</S.Button>
