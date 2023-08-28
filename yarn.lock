@@ -1335,6 +1335,18 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.41.0.tgz#080321c3b68253522f7646b55b577dd99d2950b3"
   integrity sha512-LxcyMGxwmTh2lY9FwHPGWOHmYFCZvbrFCBZL4FzSSsxsRPuhrYUg/49/0KDfW8tnIEaEHtfmn6+NPN+1DqaNmA==
 
+"@gitgraph/core@1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@gitgraph/core/-/core-1.5.0.tgz#fc27924b82eabc5fa1f90480df5239e0c84dcafa"
+  integrity sha512-8CeeHbkKoFHM1y9vfjYiHyEpzl1mEhVrg5c/eFgDBsntOYswoDKU2yOf6DjtVINcE60wmcuynBSJqjMkQo07Ww==
+
+"@gitgraph/react@^1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@gitgraph/react/-/react-1.6.0.tgz#45783da838d975c225849766c337028a92cd3f14"
+  integrity sha512-cLFNZDoEiNbsnMfdT82zeZti5saYghQamfCbTpVvCRr+BrrQ/k94glkZqYPXKKNTEqbQV6L9JeOfAk1hNiFYXA==
+  dependencies:
+    "@gitgraph/core" "1.5.0"
+
 "@humanwhocodes/config-array@^0.11.8":
   version "0.11.8"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.8.tgz#03595ac2075a4dc0f191cc2131de14fbd7d410b9"
