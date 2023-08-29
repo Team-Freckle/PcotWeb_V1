@@ -6,6 +6,7 @@ import { Signin } from "../components/Auth/Signin";
 import Profile from "../pages/Profile";
 import { NotFound } from "../components/NotFound";
 import { Home } from "../pages/Home";
+import SideBar from "../components/SideBar";
 
 export const Router = () => {
   return (
@@ -15,7 +16,8 @@ export const Router = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/profile" element={<Profile />} />s
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/side" element={<SideBar />} />
         {/* <Route path="*" element={<navigate to="/" />} /> */}
       </Routes>
     </div>
