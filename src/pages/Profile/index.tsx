@@ -10,22 +10,27 @@ const Profile = () => {
     <div>
       <h1>Profile</h1>
       <img src={ProfileImg} />
-      <S.Inputs>
-        <S.InputBox>
-          <S.InputText>Name</S.InputText>
-          <S.Input type="text" />
-        </S.InputBox>
+      <S.Box>
+        <S.Inputs>
+          <S.InputBoxs>
+            <S.InputBox>
+              <S.InputText style={{ bottom: "60px" }}>Name</S.InputText>
+              <S.Input type="text" placeholder="내용을 입력해주세요." />
+            </S.InputBox>
 
-        <S.InputBox>
-          <S.InputText>Email</S.InputText>
-          <S.Input type="text" />
-        </S.InputBox>
+            <S.InputBox>
+              <S.InputText style={{ bottom: "60px" }}>Email</S.InputText>
+              <S.Input type="text" placeholder="내용을 입력해주세요." />
+            </S.InputBox>
+          </S.InputBoxs>
 
-        <S.InputBox>
-          <S.InputText>Bio</S.InputText>
-          <S.Input type="text" />
-        </S.InputBox>
-      </S.Inputs>
+          <S.BioBox>
+            <S.InputText style={{ bottom: "140px" }}>Bio</S.InputText>
+            <S.BioInput placeholder="내용을 입력해주세요." />
+          </S.BioBox>
+          <S.SubmitBtn>Edit</S.SubmitBtn>
+        </S.Inputs>
+      </S.Box>
     </div>
   );
 };
