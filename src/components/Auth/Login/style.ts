@@ -43,7 +43,7 @@ export const Input = styled.input`
   padding: 0 50px;
   border: none;
   max-width: 3000000px;
-  background: #f5f5f5;
+  background-color: #e9e9e7;
   border-radius: 5px;
   margin-top: 20px;
   @media screen and (min-width: 600px) {
@@ -62,6 +62,40 @@ export const Input = styled.input`
     line-height: 135.5%;
     text-align: center;
     color: #7a7a7a;
+  }
+`;
+
+export const InputLabel = styled.label`
+  position: relative;
+`;
+
+export const InputButton = styled.img`
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  bottom: 5px;
+  right: 15px;
+  margin: auto 0;
+
+  font-family: "Pretendard";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+
+  @media screen and (min-width: 600px) {
+    width: 5%;
+    height: 30px;
+  }
+  @media screen and (max-width: 600px) {
+    width: 5%;
+    height: 30px;
+  }
+  :active {
+    cursor: pointer;
   }
 `;
 
