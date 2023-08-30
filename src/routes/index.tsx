@@ -6,6 +6,7 @@ import { Signin } from "../components/Auth/Signin";
 import Profile from "../pages/Profile";
 import { NotFound } from "../components/NotFound";
 import { Home } from "../pages/Home";
+import { EmailVerify } from "../pages/EmailVerify";
 
 export const Router = () => {
   return (
@@ -14,9 +15,9 @@ export const Router = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signin" element={<Signin />} />
+        <Route path="/EmailVerify" element={<EmailVerify />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/profile" element={<Profile />} />
-        {/* <Route path="*" element={<navigate to="/" />} /> */}
       </Routes>
     </div>
   );

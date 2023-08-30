@@ -1,36 +1,61 @@
 import React from "react";
-// import { useNavigate } from "react-router-dom";
-import { ReactComponent as Reservation } from "../../assets/Login-Logo.svg";
-import { ReactComponent as Profilechange } from "../../assets/dummy_profilechange_icon.svg";
 
-// import styles from '../../style/profile-style.module.css';
 import * as S from "./style";
 import "../../styles/styles.css";
 
+import ProfileImg from "../../assets/profile.svg";
+import { useProfile } from "../../hooks/useProfile";
+
 const Profile = () => {
-  // const navigate = useNavigate();
-  // const LoginHandel = () => {
-  //     navigate("/profile");
-  // }
+  const { onProfileChange, Name, Email, Bio, onProfileSubmit } = useProfile();
   return (
-    <>
-      <S.Flex>
-        <S.Form>
-          <S.Text>Profile</S.Text>
-          <S.ImgBox>
-            <Reservation className={"profileLogoImg"} />
-            <Profilechange className={"profileChangeButton"} />
-          </S.ImgBox>
-          <S.ProfileId>
-            dummy_id
-            <br />
-            <S.ProfileEmail>dummy_email@gmail.com</S.ProfileEmail>
-          </S.ProfileId>
-          <S.SaveLoginButton>저장하고 로그인하기</S.SaveLoginButton>
-          <S.LaterButton>나중에 할게요</S.LaterButton>
-        </S.Form>
-      </S.Flex>
-    </>
+    <div>
+      <h1 style={{ color: "#316AE2" }}>Profile</h1>
+      <img src={ProfileImg} />
+      <form onSubmit={onProfileSubmit}>
+        <S.Box>
+          <S.Inputs>
+            <S.InputBoxs>
+              <S.InputBox>
+                <S.InputText style={{ bottom: "60px" }}>Name</S.InputText>
+                <S.Input
+                  type="text"
+                  placeholder="내용을 입력해주세요."
+                  id="name"
+                  value={Name}
+                  onChange={onProfileChange}
+                />
+              </S.InputBox>
+
+              <S.InputBox>
+                <S.InputText style={{ bottom: "60px" }}>Email</S.InputText>
+                <S.Input
+                  type="text"
+                  placeholder="내용을 입력해주세요."
+                  id="email"
+                  value={Email}
+                  onChange={onProfileChange}
+                />
+              </S.InputBox>
+            </S.InputBoxs>
+
+            <S.BioBox>
+              <S.InputText style={{ bottom: "140px" }}>Bio</S.InputText>
+              <S.BioInput
+                placeholder="내용을 입력해주세요."
+                id="bio"
+                value={Bio}
+                onChange={onProfileChange}
+              />
+            </S.BioBox>
+          </S.Inputs>
+
+          <S.ButtonBox>
+            <S.SubmitBtn type="submit">Edit</S.SubmitBtn>
+          </S.ButtonBox>
+        </S.Box>
+      </form>
+    </div>
   );
 };
 
