@@ -12,13 +12,8 @@ export const MainCotainer = styled.form`
   border-right: 1px solid red;
 
   float: left;
-  position: relative;
-  /* @media screen and (min-width: 600px) {
-    width: 550px;
-  }
-  @media screen and (max-width: 600px) {
-    width: 90%;
-  } */
+  position: fixed;
+  z-index: 1;
 `;
 
 export const Flex = styled.form`
@@ -50,17 +45,21 @@ export const Member = styled.form`
   display: flex;
   flex-direction: column;
 
+  width: 100%;
+
   margin-top: 15%;
   font-size: 110%;
 `;
 
 export const MemberImage = styled.form`
-  display: grid;
+  display: flex;
   flex-basis: 45px;
 
-  width: fit-content;
+  width: 100%;
 
   grid-gap: 10px;
   grid-template-columns: repeat(10, 1fr);
+
+  flex-wrap: wrap;
   /* grid-template-columns: ; */
 `;

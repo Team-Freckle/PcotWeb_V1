@@ -7,7 +7,6 @@ import Profile from "../pages/Profile";
 import { NotFound } from "../components/NotFound";
 import { Home } from "../pages/Home";
 import SideBar from "../components/SideBar";
-import SideBarProfile from "../components/SideBar/Profile";
 
 export const Router = () => {
   return (
@@ -19,7 +18,6 @@ export const Router = () => {
         <Route path="*" element={<NotFound />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/side" element={<SideBar />} />
-        <Route path="/test" element={<SideBarProfile />} />
         {/* <Route path="*" element={<navigate to="/" />} /> */}
       </Routes>
     </div>
