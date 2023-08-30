@@ -2,11 +2,17 @@ import styled from "styled-components";
 
 export const MainCotainer = styled.form`
   background: #ffffff;
-  height: 100%;
+
+  height: max-content;
   width: 20%;
+
   display: flex;
   flex-direction: column;
+
   border-right: 1px solid red;
+
+  float: left;
+  position: relative;
   /* @media screen and (min-width: 600px) {
     width: 550px;
   }
@@ -26,7 +32,9 @@ export const ImgBox = styled.form`
   flex-direction: column;
   margin: 0 auto;
 
-  font-size: 200%;
+  width: 100%;
+
+  font-size: 150%;
   font-weight: 500;
 `;
 
@@ -47,10 +55,12 @@ export const Member = styled.form`
 `;
 
 export const MemberImage = styled.form`
-  display: flex;
+  display: grid;
   flex-basis: 45px;
-`;
 
-// export const Button = styled.form`
-//   width: 100%;
-// `;
+  width: fit-content;
+
+  grid-gap: 10px;
+  grid-template-columns: repeat(10, 1fr);
+  /* grid-template-columns: ; */
+`;
