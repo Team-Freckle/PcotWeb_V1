@@ -58,20 +58,5 @@ export const useSignin = () => {
     [name, email, pw1, pw2, URL],
   );
 
-  // const onEmailVerify = async (Email: string) => {
-  //   if (email) {
-  //     try {
-  //       const response = await axios.post(`${API_URL}/v2/user/mail/auth/send`, {
-  //         email: Email,
-  //       });
-  //       console.log(response);
-  //     } catch (error) {
-  //       ToastError("회원가입에 실패했습니다.");
-  //     }
-  //   } else {
-  //     ToastWarning("이메일을 입력해주세요");
-  //   }
-  // };
-
   return { onSignUpChange, name, email, pw1, pw2, onSignUpSubmit };
 };

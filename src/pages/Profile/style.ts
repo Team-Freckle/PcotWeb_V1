@@ -78,12 +78,15 @@ export const SubmitBtn = styled.button`
   margin-left: 450px;
   cursor: pointer;
   @media screen {
-    @media (max-width: 600px) {
+    @media (max-width: 599px) {
       float: none;
       margin-right: 0px;
       margin-left: 0px;
       width: 290px;
     }
+  }
+  :active {
+    background-color: #252525;
   }
 `;
 
