@@ -15,7 +15,7 @@ export const Inputs = styled.div`
 export const Input = styled.input`
   width: 270px;
   height: 40px;
-  border-radius: 5px;
+  border-radius: 10px;
   border: none;
   margin-bottom: 10px;
   padding-left: 10px;
@@ -34,7 +34,7 @@ export const InputBoxs = styled.div`
 export const BioInput = styled.textarea`
   width: 270px;
   height: 113px;
-  border-radius: 5px;
+  border-radius: 10px;
   border: none;
   margin-bottom: 10px;
   padding-left: 10px;
@@ -68,7 +68,7 @@ export const InputText = styled.div`
 export const SubmitBtn = styled.button`
   width: 100px;
   height: 50px;
-  border-radius: 5px;
+  border-radius: 10px;
   border: none;
   margin-top: 10px;
   background-color: #316ae2;
