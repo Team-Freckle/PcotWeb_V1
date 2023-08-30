@@ -28,8 +28,11 @@ const Profile = () => {
             <S.InputText style={{ bottom: "140px" }}>Bio</S.InputText>
             <S.BioInput placeholder="내용을 입력해주세요." />
           </S.BioBox>
-          <S.SubmitBtn>Edit</S.SubmitBtn>
         </S.Inputs>
+
+        <S.ButtonBox>
+          <S.SubmitBtn>Edit</S.SubmitBtn>
+        </S.ButtonBox>
       </S.Box>
     </div>
   );

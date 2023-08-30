@@ -75,14 +75,19 @@ export const SubmitBtn = styled.button`
   color: white;
   font-family: "pretendard";
   font-weight: 600;
-  float: right;
-  margin-right: 130px;
+  margin-left: 450px;
   cursor: pointer;
   @media screen {
     @media (max-width: 600px) {
       float: none;
       margin-right: 0px;
+      margin-left: 0px;
       width: 290px;
     }
   }
+`;
+
+export const ButtonBox = styled.div`
+  width: 100%;
+  height: 80px;
 `;
