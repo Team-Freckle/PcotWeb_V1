@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { useCallback, useState } from "react";
 import { ToastError, ToastSuccess, ToastWarning } from "../lib/Toast";
+import { useNavigate } from "react-router-dom";
 
 export const API_URL = process.env.REACT_APP_API;
 
 export const useProfile = () => {
+  const navigate = useNavigate();
   const [Name, setName] = useState<string>("");
   const [Email, setEmail] = useState<string>("");
   const [Bio, setBio] = useState<string>("");
@@ -42,6 +44,7 @@ export const useProfile = () => {
           ToastSuccess("프로필 수정에 성공하였습니다.");
         } catch (error) {
           ToastError("프로필 수정에 실패했습니다.");
+          navigate("/");
         }
       } else {
         ToastWarning("모든 항목을 입력해주세요");

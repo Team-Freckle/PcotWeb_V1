@@ -10,7 +10,7 @@ const Profile = () => {
   const { onProfileChange, Name, Email, Bio, onProfileSubmit } = useProfile();
   return (
     <div>
-      <h1>Profile</h1>
+      <h1 style={{ color: "#316AE2" }}>Profile</h1>
       <img src={ProfileImg} />
       <form onSubmit={onProfileSubmit}>
         <S.Box>
