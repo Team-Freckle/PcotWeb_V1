@@ -3,8 +3,8 @@ import React from "react";
 import * as S from "./style";
 import "../../styles/styles.css";
 
-import ProfileImg from "../../assets/profile.svg";
-import { useProfile } from "../../hooks/useProfile";
+import ProfileImg from "@assets/profile.svg";
+import { useProfile } from "@hooks/useProfile";
 
 const Profile = () => {
   const { onProfileChange, Name, Email, Bio, onProfileSubmit } = useProfile();

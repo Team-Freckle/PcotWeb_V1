@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 import * as S from "./style";
 
-import Banner from "../../assets/banner.svg";
-import Profile from "../../assets/Login-Logo.svg";
-import Serch from "../../assets/search.svg";
+import Banner from "@assets/banner.png";
+import Profile from "@assets/Login-Logo.svg";
+import Serch from "@assets/search.svg";
 
 export const Home = () => {
   const navigate = useNavigate();

@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "../../../styles/styles.css";
-import { ReactComponent as Reservation } from "../../../assets/Login-Logo.svg";
+import { ReactComponent as Reservation } from "@assets/Login-Logo.svg";
 import * as S from "./style";
-import { useLogin } from "../../../hooks/useLogin";
-import PwSee from "../../../assets/password_see_icon.svg";
-import PwOff from "../../../assets/eyeoff.svg";
+import { useLogin } from "@hooks/useLogin";
+import PwSee from "@assets/password_see_icon.svg";
+import PwOff from "@assets/eyeoff.svg";
 
 export const Login = () => {
   const navigate = useNavigate();

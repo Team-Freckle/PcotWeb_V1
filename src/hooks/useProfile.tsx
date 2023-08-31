@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useCallback, useState } from "react";
-import { ToastError, ToastSuccess, ToastWarning } from "../lib/Toast";
+import { ToastError, ToastSuccess, ToastWarning } from "@lib/Toast";
 import { useNavigate } from "react-router-dom";
 
 export const API_URL = process.env.REACT_APP_API;
