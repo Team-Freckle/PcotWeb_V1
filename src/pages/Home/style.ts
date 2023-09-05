@@ -92,4 +92,5 @@ export const Banner = styled.img`
 
 export const Main = styled.div`
   grid-area: main;
+  margin-top: 30px;
 `;

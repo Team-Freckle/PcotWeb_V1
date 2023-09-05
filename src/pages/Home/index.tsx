@@ -6,6 +6,7 @@ import * as S from "./style";
 import Profile from "@assets/Login-Logo.svg";
 import Serch from "@assets/search.svg";
 import Banner from "@assets/banner.svg";
+import { WorkspaceList } from "@components/WorkspaceList";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ export const Home = () => {
       <S.Banner src={Banner}></S.Banner>
 
       <S.Main>
-        <span>Recents</span>
+        <WorkspaceList name="recents" />
       </S.Main>
     </S.Container>
   );
