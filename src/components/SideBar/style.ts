@@ -3,13 +3,13 @@ import styled from "styled-components";
 export const MainCotainer = styled.form`
   background: #ffffff;
 
-  height: max-content;
+  height: 100%;
   width: 20%;
 
   display: flex;
   flex-direction: column;
 
-  border-right: 1px solid red;
+  user-select: none;
 
   float: left;
   position: fixed;
@@ -18,7 +18,7 @@ export const MainCotainer = styled.form`
 
 export const Flex = styled.form`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   font-size: 120%;
 `;
 
@@ -63,3 +63,19 @@ export const MemberImage = styled.form`
   flex-wrap: wrap;
   /* grid-template-columns: ; */
 `;
+
+export const WorkButton = styled.form`
+  background-color: gray;
+  height: 3%;
+
+  /* align-items: center;
+  align-content: center;
+  justify-content: center; */
+  text-align: center;
+  justify-items: center;
+`;
+
+// export const WorkChangeBtn = styled.button`
+//   width: 100%;
+//   border: 0;
+// `;
