@@ -6,15 +6,15 @@ export const Container = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas:
     "header . serch"
-    "main main aside"
-    "footer footer footer";
+    "banner banner banner"
+    "main main main";
   @media (max-width: 768px) {
     grid-template-rows: repeat(3, 200px);
     grid-template-columns: repeat(1, 1fr);
     grid-template-areas:
       "serch"
-      "main"
-      "footer";
+      "banner"
+      "main";
   }
 `;
 
@@ -82,4 +82,14 @@ export const InputButton = styled.img`
   position: absolute;
   top: 8px;
   right: 20px;
+`;
+
+export const Banner = styled.img`
+  grid-area: banner;
+  width: 100%;
+  height: 200px;
+`;
+
+export const Main = styled.div`
+  grid-area: main;
 `;

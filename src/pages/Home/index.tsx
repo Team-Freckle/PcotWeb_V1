@@ -5,6 +5,7 @@ import * as S from "./style";
 
 import Profile from "@assets/Login-Logo.svg";
 import Serch from "@assets/search.svg";
+import Banner from "@assets/banner.svg";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -32,7 +33,11 @@ export const Home = () => {
         </S.InputLabel>
       </S.InputBox>
 
-      {/* <img src={Banner} style={{ width: "80%", height: "30%" }}></img> */}
+      <S.Banner src={Banner}></S.Banner>
+
+      <S.Main>
+        <span>Recents</span>
+      </S.Main>
     </S.Container>
   );
 };
