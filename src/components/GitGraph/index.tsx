@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Gitgraph, templateExtend, TemplateName, Orientation } from "@gitgraph/react";
 
 export const GitGraph = () => {
@@ -12,21 +12,28 @@ export const GitGraph = () => {
   });
 
   const initGraph = (gitgraph: any) => {
-    const master = gitgraph.branch("master");
-    master.commit("das");
+    // const [mkBranch, setMkBranch] = useState();
+    // const [mkNode, setMkNode] = useState(0);
+
+    const main = gitgraph.branch("main").commit("Initial commit");
+    main.commit("업데이트 내용");
+    const user2 = main.branch("user2");
+    user2.commit("업데이트 내용2");
+    const user3 = main.branch("user3");
+    user3.commit("업데이트 내용3");
+    main.commit("업데이트 내용4");
+    main.merge(user2);
+    main.merge(user3);
+    main.commit("업데이트 내용6");
   };
 
   return (
-    <div>
-      <Gitgraph
-        options={{
-          orientation: Orientation.VerticalReverse,
-          reverseArrow: true,
-          template: withoutAuthor,
-        }}
-      >
-        {initGraph.bind(this)}
-      </Gitgraph>
-    </div>
+    <Gitgraph options={{ template: withoutAuthor, orientation: Orientation.VerticalReverse }}>
+      {(gitgraph) => {
+        initGraph(gitgraph);
+      }}
+    </Gitgraph>
   );
 };
+
+export default GitGraph;

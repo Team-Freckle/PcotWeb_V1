@@ -8,8 +8,8 @@ import { NotFound } from "../components/NotFound";
 import { Home } from "../pages/Home";
 import { EmailVerify } from "../pages/EmailVerify";
 import SideBar from "../components/SideBar";
-import SideBarWorkspace from "../components/SideBar/WorkSpace";
-import { GitGraph } from "../components/GitGraph";
+// import SideBarWorkspace from "../components/SideBar/WorkSpace";
+import GitGraph from "../components/GitGraph";
 
 export const Router = () => {
   return (
