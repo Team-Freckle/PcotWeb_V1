@@ -79,3 +79,15 @@ export const WorkButton = styled.form`
 //   width: 100%;
 //   border: 0;
 // `;
+
+export const HideCheck = styled.form`
+  display: none;
+`;
+
+export const SideColor = styled.form`
+  background-color: #ffffff;
+`;
+
+export const CustomWidth = styled.form`
+  width: 500px;
+`;
