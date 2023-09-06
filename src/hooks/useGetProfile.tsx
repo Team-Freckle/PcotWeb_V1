@@ -14,7 +14,7 @@ export const useGetProfile = () => {
       });
       return response.data;
     } catch (error) {
-      navigate("/login");
+      //   navigate("/login");
     }
   };
   return { onGetProfile };

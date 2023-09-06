@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import * as S from "./style";
 import "../../styles/styles.css";
 
-import ProfileBGImg from "@assets/profileBG.png";
 import ProfileImg from "@assets/Login-Logo.svg";
 import Bliend from "@assets/blind.png";
 import { useProfile } from "@hooks/useProfile";
@@ -12,7 +11,7 @@ import { useGetProfile } from "@hooks/useGetProfile";
 const Profile = () => {
   const { onProfileChange, Name, Email, Bio, onProfileSubmit } = useProfile();
   const { onGetProfile } = useGetProfile();
-  const [ProfileBg, setProfileBg] = useState<string>(ProfileBGImg);
+  const [ProfileBg, setProfileBg] = useState<string>("");
 
   useEffect(() => {
     onGetProfile();
@@ -20,12 +19,10 @@ const Profile = () => {
 
   const handleProfilehover = () => {
     setProfileBg(Bliend);
-    console.log("hover");
   };
 
   const handleProfileOut = () => {
-    setProfileBg(ProfileBGImg);
-    console.log("out");
+    setProfileBg("");
   };
 
   return (
@@ -34,6 +31,7 @@ const Profile = () => {
       <S.ImgBox>
         <div onMouseEnter={handleProfilehover} onMouseLeave={handleProfileOut}>
           <S.ProfileImg src={ProfileImg} />
+          <S.ProfileBg src={ProfileBg} />
         </div>
       </S.ImgBox>
 
