@@ -87,10 +87,11 @@ export const InputButton = styled.img`
 export const Banner = styled.img`
   grid-area: banner;
   width: 100%;
-  height: 200px;
+  height: auto;
+  max-height: 250px;
 `;
 
 export const Main = styled.div`
   grid-area: main;
-  margin-top: 30px;
+  margin-top: 70px;
 `;

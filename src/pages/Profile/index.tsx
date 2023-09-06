@@ -1,17 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import * as S from "./style";
 import "../../styles/styles.css";
 
-import ProfileImg from "@assets/profile.svg";
+import ProfileBGImg from "@assets/profileBG.png";
+import ProfileImg from "@assets/Login-Logo.svg";
+import Bliend from "@assets/blind.png";
 import { useProfile } from "@hooks/useProfile";
+import { useGetProfile } from "@hooks/useGetProfile";
 
 const Profile = () => {
   const { onProfileChange, Name, Email, Bio, onProfileSubmit } = useProfile();
+  const { onGetProfile } = useGetProfile();
+  const [ProfileBg, setProfileBg] = useState<string>(ProfileBGImg);
+
+  useEffect(() => {
+    onGetProfile();
+  }, []);
+
+  const handleProfilehover = () => {
+    setProfileBg(Bliend);
+    console.log("hover");
+  };
+
+  const handleProfileOut = () => {
+    setProfileBg(ProfileBGImg);
+    console.log("out");
+  };
+
   return (
     <div>
       <h1 style={{ color: "#316AE2" }}>Profile</h1>
-      <img src={ProfileImg} />
+      <S.ImgBox>
+        <div onMouseEnter={handleProfilehover} onMouseLeave={handleProfileOut}>
+          <S.ProfileImg src={ProfileImg} />
+        </div>
+      </S.ImgBox>
+
       <form onSubmit={onProfileSubmit}>
         <S.Box>
           <S.Inputs>

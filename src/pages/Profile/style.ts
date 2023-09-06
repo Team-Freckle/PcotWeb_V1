@@ -94,3 +94,17 @@ export const ButtonBox = styled.div`
   width: 100%;
   height: 80px;
 `;
+
+export const ImgBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 250px;
+  background-color: #e9e9e7;
+`;
+
+export const ProfileImg = styled.img`
+  width: 250px;
+  height: 250px;
+`;

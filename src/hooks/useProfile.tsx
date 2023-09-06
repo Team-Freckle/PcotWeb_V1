@@ -11,7 +11,7 @@ export const useProfile = () => {
   const [Email, setEmail] = useState<string>("");
   const [Bio, setBio] = useState<string>("");
 
-  const URL = `${API_URL}/v2/profile.do`;
+  const URL = `${API_URL}/v2/user/info/edit`;
 
   const onProfileChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -31,20 +31,20 @@ export const useProfile = () => {
       e.preventDefault();
       if (Name && Email && Bio) {
         try {
-          const response = await axios.post(
+          const response = await axios.put(
             URL,
             {
               name: Name,
               email: Email,
-              bio: Bio,
+              comment: Bio,
             },
             { withCredentials: true },
           );
           console.log(response);
           ToastSuccess("프로필 수정에 성공하였습니다.");
+          navigate("/");
         } catch (error) {
           ToastError("프로필 수정에 실패했습니다.");
-          navigate("/");
         }
       } else {
         ToastWarning("모든 항목을 입력해주세요");

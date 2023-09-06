@@ -31,6 +31,86 @@ export const WorkspaceList = (props: any) => {
           <S.WorkspaceName>제목</S.WorkspaceName>
           <S.WorkspaceSubName>워크스페이스</S.WorkspaceSubName>
         </S.WorkspaceItem>
+        <S.WorkspaceItem>
+          <S.WorkspaceImg />
+          <S.WorkspaceName>제목</S.WorkspaceName>
+          <S.WorkspaceSubName>워크스페이스</S.WorkspaceSubName>
+        </S.WorkspaceItem>
+        <S.WorkspaceItem>
+          <S.WorkspaceImg />
+          <S.WorkspaceName>제목</S.WorkspaceName>
+          <S.WorkspaceSubName>워크스페이스</S.WorkspaceSubName>
+        </S.WorkspaceItem>
+        <S.WorkspaceItem>
+          <S.WorkspaceImg />
+          <S.WorkspaceName>제목</S.WorkspaceName>
+          <S.WorkspaceSubName>워크스페이스</S.WorkspaceSubName>
+        </S.WorkspaceItem>
+        <S.WorkspaceItem>
+          <S.WorkspaceImg />
+          <S.WorkspaceName>제목</S.WorkspaceName>
+          <S.WorkspaceSubName>워크스페이스</S.WorkspaceSubName>
+        </S.WorkspaceItem>
+        <S.WorkspaceItem>
+          <S.WorkspaceImg />
+          <S.WorkspaceName>제목</S.WorkspaceName>
+          <S.WorkspaceSubName>워크스페이스</S.WorkspaceSubName>
+        </S.WorkspaceItem>
+        <S.WorkspaceItem>
+          <S.WorkspaceImg />
+          <S.WorkspaceName>제목</S.WorkspaceName>
+          <S.WorkspaceSubName>워크스페이스</S.WorkspaceSubName>
+        </S.WorkspaceItem>
+        <S.WorkspaceItem>
+          <S.WorkspaceImg />
+          <S.WorkspaceName>제목</S.WorkspaceName>
+          <S.WorkspaceSubName>워크스페이스</S.WorkspaceSubName>
+        </S.WorkspaceItem>
+        <S.WorkspaceItem>
+          <S.WorkspaceImg />
+          <S.WorkspaceName>제목</S.WorkspaceName>
+          <S.WorkspaceSubName>워크스페이스</S.WorkspaceSubName>
+        </S.WorkspaceItem>
+        <S.WorkspaceItem>
+          <S.WorkspaceImg />
+          <S.WorkspaceName>제목</S.WorkspaceName>
+          <S.WorkspaceSubName>워크스페이스</S.WorkspaceSubName>
+        </S.WorkspaceItem>
+        <S.WorkspaceItem>
+          <S.WorkspaceImg />
+          <S.WorkspaceName>제목</S.WorkspaceName>
+          <S.WorkspaceSubName>워크스페이스</S.WorkspaceSubName>
+        </S.WorkspaceItem>
+        <S.WorkspaceItem>
+          <S.WorkspaceImg />
+          <S.WorkspaceName>제목</S.WorkspaceName>
+          <S.WorkspaceSubName>워크스페이스</S.WorkspaceSubName>
+        </S.WorkspaceItem>
+        <S.WorkspaceItem>
+          <S.WorkspaceImg />
+          <S.WorkspaceName>제목</S.WorkspaceName>
+          <S.WorkspaceSubName>워크스페이스</S.WorkspaceSubName>
+        </S.WorkspaceItem>
+        <S.WorkspaceItem>
+          <S.WorkspaceImg />
+          <S.WorkspaceName>제목</S.WorkspaceName>
+          <S.WorkspaceSubName>워크스페이스</S.WorkspaceSubName>
+        </S.WorkspaceItem>
+        <S.WorkspaceItem>
+          <S.WorkspaceImg />
+          <S.WorkspaceName>제목</S.WorkspaceName>
+          <S.WorkspaceSubName>워크스페이스</S.WorkspaceSubName>
+        </S.WorkspaceItem>
+        <S.WorkspaceItem>
+          <S.WorkspaceImg />
+          <S.WorkspaceName>제목</S.WorkspaceName>
+          <S.WorkspaceSubName>워크스페이스</S.WorkspaceSubName>
+        </S.WorkspaceItem>
+        <S.WorkspaceItem>
+          <S.WorkspaceImg />
+          <S.WorkspaceName>제목</S.WorkspaceName>
+          <S.WorkspaceSubName>워크스페이스</S.WorkspaceSubName>
+        </S.WorkspaceItem>
       </S.WorkspaceList>
     </S.Container>
   );

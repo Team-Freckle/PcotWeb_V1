@@ -15,22 +15,30 @@ export const Title = styled.span`
 
   height: 30px;
   margin-left: 100px;
+  @media (max-width: 768px) {
+    margin-left: 50px;
+  }
 `;
 
 export const WorkspaceList = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-left: 70px;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    margin-left: 0px;
+  }
 `;
 
 export const WorkspaceItem = styled.div`
-  width: 200px;
+  width: 170px;
   height: 270px;
   margin: 10px;
 `;
 
 export const WorkspaceImg = styled.img`
-  width: 200px;
+  width: 170px;
   height: 200px;
   border-radius: 10px;
   background-color: #d9d9d9;
