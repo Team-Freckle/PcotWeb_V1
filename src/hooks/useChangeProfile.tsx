@@ -10,8 +10,10 @@ export const useProfile = () => {
   const [Name, setName] = useState<string>("");
   const [Email, setEmail] = useState<string>("");
   const [Bio, setBio] = useState<string>("");
+  const [NewprofileImg, setNewProfileImg] = useState<string>("");
 
-  const URL = `${API_URL}/v2/user/info/edit`;
+  const ProfileEditURL = `${API_URL}/v2/user/info/edit`;
+  const ProfileImgEditURL = `${API_URL}/v2/user/info/edit/profile`;
 
   const onProfileChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -21,6 +23,8 @@ export const useProfile = () => {
         setEmail(e.target.value);
       } else if (e.target.id === "bio") {
         setBio(e.target.value);
+      } else if (e.target.id === "profileImg") {
+        setNewProfileImg(e.target.value);
       }
     },
     [],
@@ -29,10 +33,18 @@ export const useProfile = () => {
   const onProfileSubmit = useCallback(
     async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      if (Name && Email && Bio) {
+      if (Name && Email && Bio && NewprofileImg) {
         try {
+          const formData = new FormData();
+          formData.append("image", NewprofileImg);
+          const response1 = await axios.put(ProfileImgEditURL, formData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+            withCredentials: true,
+          });
           const response = await axios.put(
-            URL,
+            ProfileEditURL,
             {
               name: Name,
               email: Email,
@@ -40,9 +52,10 @@ export const useProfile = () => {
             },
             { withCredentials: true },
           );
-          console.log(response);
+
           ToastSuccess("프로필 수정에 성공하였습니다.");
           navigate("/");
+          return response.data | response1.data;
         } catch (error) {
           ToastError("프로필 수정에 실패했습니다.");
         }
@@ -50,8 +63,8 @@ export const useProfile = () => {
         ToastWarning("모든 항목을 입력해주세요");
       }
     },
-    [Name, Email, Bio, URL],
+    [Name, Email, Bio, NewprofileImg],
   );
 
-  return { onProfileChange, Name, Email, Bio, onProfileSubmit };
+  return { onProfileChange, Name, Email, Bio, NewprofileImg, onProfileSubmit };
 };

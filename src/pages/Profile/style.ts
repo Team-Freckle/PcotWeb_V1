@@ -114,7 +114,7 @@ export const ProfileImg = styled.img`
 
 export const ProfileBg = styled.img`
   position: absolute;
-  top: 49%; /* 상단에서 중앙으로 이동 */
+  top: 49.3%; /* 상단에서 중앙으로 이동 */
   left: 50%; /* 좌측에서 중앙으로 이동 */
   transform: translate(-50%, -50%); /* 중앙 정렬 */
 `;

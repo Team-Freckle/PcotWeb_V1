@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import * as S from "./style";
 import "../../styles/styles.css";
 
-import ProfileImg from "@assets/Login-Logo.svg";
-import Bliend from "@assets/blind.png";
-import { useProfile } from "@hooks/useProfile";
+import ProfileImgd from "@assets/Login-Logo.svg";
+import Bliend from "@assets/test.svg";
+import { useProfile } from "@hooks/useChangeProfile";
 import { useGetProfile } from "@hooks/useGetProfile";
 
 const Profile = () => {
-  const { onProfileChange, Name, Email, Bio, onProfileSubmit } = useProfile();
+  const { onProfileChange, Name, Email, Bio, NewprofileImg, onProfileSubmit } = useProfile();
   const { onGetProfile } = useGetProfile();
   const [ProfileBg, setProfileBg] = useState<string>("");
+  const [ProfileImg, setProfileImg] = useState<string>(ProfileImgd);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     onGetProfile();
@@ -25,17 +27,44 @@ const Profile = () => {
     setProfileBg("");
   };
 
+  const handleFileSelect = (e: any) => {
+    const selectedFile = e.target.files?.[0];
+    if (selectedFile) {
+      setProfileImg(URL.createObjectURL(selectedFile));
+      onProfileChange(e);
+    }
+  };
+
+  const openFileInput = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
   return (
     <div>
       <h1 style={{ color: "#316AE2" }}>Profile</h1>
-      <S.ImgBox>
-        <div onMouseEnter={handleProfilehover} onMouseLeave={handleProfileOut}>
-          <S.ProfileImg src={ProfileImg} />
-          <S.ProfileBg src={ProfileBg} />
-        </div>
-      </S.ImgBox>
-
       <form onSubmit={onProfileSubmit}>
+        <S.ImgBox>
+          <div
+            onMouseEnter={handleProfilehover}
+            onMouseLeave={handleProfileOut}
+            onClick={openFileInput}
+          >
+            <S.ProfileImg src={ProfileImg} />
+            <S.ProfileBg src={ProfileBg} />
+          </div>
+        </S.ImgBox>
+        <input
+          id="profileImg"
+          type="file"
+          accept="image/*"
+          style={{ display: "none" }}
+          ref={fileInputRef}
+          value={NewprofileImg}
+          onChange={handleFileSelect}
+        />
+
         <S.Box>
           <S.Inputs>
             <S.InputBoxs>
