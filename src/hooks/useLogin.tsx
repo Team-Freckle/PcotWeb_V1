@@ -34,9 +34,9 @@ export const useLogin = () => {
             },
             { withCredentials: true },
           );
-          console.log(response);
           ToastSuccess("로그인에 성공하였습니다.");
           navigate("/");
+          return response.data;
         } catch (error) {
           ToastError("로그인에 실패했습니다.");
         }
