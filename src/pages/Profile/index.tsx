@@ -7,16 +7,41 @@ import ProfileImgd from "@assets/Login-Logo.svg";
 import Bliend from "@assets/test.svg";
 import { useProfile } from "@hooks/useChangeProfile";
 import { useGetProfile } from "@hooks/useGetProfile";
+import { useNavigate } from "react-router-dom";
+import { on } from "events";
+
+export const API_URL = process.env.REACT_APP_API;
 
 const Profile = () => {
-  const { onProfileChange, Name, Email, Bio, NewprofileImg, onProfileSubmit } = useProfile();
+  const navigate = useNavigate();
+  const {
+    onProfileChange,
+    Name,
+    Email,
+    Bio,
+    setName,
+    setEmail,
+    setBio,
+    onProfileSubmit,
+    onProfileImgChange,
+  } = useProfile();
   const { onGetProfile } = useGetProfile();
   const [ProfileBg, setProfileBg] = useState<string>("");
-  const [ProfileImg, setProfileImg] = useState<string>(ProfileImgd);
+  const [ProfileImg, setProfileImg] = useState<any>(ProfileImgd);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    onGetProfile();
+    onGetProfile()
+      .then((res) => {
+        setProfileImg(`${API_URL}/v2/search/user/image?email=${res.data.email}`);
+        setName(res.data.name);
+        setEmail(res.data.email);
+        setBio(res.data.comment);
+      })
+      .catch((err) => {
+        console.log(err);
+        navigate("/login");
+      });
   }, []);
 
   const handleProfilehover = () => {
@@ -30,8 +55,9 @@ const Profile = () => {
   const handleFileSelect = (e: any) => {
     const selectedFile = e.target.files?.[0];
     if (selectedFile) {
+      const image = selectedFile;
       setProfileImg(URL.createObjectURL(selectedFile));
-      onProfileChange(e);
+      onProfileImgChange(image);
     }
   };
 
@@ -61,7 +87,6 @@ const Profile = () => {
           accept="image/*"
           style={{ display: "none" }}
           ref={fileInputRef}
-          value={NewprofileImg}
           onChange={handleFileSelect}
         />
 
