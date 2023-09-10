@@ -1,74 +1,30 @@
 import React, { useState } from "react";
-import { Checkbox, Grid, Header, Icon, Image, Menu, Segment, Sidebar } from "semantic-ui-react";
+import { Sidebar, Segment } from "semantic-ui-react"; // semantic-ui-react 또는 프로젝트에 맞는 UI 라이브러리를 사용하세요
+import Hamburger from "./Hamburger"; // Hamburger 컴포넌트를 가져옵니다.
+import MainSideBar from "../SideBar/index"; // 메뉴바 컴포넌트를 가져옵니다.
 import Profile from "../../pages/Profile";
-import * as S from "./style";
-import { equal } from "assert";
 
-const SidebarTest: React.FC = () => {
-  const [visible, setVisible] = useState<boolean | undefined>(false);
+const SidebarTest = () => {
+  const [visible, setVisible] = useState(false);
+
+  // toggleMenu 함수를 정의합니다.
+  const toggleMenu = () => {
+    setVisible(!visible);
+  };
 
   return (
     <>
-      {/* <S.HideCheck> */}
-      <Checkbox
-        checked={!!visible}
-        onChange={(_e, data) => {
-          if (data.checked !== undefined) {
-            setVisible(data.checked);
-          }
-        }}
-      />
-      {/* </S.HideCheck> */}
-
+      {/* Hamburger 컴포넌트를 렌더링하고 toggleMenu 함수를 전달합니다. */}
+      <Hamburger toggleMenu={toggleMenu} />
       <Sidebar.Pushable as={Segment}>
-        <Sidebar
-          as={Menu}
-          animation="overlay"
-          icon="labeled"
-          inverted
-          style={{ paddingTop: "0", paddingBottom: "0" }}
-          onHide={() => setVisible(false)}
-          visible={visible}
-        >
-          <Grid>
-            <Grid columns={2}>
-              <Grid.Column>
-                <Menu.Item>
-                  <Icon name="angle left" />
-                </Menu.Item>
-              </Grid.Column>
-              <Grid.Column>
-                <Menu.Item>PCOT</Menu.Item>
-              </Grid.Column>
-            </Grid>
-
-            <Grid>
-              <Grid.Row>
-                <Menu.Item as="a">
-                  <Icon name="home" />
-                  Home
-                </Menu.Item>
-              </Grid.Row>
-              <Grid.Row>
-                <Menu.Item as="a">
-                  <Icon name="gamepad" />
-                  Games
-                </Menu.Item>
-              </Grid.Row>
-              <Grid.Row>
-                <Menu.Item as="a">
-                  <Icon name="camera" />
-                  Channels
-                </Menu.Item>
-              </Grid.Row>
-            </Grid>
-          </Grid>
+        <Sidebar as={Segment} animation="overlay" direction="left" visible={visible} icon="labeled">
+          {/* MainSideBar 컴포넌트는 메뉴바의 내용을 렌더링합니다. */}
+          <MainSideBar />
         </Sidebar>
 
         <Sidebar.Pusher dimmed={visible}>
-          <Segment basic>
-            <Profile />
-          </Segment>
+          {/* 페이지 내용 */}
+          <Profile />
         </Sidebar.Pusher>
       </Sidebar.Pushable>
     </>

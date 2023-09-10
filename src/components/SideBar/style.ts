@@ -3,24 +3,24 @@ import styled from "styled-components";
 export const MainCotainer = styled.form`
   background: #ffffff;
 
-  height: 100%;
-  width: 20%;
+  height: fit-content;
+  width: fit-content;
 
   display: flex;
   flex-direction: column;
 
-  user-select: none;
+  /* user-select: none; */
 
   float: left;
   position: fixed;
   z-index: 1;
 `;
 
-export const Flex = styled.form`
-  display: flex;
-  justify-content: space-between;
-  font-size: 120%;
-`;
+// export const Flex = styled.form`
+//   display: flex;
+//   justify-content: space-between;
+//   font-size: 120%;
+// `;
 
 export const ImgBox = styled.form`
   display: flex;
@@ -75,19 +75,22 @@ export const WorkButton = styled.form`
   justify-items: center;
 `;
 
-// export const WorkChangeBtn = styled.button`
-//   width: 100%;
-//   border: 0;
-// `;
-
-export const HideCheck = styled.form`
+export const Hide = styled.form`
   display: none;
 `;
 
-export const SideColor = styled.form`
-  background-color: #ffffff;
-`;
+// export const HideCheck = styled.form`
+//   display: none;
+// `;
 
-export const CustomWidth = styled.form`
-  width: 500px;
-`;
+// export const SideColor = styled.form`
+//   background-color: #ffffff;
+// `;
+
+// export const CustomWidth = styled.form`
+//   width: 500px;
+// `;
+
+// export const SideAlignCenter = styled.form`
+//   justify-content: center;
+// `;
