@@ -11,14 +11,18 @@ const SidebarTest = () => {
     setVisible(!visible);
   };
 
+  const closeMenu = () => {
+    setVisible(false);
+  };
+
   return (
     <>
-      <Hamburger toggleMenu={toggleMenu} isMenuOpen={visible} />
+      <Hamburger toggleMenu={toggleMenu} isMenuOpen={visible} closeMenu={closeMenu} />
       <Sidebar.Pushable as={Segment}>
         <Sidebar as={Segment} animation="overlay" direction="left" visible={visible} icon="labeled">
           <MainSideBar />
         </Sidebar>
-        <Sidebar.Pusher dimmed={visible} onClick={toggleMenu}>
+        <Sidebar.Pusher dimmed={visible} onClick={closeMenu}>
           <Profile />
         </Sidebar.Pusher>
       </Sidebar.Pushable>
