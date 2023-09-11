@@ -23,7 +23,7 @@ export const Title = styled.span`
 export const WorkspaceList = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-left: 70px;
+  margin-left: 30px;
 
   @media (max-width: 768px) {
     justify-content: center;

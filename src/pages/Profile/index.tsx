@@ -8,7 +8,6 @@ import Bliend from "@assets/test.svg";
 import { useProfile } from "@hooks/useChangeProfile";
 import { useGetProfile } from "@hooks/useGetProfile";
 import { useNavigate } from "react-router-dom";
-import { on } from "events";
 
 export const API_URL = process.env.REACT_APP_API;
 
