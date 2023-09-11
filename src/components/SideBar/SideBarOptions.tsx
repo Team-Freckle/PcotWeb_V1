@@ -6,7 +6,7 @@ import SideBarMembers from "./Members";
 import SideBarWorkspace from "./WorkSpace";
 import WorkChangeBtn from "./Workbutton";
 
-const MainSideBar = () => {
+const SideBarOptions = () => {
   return (
     <S.MainCotainer>
       <SideBarProfile />
@@ -17,4 +17,4 @@ const MainSideBar = () => {
   );
 };
 
-export default MainSideBar;
+export default SideBarOptions;

@@ -1,19 +1,18 @@
-// Hamburger 컴포넌트
 import React from "react";
 import "../sidestyle.css";
 
 interface HamburgerProps {
   toggleMenu: () => void;
   isMenuOpen: boolean;
-  closeMenu: () => void; // 메뉴바를 닫는 함수를 추가
+  closeMenu: () => void;
 }
 
 const Hamburger: React.FC<HamburgerProps> = ({ toggleMenu, isMenuOpen, closeMenu }) => {
   const handleButtonClick = () => {
     if (isMenuOpen) {
-      closeMenu(); // 메뉴바가 열려 있을 때 버튼 클릭으로 메뉴바를 닫습니다.
+      closeMenu();
     } else {
-      toggleMenu(); // 메뉴바가 닫혀 있을 때 버튼 클릭으로 메뉴바를 엽니다.
+      toggleMenu();
     }
   };
 

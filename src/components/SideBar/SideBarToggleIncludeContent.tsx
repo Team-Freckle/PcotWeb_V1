@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Sidebar, Segment } from "semantic-ui-react";
 import Hamburger from "./Hamburger";
-import MainSideBar from "../SideBar/index";
+import MainSideBar from "./SideBarOptions";
 import Profile from "../../pages/Profile";
 
-const SidebarTest = () => {
+const SideBarToggleIncludeContent = () => {
   const [visible, setVisible] = useState(false);
 
   const toggleMenu = () => {
@@ -30,4 +30,4 @@ const SidebarTest = () => {
   );
 };
 
-export default SidebarTest;
+export default SideBarToggleIncludeContent;
