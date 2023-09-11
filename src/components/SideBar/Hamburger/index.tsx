@@ -1,19 +1,18 @@
 import React, { useState } from "react";
-import "../sidestyle.css"; // 스타일 파일 경로를 적절히 수정해주세요
+import "../sidestyle.css";
 
-const Hamburger = ({ toggleMenu }: { toggleMenu: () => void }) => {
-  const [opened, setOpened] = useState(false);
+interface HamburgerProps {
+  toggleMenu: () => void;
+  isMenuOpen: boolean; // 메뉴 상태를 props로 받습니다.
+}
 
-  const toggleHamburger = () => {
-    setOpened(!opened);
-    toggleMenu(); // 메뉴 토글 함수 호출
-  };
-
+const Hamburger: React.FC<HamburgerProps> = ({ toggleMenu, isMenuOpen }) => {
   return (
     <button
-      className={`menu ${opened ? "opened" : ""}`}
-      onClick={toggleHamburger}
+      className={`menu ${isMenuOpen ? "opened" : ""}`}
+      onClick={toggleMenu}
       aria-label="Main Menu"
+      aria-expanded={isMenuOpen}
     >
       <svg width="50" height="50" viewBox="0 0 100 100">
         <path
