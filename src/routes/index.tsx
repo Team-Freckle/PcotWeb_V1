@@ -6,7 +6,9 @@ import { Signin } from "../components/Auth/Signin";
 import { NotFound } from "../components/NotFound";
 import { Home } from "../pages/Home";
 import { EmailVerify } from "../pages/EmailVerify";
-import SideBar from "../components/SideBar/SideBarOptions";
+import SideBar from "../components/SideBar";
+// import SideBarWorkspace from "../components/SideBar/WorkSpace";
+import GitGraph from "../components/GitGraph";
 
 import MainSideBar from "../components/SideBar/MainSideBar";
 
@@ -22,9 +24,9 @@ export const Router = () => {
         <Route path="/EmailVerify" element={<EmailVerify />} />
         <Route path="/side" element={<SideBar />} />
         <Route path="*" element={<NotFound />} />
-        {/* <Route path="/test" element={<SidebarExampleSidebar />} /> */}
-        <Route path="/sidetest" element={<MainSideBar />} />
-        {/* <Route path="/hamtest" element={<Hamburger />} /> */}
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/side" element={<SideBar />} />
+        <Route path="/graph" element={<GitGraph />} />
       </Routes>
     </div>
   );

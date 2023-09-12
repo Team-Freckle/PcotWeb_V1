@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 const path = require("path");
+=======
+const CracoAlias = require("craco-alias");
+>>>>>>> main
 
 module.exports = {
   plugins: [
     {
+<<<<<<< HEAD
       plugin: require("@semantic-ui-react/craco-less"),
     },
   ],
@@ -13,4 +18,14 @@ module.exports = {
       // 'site': path.resolve(__dirname, 'src/site.less'),
     },
   },
+=======
+      plugin: CracoAlias,
+      options: {
+        source: "tsconfig",
+        baseUrl: "./src",
+        tsConfigPath: "tsconfig.paths.json",
+      },
+    },
+  ],
+>>>>>>> main
 };
