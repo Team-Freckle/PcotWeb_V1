@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 import "../../../styles/styles.css";
 import * as S from "./style";
-import { useSignin } from "../../../hooks/useSignin";
-import PwSee from "../../../assets/password_see_icon.svg";
-import PwOff from "../../../assets/eyeoff.svg";
+import { useSignin } from "@hooks/useSignin";
+import PwSee from "@assets/password_see_icon.svg";
+import PwOff from "@assets/eyeoff.svg";
 
 export const Signin = () => {
   const navigate = useNavigate();

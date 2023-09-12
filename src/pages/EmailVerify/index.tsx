@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./style";
-import useEmailVerify from "../../hooks/useEmailVerify";
+import useEmailVerify from "@hooks/useEmailVerify";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export const EmailVerify = () => {

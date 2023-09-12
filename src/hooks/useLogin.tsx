@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useCallback, useState } from "react";
 
-import { ToastError, ToastSuccess, ToastWarning } from "../lib/Toast";
+import { ToastError, ToastSuccess, ToastWarning } from "@lib/Toast";
 import { useNavigate } from "react-router-dom";
 
 export const API_URL = process.env.REACT_APP_API;
@@ -34,9 +34,9 @@ export const useLogin = () => {
             },
             { withCredentials: true },
           );
-          console.log(response);
           ToastSuccess("로그인에 성공하였습니다.");
           navigate("/");
+          return response.data;
         } catch (error) {
           ToastError("로그인에 실패했습니다.");
         }
