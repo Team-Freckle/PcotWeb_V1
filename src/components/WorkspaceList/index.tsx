@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import * as S from "./style";
+import { useWorkspaceList } from "@hooks/useWorkspaceList";
 
 export const WorkspaceList = (props: any) => {
+  const { Lists, onRecentsListGet } = useWorkspaceList();
+  useEffect(() => {
+    const name = props.name;
+    onRecentsListGet(name);
+  }, []);
   return (
     <S.Container>
       <S.Title>{props.name}</S.Title>
