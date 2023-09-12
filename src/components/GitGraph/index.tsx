@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Gitgraph, templateExtend, TemplateName, Orientation } from "@gitgraph/react";
 
 export const GitGraph = () => {
-  const [mkNode, setMkNode] = useState(0);
+  const [mkNode, setMkNode] = useState(1);
   // console.log(mkNode);
 
   const withoutAuthor = templateExtend(TemplateName.Metro, {
@@ -16,7 +16,7 @@ export const GitGraph = () => {
 
   const initGraph = (gitgraph: any) => {
     const main = gitgraph.branch("main").commit("zero");
-    // main.commit("업데이트1");
+    main.commit("업데이트1");
   };
 
   const node = () => {
