@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ToastError } from "../../lib/Toast";
+import { ToastError } from "@lib/Toast";
 
 export const NotFound = () => {
   const navigate = useNavigate();

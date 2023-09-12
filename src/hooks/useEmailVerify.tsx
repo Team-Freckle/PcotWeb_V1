@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ToastError, ToastSuccess } from "../lib/Toast";
+import { ToastError, ToastSuccess } from "@lib/Toast";
 
 export const API_URL = process.env.REACT_APP_API;
 

@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from "react";
 import axios from "axios";
-import { ToastError, ToastSuccess, ToastWarning } from "../lib/Toast";
+import { ToastError, ToastSuccess, ToastWarning } from "@lib/Toast";
 import { useNavigate } from "react-router-dom";
-import useEmailVerify from "./useEmailVerify";
+import useEmailVerify from "@hooks/useEmailVerify";
 
 export const API_URL = process.env.REACT_APP_API;
 
