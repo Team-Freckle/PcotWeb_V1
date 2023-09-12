@@ -20,6 +20,9 @@
     "react-otp-input": "^3.0.4",
     "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
+    "semantic-ui-css": "^2.5.0",
+    "semantic-ui-less": "^2.5.0",
+    "semantic-ui-react": "^2.1.4",
     "styled-components": "^5.3.11",
     "sweetalert2": "^11.7.10",
     "typescript": "^5.0.4",
@@ -52,6 +55,8 @@
     ]
   },
   "devDependencies": {
+    "@craco/craco": "^7.1.0",
+    "@semantic-ui-react/craco-less": "^3.0.0",
     "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.59.8",
     "@typescript-eslint/parser": "^5.59.8",
