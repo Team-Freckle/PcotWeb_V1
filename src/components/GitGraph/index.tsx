@@ -16,6 +16,7 @@ export const GitGraph = () => {
 
   const initGraph = (gitgraph: any) => {
     const main = gitgraph.branch("main").commit("zero");
+    // main.commit("업데이트1");
   };
 
   const node = () => {
@@ -35,12 +36,12 @@ export const GitGraph = () => {
       >
         노드 추가
       </button>
-      {/* <Gitgraph options={{ template: withoutAuthor, orientation: Orientation.VerticalReverse }}>
+      <Gitgraph options={{ template: withoutAuthor, orientation: Orientation.VerticalReverse }}>
         {(gitgraph) => {
-        initGraph(gitgraph);0
-      }}
-        {initGraph.bind(this)}
-      </Gitgraph> */}
+          initGraph(gitgraph);
+        }}
+        {/* {initGraph.bind(this)} */}
+      </Gitgraph>
     </div>
   );
 };
