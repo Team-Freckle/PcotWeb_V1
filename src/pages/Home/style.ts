@@ -30,6 +30,8 @@ export const ProfileImg = styled.img`
   height: 150px;
   float: left;
   margin-left: 20px;
+  border-radius: 50%;
+  margin-top: 20px;
 `;
 
 export const NameText = styled.div`
