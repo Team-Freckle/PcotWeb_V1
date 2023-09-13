@@ -7,6 +7,7 @@ import Profile from "@pages/Profile";
 import { NotFound } from "@components/NotFound";
 import { Home } from "@pages/Home";
 import { EmailVerify } from "@pages/EmailVerify";
+import GitGraph from "@components/GitGraph";
 
 export const Router = () => {
   return (
@@ -18,6 +19,7 @@ export const Router = () => {
         <Route path="/EmailVerify" element={<EmailVerify />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/graph" element={<GitGraph />} />
       </Routes>
     </div>
   );
