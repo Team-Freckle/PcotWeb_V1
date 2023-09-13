@@ -34,14 +34,13 @@ export const Home = () => {
       <S.ProfileBox>
         <S.ProfileImg src={ProfileImg} />
         <div>
-          <S.NameText>{ProfileData.name} 회원님</S.NameText>
+          <S.NameText>&nbsp;{ProfileData.name} 회원님</S.NameText>
           <S.LinkText
             onClick={() => {
               navigate("/profile");
             }}
           >
-            프로필 보러가기
-            &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            프로필 보러가기 &gt;
           </S.LinkText>
         </div>
       </S.ProfileBox>
