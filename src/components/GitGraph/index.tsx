@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Gitgraph, templateExtend, TemplateName, Orientation } from "@gitgraph/react";
 
+import * as S from "./style";
+import Serch from "@assets/plus.svg";
+
 export const GitGraph = () => {
   const [mkNode, setMkNode] = useState(1);
   // console.log(mkNode);
@@ -27,22 +30,26 @@ export const GitGraph = () => {
   };
 
   return (
-    <div>
-      <button
+    <S.Container>
+      <S.ContributesText>Node Graph</S.ContributesText>
+      <S.Button
         onClick={() => {
           node();
           setMkNode(1);
         }}
       >
-        노드 추가
-      </button>
-      <Gitgraph options={{ template: withoutAuthor, orientation: Orientation.VerticalReverse }}>
-        {(gitgraph) => {
-          initGraph(gitgraph);
-        }}
-        {/* {initGraph.bind(this)} */}
-      </Gitgraph>
-    </div>
+        <img src={Serch} alt="Search" />
+      </S.Button>
+
+      <S.GraphBox>
+        <Gitgraph options={{ template: withoutAuthor, orientation: Orientation.VerticalReverse }}>
+          {(gitgraph) => {
+            initGraph(gitgraph);
+          }}
+          {/* {initGraph.bind(this)} */}
+        </Gitgraph>
+      </S.GraphBox>
+    </S.Container>
   );
 };
 
