@@ -8,6 +8,7 @@ import Bliend from "@assets/test.svg";
 import { useProfile } from "@hooks/useChangeProfile";
 import { useGetProfile } from "@hooks/useGetProfile";
 import { useNavigate } from "react-router-dom";
+import { useLogout } from "@hooks/useLogout";
 
 export const API_URL = process.env.REACT_APP_API;
 
@@ -25,6 +26,7 @@ const Profile = () => {
     onProfileImgChange,
   } = useProfile();
   const { onGetProfile } = useGetProfile();
+  const { onLogout } = useLogout();
   const [ProfileBg, setProfileBg] = useState<string>("");
   const [ProfileImg, setProfileImg] = useState<any>(ProfileImgd);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -100,6 +102,7 @@ const Profile = () => {
                   id="name"
                   value={Name}
                   onChange={onProfileChange}
+                  maxLength={8}
                 />
               </S.InputBox>
 
@@ -111,6 +114,7 @@ const Profile = () => {
                   id="email"
                   value={Email}
                   onChange={onProfileChange}
+                  readOnly
                 />
               </S.InputBox>
             </S.InputBoxs>
@@ -131,6 +135,15 @@ const Profile = () => {
           </S.ButtonBox>
         </S.Box>
       </form>
+      <div>
+        <S.LogoutText
+          onClick={() => {
+            onLogout();
+          }}
+        >
+          로그아웃
+        </S.LogoutText>
+      </div>
     </div>
   );
 };

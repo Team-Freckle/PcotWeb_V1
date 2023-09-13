@@ -32,14 +32,14 @@ export const WorkspaceList = styled.div`
 `;
 
 export const WorkspaceItem = styled.div`
-  width: 170px;
+  width: 180px;
   height: 270px;
   margin: 10px;
 `;
 
 export const WorkspaceImg = styled.img`
-  width: 170px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   border-radius: 10px;
   background-color: #d9d9d9;
   border: none;

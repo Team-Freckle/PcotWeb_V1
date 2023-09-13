@@ -118,3 +118,16 @@ export const ProfileBg = styled.img`
   left: 50%; /* 좌측에서 중앙으로 이동 */
   transform: translate(-50%, -50%); /* 중앙 정렬 */
 `;
+
+export const LogoutText = styled.div`
+  position: absolute;
+  top: 97%; /* 상단에서 중앙으로 이동 */
+  left: 50%; /* 좌측에서 중앙으로 이동 */
+  transform: translate(-50%, -50%); /* 중앙 정렬 */
+  color: #7a7a7a;
+  font-family: "pretendard";
+  font-weight: 600;
+  font-size: 20px;
+  text-decoration: underline;
+  cursor: pointer;
+`;
