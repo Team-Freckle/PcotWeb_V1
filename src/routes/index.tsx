@@ -17,6 +17,7 @@ export const Router = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/EmailVerify" element={<EmailVerify />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/graph" element={<GitGraph />} />
