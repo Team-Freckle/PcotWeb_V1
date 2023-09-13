@@ -30,20 +30,23 @@ export const ProfileImg = styled.img`
   height: 150px;
   float: left;
   margin-left: 20px;
+  border-radius: 50%;
+  margin-top: 20px;
 `;
 
 export const NameText = styled.div`
-  width: 400px;
+  width: 600px;
   font-family: Pretendard;
   font-size: 40px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  text-align: left;
   margin-top: 50px;
 `;
 
 export const LinkText = styled.div`
-  width: 400px;
+  width: 325px;
   color: #7a7a7a;
   font-family: Pretendard;
   font-size: 20px;

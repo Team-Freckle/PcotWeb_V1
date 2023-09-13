@@ -7,8 +7,8 @@ import { Signin } from "../components/Auth/Signin";
 import { NotFound } from "../components/NotFound";
 import { Home } from "../pages/Home";
 import { EmailVerify } from "../pages/EmailVerify";
-import { Sidebar } from "semantic-ui-react";
 import MainSideBar from "../components/SideBar/MainSideBar";
+import Profile from "@pages/Profile";
 
 export const Router = () => {
   return (
@@ -19,6 +19,7 @@ export const Router = () => {
         <Route path="/signin" element={<Signin />} />
         <Route path="side" element={<MainSideBar />} />
         <Route path="/EmailVerify" element={<EmailVerify />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
