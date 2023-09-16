@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export const API_URL = process.env.REACT_APP_API;
 
-export const useProfile = () => {
+export const useChangeProfile = () => {
   const navigate = useNavigate();
   const [Name, setName] = useState<string>("");
   const [Email, setEmail] = useState<string>("");

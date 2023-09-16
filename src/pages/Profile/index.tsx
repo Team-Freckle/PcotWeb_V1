@@ -1,11 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import * as S from "./style";
-import "../../styles/styles.css";
 
 import ProfileImgd from "@assets/Login-Logo.svg";
 import Bliend from "@assets/test.svg";
-import { useProfile } from "@hooks/useChangeProfile";
+import { useChangeProfile } from "@hooks/useChangeProfile";
 import { useGetProfile } from "@hooks/useGetProfile";
 import { useNavigate } from "react-router-dom";
 import { useLogout } from "@hooks/useLogout";
@@ -24,7 +23,7 @@ const Profile = () => {
     setBio,
     onProfileSubmit,
     onProfileImgChange,
-  } = useProfile();
+  } = useChangeProfile();
   const { onGetProfile } = useGetProfile();
   const { onLogout } = useLogout();
   const [ProfileBg, setProfileBg] = useState<string>("");
@@ -41,7 +40,7 @@ const Profile = () => {
       })
       .catch((err) => {
         console.log(err);
-        navigate("/login");
+        // navigate("/login");
       });
   }, []);
 

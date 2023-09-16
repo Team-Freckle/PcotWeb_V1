@@ -15,7 +15,7 @@ export const WorkspaceList = (props: any) => {
           res.map((list: any) => (
             <S.WorkspaceItem key={list.id}>
               <S.WorkspaceImg
-                src={`${API_URL}/v2/search/workspace/image?organization=test-org&workspace=${list.name}`}
+                src={`${API_URL}/v2/search/workspace/image?organization=${list.organizationName}&workspace=${list.name}`}
               />
               <S.WorkspaceName>{list.name}</S.WorkspaceName>
               <S.WorkspaceSubName>워크스페이스</S.WorkspaceSubName>
