@@ -1,11 +1,8 @@
 import axios from "axios";
-import { useState } from "react";
 
 export const API_URL = process.env.REACT_APP_API;
 
 export const useWorkspaceList = () => {
-  const [Lists, setLists] = useState<string>("");
-
   const onRecentsListGet = async (name: any) => {
     try {
       if (name === "recents") {
@@ -13,7 +10,7 @@ export const useWorkspaceList = () => {
         const response = await axios.get(API, {
           withCredentials: true,
         });
-        setLists(response.data);
+        return response.data.data;
       } else {
         console.log("error");
       }
@@ -22,5 +19,5 @@ export const useWorkspaceList = () => {
     }
   };
 
-  return { Lists, onRecentsListGet };
+  return { onRecentsListGet };
 };

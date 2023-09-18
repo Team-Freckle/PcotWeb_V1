@@ -27,7 +27,7 @@ export const ProfileBox = styled.div`
 
 export const ProfileImg = styled.img`
   width: 130px;
-  height: 150px;
+  height: 130px;
   float: left;
   margin-left: 20px;
   border-radius: 50%;
@@ -57,13 +57,14 @@ export const LinkText = styled.div`
 `;
 
 export const SerchInput = styled.input`
-  width: 300px;
+  width: 250px;
   height: 40px;
   border: none;
   border-radius: 30px;
   padding-left: 20px;
   box-shadow: 1px 1px 20px 0px rgba(183, 183, 183, 0.387);
   float: right;
+  padding-right: 50px;
 `;
 
 export const InputLabel = styled.label`
