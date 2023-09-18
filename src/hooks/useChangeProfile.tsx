@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useCallback, useState } from "react";
 import { ToastError, ToastSuccess } from "@lib/Toast";
 import { useNavigate } from "react-router-dom";
+import { useChangeProfileImg } from "./useChangeProfileImg";
 
 export const API_URL = process.env.REACT_APP_API;
 
@@ -10,10 +11,10 @@ export const useChangeProfile = () => {
   const [Name, setName] = useState<string>("");
   const [Email, setEmail] = useState<string>("");
   const [Bio, setBio] = useState<string>("");
-  const [NewprofileImg, setNewProfileImg] = useState<any>(null);
+
+  const { onProfileImgSubmit } = useChangeProfileImg();
 
   const ProfileEditURL = `${API_URL}/v2/user/info/edit`;
-  const ProfileImgEditURL = `${API_URL}/v2/user/info/edit/profile`;
 
   const onProfileChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -28,24 +29,11 @@ export const useChangeProfile = () => {
     [],
   );
 
-  const onProfileImgChange = (img: any) => {
-    setNewProfileImg(img);
-  };
-
   const onProfileSubmit = useCallback(
     async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       try {
-        if (NewprofileImg != null) {
-          const formData = new FormData();
-          formData.append("image", NewprofileImg);
-          await axios.put(ProfileImgEditURL, formData, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-            withCredentials: true,
-          });
-        }
+        onProfileImgSubmit("profileImg");
         const response = await axios.put(
           ProfileEditURL,
           {
@@ -63,7 +51,7 @@ export const useChangeProfile = () => {
         ToastError("프로필 수정에 실패했습니다.");
       }
     },
-    [Name, Email, Bio, NewprofileImg],
+    [Name, Email, Bio],
   );
 
   return {
@@ -71,11 +59,9 @@ export const useChangeProfile = () => {
     Name,
     Email,
     Bio,
-    NewprofileImg,
     setName,
     setEmail,
     setBio,
     onProfileSubmit,
-    onProfileImgChange,
   };
 };

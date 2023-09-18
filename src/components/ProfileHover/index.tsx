@@ -1,13 +1,18 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as S from "./style";
 
-import ProfileImgd from "@assets/Login-Logo.svg";
 import Bliend from "@assets/test.svg";
+import { useChangeProfileImg } from "@hooks/useChangeProfileImg";
 
 export const ProfileHover = (props: any) => {
   const [ProfileBg, setProfileBg] = useState<string>("");
-  const [ProfileImg, setProfileImg] = useState<any>(ProfileImgd);
+  const [ProfileImg, setProfileImg] = useState<any>("");
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const { onProfileImgChange } = useChangeProfileImg();
+
+  useEffect(() => {
+    setProfileImg(props.value);
+  }, [props.value]);
 
   const handleProfilehover = () => {
     setProfileBg(Bliend);
@@ -22,7 +27,7 @@ export const ProfileHover = (props: any) => {
     if (selectedFile) {
       const image = selectedFile;
       setProfileImg(URL.createObjectURL(selectedFile));
-      //   onProfileImgChange(image);
+      onProfileImgChange(image);
     }
   };
 

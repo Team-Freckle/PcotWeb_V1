@@ -1,34 +1,23 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import * as S from "./style";
 
 import ProfileImgd from "@assets/Login-Logo.svg";
-import Bliend from "@assets/test.svg";
 import { useChangeProfile } from "@hooks/useChangeProfile";
 import { useGetProfile } from "@hooks/useGetProfile";
 import { useNavigate } from "react-router-dom";
 import { useLogout } from "@hooks/useLogout";
+import { ProfileHover } from "@components/ProfileHover";
 
 export const API_URL = process.env.REACT_APP_API;
 
 const Profile = () => {
   const navigate = useNavigate();
-  const {
-    onProfileChange,
-    Name,
-    Email,
-    Bio,
-    setName,
-    setEmail,
-    setBio,
-    onProfileSubmit,
-    onProfileImgChange,
-  } = useChangeProfile();
+  const { onProfileChange, Name, Email, Bio, setName, setEmail, setBio, onProfileSubmit } =
+    useChangeProfile();
   const { onGetProfile } = useGetProfile();
   const { onLogout } = useLogout();
-  const [ProfileBg, setProfileBg] = useState<string>("");
   const [ProfileImg, setProfileImg] = useState<any>(ProfileImgd);
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     onGetProfile()
@@ -40,55 +29,15 @@ const Profile = () => {
       })
       .catch((err) => {
         console.log(err);
-        // navigate("/login");
+        navigate("/login");
       });
   }, []);
-
-  const handleProfilehover = () => {
-    setProfileBg(Bliend);
-  };
-
-  const handleProfileOut = () => {
-    setProfileBg("");
-  };
-
-  const handleFileSelect = (e: any) => {
-    const selectedFile = e.target.files?.[0];
-    if (selectedFile) {
-      const image = selectedFile;
-      setProfileImg(URL.createObjectURL(selectedFile));
-      onProfileImgChange(image);
-    }
-  };
-
-  const openFileInput = () => {
-    if (fileInputRef.current) {
-      fileInputRef.current.click();
-    }
-  };
 
   return (
     <div>
       <h1 style={{ color: "#316AE2" }}>Profile</h1>
       <form onSubmit={onProfileSubmit}>
-        <S.ImgBox>
-          <div
-            onMouseEnter={handleProfilehover}
-            onMouseLeave={handleProfileOut}
-            onClick={openFileInput}
-          >
-            <S.ProfileImg src={ProfileImg} />
-            <S.ProfileBg src={ProfileBg} />
-          </div>
-        </S.ImgBox>
-        <input
-          id="profileImg"
-          type="file"
-          accept="image/*"
-          style={{ display: "none" }}
-          ref={fileInputRef}
-          onChange={handleFileSelect}
-        />
+        <ProfileHover name="ProfileImg" value={ProfileImg} />
 
         <S.Box>
           <S.Inputs>
