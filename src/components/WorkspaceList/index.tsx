@@ -13,7 +13,7 @@ export const WorkspaceList = (props: any) => {
       .then((res) => {
         setWorkspaceList(
           res.map((list: any) => (
-            <S.WorkspaceItem key={list.id}>
+            <S.WorkspaceItem key={list.createTime}>
               <S.WorkspaceImg
                 src={`${API_URL}/v2/search/workspace/image?organization=${list.organizationName}&workspace=${list.name}`}
               />

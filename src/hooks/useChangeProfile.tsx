@@ -33,7 +33,8 @@ export const useChangeProfile = () => {
     async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       try {
-        onProfileImgSubmit("profileImg");
+        const name = "profileImg";
+        onProfileImgSubmit(name);
         const response = await axios.put(
           ProfileEditURL,
           {
