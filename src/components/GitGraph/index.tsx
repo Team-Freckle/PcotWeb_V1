@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { Gitgraph, templateExtend, TemplateName, Orientation } from "@gitgraph/react";
 
-import { Popup } from "./Popup/index.tsx";
+// import { Popup } from "./Popup/index.tsx";
 import * as S from "./style";
 import Serch from "@assets/plus.svg";
 
 export const GitGraph = () => {
-  const [isPopup, setIsPopup] = useState(false);
-  const [mkNode, setMkNode] = useState(1);
+  // const [isPopup, setIsPopup] = useState(false);
+  // const [mkNode, setMkNode] = useState(1);
   // console.log(mkNode);
 
   const withoutAuthor = templateExtend(TemplateName.Metro, {
@@ -24,23 +24,23 @@ export const GitGraph = () => {
     main.commit("업데이트1");
   };
 
-  const node = () => {
-    if (mkNode == 1) {
-      console.log("gooooooooood");
-      setMkNode(0);
-    }
-  };
+  // const node = () => {
+  //   if (mkNode == 1) {
+  //     console.log("gooooooooood");
+  //     setMkNode(0);
+  //   }
+  // };
 
-  const handlePopup = () => {
-    setIsPopup(true);
-  };
+  // const handlePopup = () => {
+  //   setIsPopup(true);
+  // };
 
   return (
     <S.Container>
       <S.ContributesText>Node Graph</S.ContributesText>
       <S.Button
         onClick={() => {
-          handlePopup();
+          // handlePopup();
           // node();
           // setMkNode(1);
         }}
