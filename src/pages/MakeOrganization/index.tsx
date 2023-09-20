@@ -3,13 +3,16 @@ import React from "react";
 
 import * as S from "./style";
 import { Radio } from "@components/Radio";
+import { useCreateOrganization } from "@hooks/useCreateOrganization";
 
 export const MakeOrganization = () => {
+  const { Name, Comment, setExposure, onOrganizationChange, onOrganizationSubmit } =
+    useCreateOrganization();
   return (
     <div>
       <h1 style={{ color: "#316AE2" }}>Organization</h1>
 
-      <form>
+      <form onSubmit={onOrganizationSubmit}>
         <ProfileHover
           name="OrganizationImg"
           value="https://avatars.githubusercontent.com/u/76847245?v=4"
@@ -25,9 +28,9 @@ export const MakeOrganization = () => {
                     type="text"
                     placeholder="내용을 입력해주세요."
                     id="name"
-                    // value={Name}
-                    // onChange={onProfileChange}
-                    maxLength={8}
+                    value={Name}
+                    onChange={onOrganizationChange}
+                    maxLength={10}
                   />
                 </S.InputBox>
               </S.InputBoxs>
@@ -36,12 +39,12 @@ export const MakeOrganization = () => {
                 <S.InputText style={{ bottom: "140px" }}>Comment</S.InputText>
                 <S.BioInput
                   placeholder="내용을 입력해주세요."
-                  id="bio"
-                  // value={Bio}
-                  // onChange={onProfileChange}
+                  id="comment"
+                  value={Comment}
+                  onChange={onOrganizationChange}
                 />
               </S.BioBox>
-              <Radio />
+              <Radio tab1="Public" tab2="Private" id="radio" onChange={setExposure} />
               <S.ButtonBox>
                 <S.SubmitBtn type="submit">Edit</S.SubmitBtn>
               </S.ButtonBox>
