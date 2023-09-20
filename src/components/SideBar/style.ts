@@ -3,24 +3,16 @@ import styled from "styled-components";
 export const MainCotainer = styled.form`
   background: #ffffff;
 
-  height: fit-content;
-  width: fit-content;
+  height: 100%;
+  /* width: 20; */
 
   display: flex;
   flex-direction: column;
-
-  /* user-select: none; */
 
   float: left;
   position: fixed;
   z-index: 1;
 `;
-
-// export const Flex = styled.form`
-//   display: flex;
-//   justify-content: space-between;
-//   font-size: 120%;
-// `;
 
 export const ImgBox = styled.form`
   display: flex;
@@ -61,36 +53,16 @@ export const MemberImage = styled.form`
   grid-template-columns: repeat(10, 1fr);
 
   flex-wrap: wrap;
-  /* grid-template-columns: ; */
 `;
 
 export const WorkButton = styled.form`
   background-color: gray;
   height: 3%;
 
-  /* align-items: center;
-  align-content: center;
-  justify-content: center; */
   text-align: center;
   justify-items: center;
 `;
 
-export const Hide = styled.form`
-  display: none;
-`;
-
-// export const HideCheck = styled.form`
+// export const Hide = styled.form`
 //   display: none;
-// `;
-
-// export const SideColor = styled.form`
-//   background-color: #ffffff;
-// `;
-
-// export const CustomWidth = styled.form`
-//   width: 500px;
-// `;
-
-// export const SideAlignCenter = styled.form`
-//   justify-content: center;
 // `;

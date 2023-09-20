@@ -9,6 +9,7 @@ import { Home } from "@pages/Home";
 import { EmailVerify } from "@pages/EmailVerify";
 import GitGraph from "@components/GitGraph";
 import { MakeOrganization } from "@pages/MakeOrganization";
+import MainSide from "@components/SideBar/MainSide";
 
 export const Router = () => {
   return (
@@ -22,6 +23,7 @@ export const Router = () => {
         <Route path="*" element={<NotFound />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/graph" element={<GitGraph />} />
+        <Route path="/side" element={<MainSide />} />
         <Route path="/test" element={<MakeOrganization />} />
       </Routes>
     </div>

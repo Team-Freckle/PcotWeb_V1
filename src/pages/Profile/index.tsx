@@ -29,7 +29,7 @@ const Profile = () => {
       })
       .catch((err) => {
         console.log(err);
-        navigate("/login");
+        // navigate("/login");
       });
   }, []);
 
