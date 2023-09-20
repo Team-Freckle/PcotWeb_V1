@@ -2,6 +2,7 @@ import { ProfileHover } from "@components/ProfileHover";
 import React from "react";
 
 import * as S from "./style";
+import { Radio } from "@components/Radio";
 
 export const MakeOrganization = () => {
   return (
@@ -40,7 +41,7 @@ export const MakeOrganization = () => {
                   // onChange={onProfileChange}
                 />
               </S.BioBox>
-
+              <Radio />
               <S.ButtonBox>
                 <S.SubmitBtn type="submit">Edit</S.SubmitBtn>
               </S.ButtonBox>

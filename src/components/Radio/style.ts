@@ -1,20 +1,8 @@
-import styled from "styled-components";
-
-export const Wrapper = styled.div`
-  max-width: 600px;
-  width: 30%;
-  margin: 200px auto;
-  display: flex;
-  justify-content: center;
-  padding: 1rem 0;
-  border-radius: 0.5rem;
-  background: rgb(18, 13, 13);
-  box-shadow: 1px 2px 3px 4px rgba(62, 72, 75, 0.5);
-`;
+import styled, { css } from "styled-components";
 
 export const Nav = styled.nav`
   position: relative;
-  width: 90%;
+  width: 95%;
   height: 50px;
   display: flex;
   align-items: center;
@@ -28,27 +16,44 @@ export const Label = styled.label`
   cursor: pointer;
   position: relative;
   z-index: 10;
-  color: rgb(68, 193, 255);
+  color: #000000;
   font-size: 1.1rem;
-  border-radius: 5px;
   transition: all 0.3s ease;
-
-  &:hover {
-    color: #fff;
-  }
 `;
 
 export const Slider = styled.div`
   position: absolute;
   height: 100%;
-  width: 30%;
-  left: 0;
+  width: 50%;
   bottom: 0;
-  border-radius: 5px;
-  background: #17a2b8;
+  border-radius: 10px;
+  background: #e4ecff;
   transition: all 0.3s ease;
 `;
 
 export const InputRadio = styled.input`
   display: none;
+`;
+
+const customRadioStyles = css`
+  #tab1:checked ~ ${Nav} ${Slider} {
+    left: 0%;
+  }
+
+  #tab2:checked ~ ${Nav} ${Slider} {
+    left: 50%;
+  }
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+  border-radius: 0.5rem;
+  ${customRadioStyles}
+  -ms-user-select: none;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 `;

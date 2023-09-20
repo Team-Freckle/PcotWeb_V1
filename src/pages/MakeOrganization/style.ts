@@ -42,7 +42,6 @@ export const InputBox = styled.div`
   position: relative;
   width: 300px;
   margin-top: 30px;
-  flex-direction: column;
 `;
 
 export const InputText = styled.div`
@@ -92,4 +91,9 @@ export const SubmitBtn = styled.button`
 export const ButtonBox = styled.div`
   width: 100%;
   height: 80px;
+`;
+
+export const RadioButton = styled.div`
+  width: 290px;
+  height: 50px;
 `;

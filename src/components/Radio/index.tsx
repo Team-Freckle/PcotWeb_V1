@@ -6,14 +6,14 @@ export const Radio = () => {
   return (
     <div>
       <S.Wrapper>
-        <S.InputRadio type="radio" name="slider" checked id="tab1" />
+        <S.InputRadio type="radio" name="slider" defaultChecked id="tab1" />
         <S.InputRadio type="radio" name="slider" id="tab2" />
         <S.Nav>
           <S.Label htmlFor="tab1" className="tab1">
-            김건우
+            Public
           </S.Label>
           <S.Label htmlFor="tab2" className="tab2">
-            김명준
+            Private
           </S.Label>
           <S.Slider />
         </S.Nav>
