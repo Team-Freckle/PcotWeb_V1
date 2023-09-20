@@ -46,7 +46,7 @@ export const MakeOrganization = () => {
               </S.BioBox>
               <Radio tab1="Public" tab2="Private" id="radio" onChange={setExposure} />
               <S.ButtonBox>
-                <S.SubmitBtn type="submit">Edit</S.SubmitBtn>
+                <S.SubmitBtn type="submit">Make Organization</S.SubmitBtn>
               </S.ButtonBox>
             </S.Inputs>
           </S.Box>
