@@ -3,9 +3,7 @@ import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 // import { RxTextAlignJustify } from "react-icons/rx";
 import { SidebarHeader } from "./SideBarHeader";
 import { Typography } from "./Typography";
-import axios from "axios";
-// import { link } from "fs";
-import { useNavigate } from "react-router-dom";
+import { SidebarFooter } from "./SideBarFooter";
 
 export const API_URL = process.env.REACT_APP_API;
 
@@ -31,8 +29,8 @@ export const SideBar = () => {
 
   return (
     <div style={{ display: "flex", height: "100%" }}>
-      <Sidebar>
-        <div style={{ display: "flex", flexDirection: "column", height: "100vh" }}>
+      <Sidebar toggled={true} breakPoint="always">
+        <div style={{ display: "flex", flexDirection: "column" }}>
           <SidebarHeader style={{ marginBottom: "24px", marginTop: "16px" }} />
           <div style={{ flex: 1, marginBottom: "32px" }}>
             <div style={{ padding: "0 24px", marginBottom: "8px" }}>
@@ -49,6 +47,7 @@ export const SideBar = () => {
             </Menu>
           </div>
         </div>
+        <SidebarFooter />
       </Sidebar>
     </div>
   );
