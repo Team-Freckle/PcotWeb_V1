@@ -9,6 +9,9 @@ import { Home } from "@pages/Home";
 import { EmailVerify } from "@pages/EmailVerify";
 import GitGraph from "@components/GitGraph";
 import { SideBar } from "@components/SideBar";
+import { MakeOrganization } from "@pages/MakeOrganization";
+import { WorkspaceList } from "@components/WorkspaceList";
+import DummyPage from "@components/Organization";
 
 export const Router = () => {
   return (
@@ -23,6 +26,9 @@ export const Router = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/graph" element={<GitGraph />} />
         <Route path="/test" element={<SideBar />} />
+        <Route path="/work" element={<MakeOrganization />} />
+        <Route path="/list" element={<WorkspaceList />} />\
+        <Route path="/org" element={<DummyPage />} />\
       </Routes>
     </div>
   );

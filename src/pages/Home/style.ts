@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+export const FloatBox = styled.div`
+  float: left;
+`;
+
 export const Container = styled.div`
   display: grid;
   grid-template-rows: repeat(3, 200px);
