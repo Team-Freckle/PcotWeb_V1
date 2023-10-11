@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { Gitgraph, templateExtend, TemplateName, Orientation } from "@gitgraph/react";
+import Modal from "react-modal";
 
-import { Popup } from "./Popup/index.tsx";
+// import { Popup } from "./Modal/index.tsx";
 import * as S from "./style";
 import Serch from "@assets/plus.svg";
 
 export const GitGraph = () => {
-  const [isPopup, setIsPopup] = useState(false);
   const [mkNode, setMkNode] = useState(1);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   // console.log(mkNode);
 
   const withoutAuthor = templateExtend(TemplateName.Metro, {
@@ -31,23 +32,28 @@ export const GitGraph = () => {
     }
   };
 
-  const handlePopup = () => {
-    setIsPopup(true);
-  };
-
   return (
     <S.Container>
       <S.ContributesText>Node Graph</S.ContributesText>
       <S.Button
         onClick={() => {
-          handlePopup();
+          setModalIsOpen(true);
           // node();
           // setMkNode(1);
         }}
       >
         <img src={Serch} alt="Search" />
       </S.Button>
-      {/* {isPopup && <Popup ={setModalOpen} />} */}
+
+      <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+        <S.ModalText>Node Name</S.ModalText>
+        <S.ModalInput />
+
+        <S.ModalText>Select Node</S.ModalText>
+        <S.ModalInput />
+
+        <S.ModalButton>Make node</S.ModalButton>
+      </Modal>
 
       <S.GraphBox>
         <Gitgraph options={{ template: withoutAuthor, orientation: Orientation.VerticalReverse }}>
