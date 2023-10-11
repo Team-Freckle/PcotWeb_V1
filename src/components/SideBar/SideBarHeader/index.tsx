@@ -23,7 +23,12 @@ export const SidebarHeader: React.FC<SidebarHeaderProps> = ({ ...rest }) => {
   return (
     <StyledSidebarHeader {...rest}>
       <div style={{ display: "flex", alignItems: "center" }}>
-        <Typography variant="subtitle1" fontWeight={700} color="#0098e5">
+        <Typography
+          variant="subtitle1"
+          fontWeight={700}
+          color="#0098e5"
+          style={{ textAlign: "center" }}
+        >
           PCOT
         </Typography>
       </div>

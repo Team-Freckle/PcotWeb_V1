@@ -31,7 +31,7 @@ export const Home = () => {
   }, []);
 
   return (
-    <>
+    <div>
       <S.FloatBox>
         <SideBar />
       </S.FloatBox>
@@ -63,6 +63,6 @@ export const Home = () => {
           <WorkspaceList name="recents" />
         </S.Main>
       </S.Container>
-    </>
+    </div>
   );
 };
