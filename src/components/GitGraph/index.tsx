@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Gitgraph, templateExtend, TemplateName, Orientation } from "@gitgraph/react";
 import Modal from "react-modal";
 
