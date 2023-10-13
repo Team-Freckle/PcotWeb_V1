@@ -47,7 +47,7 @@ export const GraphBox = styled.div`
 export const ModalText = styled.div`
   width: 400px;
   font-family: Pretendard;
-  font-size: 24px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -58,17 +58,18 @@ export const ModalText = styled.div`
 
 export const ModalInput = styled.input`
   width: 400px;
-  height: 70px;
+  height: 60px;
   border: none;
   border-radius: 15px;
   background-color: #e9e9e7;
   margin-top: 10px;
   margin-left: 20px;
+  padding-left: 20px;
 `;
 
 export const ModalButton = styled.button`
   width: 400px;
-  height: 70px;
+  height: 60px;
   border: none;
   background: #316ae2;
   border-radius: 15px;

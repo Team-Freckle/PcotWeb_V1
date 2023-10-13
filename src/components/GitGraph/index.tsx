@@ -50,7 +50,16 @@ export const GitGraph = () => {
         <S.ModalInput />
 
         <S.ModalText>Select Node</S.ModalText>
-        <S.ModalInput />
+        {/* <S.ModalInput /> */}
+        <select>
+          <option disabled selected>
+            노드 선택하기
+          </option>
+          <option value="apple">apple</option>
+          <option value="orange">orange</option>
+          <option value="grape">grape</option>
+          <option value="melon">melon</option>
+        </select>
 
         <S.ModalButton>Make node</S.ModalButton>
       </Modal>
