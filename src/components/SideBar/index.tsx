@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
-// import { RxTextAlignJustify } from "react-icons/rx";
 import { SidebarHeader } from "./SideBarHeader";
 import { Typography } from "./Typography";
 import { SidebarFooter } from "./SideBarFooter";
 import { RxHamburgerMenu } from "react-icons/rx";
 
-export const SideBar = () => {
+export const SideBar = (props: any) => {
   return (
     <div style={{ display: "flex", height: "100vh" }}>
-      <Sidebar>
+      <Sidebar
+        rootStyles={{
+          backgroundColor: "#ffffff",
+        }}
+        onBackdropClick={() => props.setToggle(false)}
+        toggled={props.toggle}
+        breakPoint="xl"
+      >
         <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
           <SidebarHeader />
           <div
@@ -28,7 +34,7 @@ export const SideBar = () => {
               </Typography>
             </div>
             <Menu>
-              <MenuItem prefix={<RxHamburgerMenu />}>
+              <MenuItem prefix={<RxHamburgerMenu />} style={{ borderRadius: "10px" }}>
                 <div style={{ textAlign: "left", marginLeft: "10px" }}>Test</div>
               </MenuItem>
               <div style={{ padding: "0 24px", marginBottom: "8px" }}>
@@ -42,7 +48,7 @@ export const SideBar = () => {
               </div>
             </Menu>
           </div>
-          <SidebarFooter style={{ display: "flex" }} />
+          <SidebarFooter />
         </div>
       </Sidebar>
     </div>

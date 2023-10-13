@@ -9,6 +9,7 @@ import Banner from "@assets/banner.svg";
 import { WorkspaceList } from "@components/WorkspaceList";
 import { useGetProfile } from "@hooks/useGetProfile";
 import { SideBar } from "@components/SideBar";
+import Hambuger from "@assets/Hambuger.svg";
 
 export const API_URL = process.env.REACT_APP_API;
 
@@ -17,6 +18,7 @@ export const Home = () => {
   const { onGetProfile } = useGetProfile();
   const [ProfileData, setProfileData] = useState<any>([{}]);
   const [ProfileImg, setProfileImg] = useState<any>(Profile);
+  const [toggle, setToggle] = useState<boolean>(false);
 
   useEffect(() => {
     onGetProfile()
@@ -33,7 +35,7 @@ export const Home = () => {
   return (
     <div>
       <S.FloatBox>
-        <SideBar />
+        <SideBar toggle={toggle} setToggle={setToggle} />
       </S.FloatBox>
       <S.Container>
         <S.ProfileBox>
@@ -49,6 +51,7 @@ export const Home = () => {
             </S.LinkText>
           </div>
         </S.ProfileBox>
+        <S.Hambuger src={Hambuger} onClick={() => setToggle(!toggle)} />
 
         <S.InputBox>
           <S.InputLabel>
