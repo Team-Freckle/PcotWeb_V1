@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { SidebarHeader } from "./SideBarHeader";
 import { Typography } from "./Typography";
 import { SidebarFooter } from "./SideBarFooter";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { useNavigate } from "react-router-dom";
 
 export const SideBar = (props: any) => {
+  const navigate = useNavigate();
   return (
     <div style={{ display: "flex", height: "100vh" }}>
       <Sidebar
@@ -42,13 +44,16 @@ export const SideBar = (props: any) => {
                   variant="body1"
                   color="#607489"
                   style={{ textAlign: "left", cursor: "pointer" }}
+                  onClick={() => {
+                    navigate("/createOrganization");
+                  }}
                 >
                   + add Organizaton
                 </Typography>
               </div>
             </Menu>
           </div>
-          <SidebarFooter />
+          <SidebarFooter profileData={props.profileData} />
         </div>
       </Sidebar>
     </div>

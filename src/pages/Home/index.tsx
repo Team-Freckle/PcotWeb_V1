@@ -35,7 +35,7 @@ export const Home = () => {
   return (
     <div>
       <S.FloatBox>
-        <SideBar toggle={toggle} setToggle={setToggle} />
+        <SideBar toggle={toggle} setToggle={setToggle} profileData={ProfileData} />
       </S.FloatBox>
       <S.Container>
         <S.ProfileBox>
