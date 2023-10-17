@@ -22,7 +22,9 @@ const StyledSidebarHeader = styled.div`
 export const SidebarHeader: React.FC<SidebarHeaderProps> = ({ ...rest }) => {
   return (
     <StyledSidebarHeader {...rest}>
-      <div style={{ alignItems: "center", textAlign: "center", marginTop: "30px" }}>
+      <div
+        style={{ alignItems: "center", textAlign: "center", marginTop: "30px", cursor: "pointer" }}
+      >
         <Typography variant="h4" fontWeight={400} color="#000000">
           PCOT
         </Typography>

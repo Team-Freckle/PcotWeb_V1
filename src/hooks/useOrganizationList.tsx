@@ -10,12 +10,12 @@ export const useOrganizationList = () => {
         const response = await axios.get(API, {
           withCredentials: true,
         });
-        return response.data.name;
+        return response.data.data;
       } else {
         console.log("error");
       }
-    } catch {
-      console.log("error");
+    } catch (error) {
+      console.log(error);
     }
   };
 

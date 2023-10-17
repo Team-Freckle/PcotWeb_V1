@@ -1,13 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { SidebarHeader } from "./SideBarHeader";
 import { Typography } from "./Typography";
 import { SidebarFooter } from "./SideBarFooter";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
+import { useOrganizationList } from "@hooks/useOrganizationList";
+
+import * as S from "./style";
 
 export const SideBar = (props: any) => {
   const navigate = useNavigate();
+  const { onRecentsListGet } = useOrganizationList();
+  const [organizationList, setOrganizationList] = useState<Array<any>>([]);
+  const [showMore, setShowMore] = useState(false);
+
+  useEffect(() => {
+    onRecentsListGet("recents")
+      .then((res) => {
+        setOrganizationList(
+          res.map((list: any) => (
+            <MenuItem key={list.idx} prefix={<RxHamburgerMenu />} style={{ borderRadius: "10px" }}>
+              <div style={{ textAlign: "left", marginLeft: "10px" }}>{list.name}</div>
+            </MenuItem>
+          )),
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const handleShowMore = () => {
+    setShowMore(true);
+  };
+
+  const renderOrganizationList = showMore ? organizationList : organizationList.slice(0, 3);
+
   return (
     <div style={{ display: "flex", height: "100vh" }}>
       <Sidebar
@@ -19,7 +48,11 @@ export const SideBar = (props: any) => {
         breakPoint="xl"
       >
         <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-          <SidebarHeader />
+          <SidebarHeader
+            onClick={() => {
+              navigate("/");
+            }}
+          />
           <div
             style={{
               display: "flex",
@@ -36,9 +69,12 @@ export const SideBar = (props: any) => {
               </Typography>
             </div>
             <Menu>
-              <MenuItem prefix={<RxHamburgerMenu />} style={{ borderRadius: "10px" }}>
-                <div style={{ textAlign: "left", marginLeft: "10px" }}>Test</div>
-              </MenuItem>
+              {renderOrganizationList}
+              {organizationList.length > 3 && !showMore && (
+                <div style={{ padding: "10px", marginBottom: "8px" }}>
+                  <S.SeeMore onClick={handleShowMore}>See more</S.SeeMore>
+                </div>
+              )}
               <div style={{ padding: "0 24px", marginBottom: "8px" }}>
                 <Typography
                   variant="body1"
