@@ -37,6 +37,5 @@ export const FooterTextBold = styled.div`
 
 export const FooterArrow = styled.img`
   grid-area: arrow;
-  cursor: pointer;
   text-align: right;
 `;

@@ -16,7 +16,7 @@ export const SideBar = (props: any) => {
   const [showMore, setShowMore] = useState(false);
 
   useEffect(() => {
-    onRecentsListGet("recents")
+    onRecentsListGet()
       .then((res) => {
         setOrganizationList(
           res.map((list: any) => (
@@ -81,7 +81,7 @@ export const SideBar = (props: any) => {
                   color="#607489"
                   style={{ textAlign: "left", cursor: "pointer" }}
                   onClick={() => {
-                    navigate("/createOrganization");
+                    navigate("/organization/create");
                   }}
                 >
                   + add Organizaton
@@ -89,7 +89,13 @@ export const SideBar = (props: any) => {
               </div>
             </Menu>
           </div>
-          <SidebarFooter profileData={props.profileData} />
+          <div
+            onClick={() => {
+              navigate("/profile");
+            }}
+          >
+            <SidebarFooter profileData={props.profileData} />
+          </div>
         </div>
       </Sidebar>
     </div>

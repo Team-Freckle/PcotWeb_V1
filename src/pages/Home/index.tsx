@@ -28,7 +28,7 @@ export const Home = () => {
       })
       .catch((err) => {
         console.log(err);
-        // navigate("/login");
+        navigate("/login");
       });
   }, []);
 

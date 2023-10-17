@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Arrow from "@assets/arrow.svg";
 
 import * as S from "./style";
@@ -19,9 +19,18 @@ const extractUsername = (email: string) => {
 const StyledSidebarFooter = styled.div`
   width: 100%;
   border-top: 1px solid #e9e9e7;
+  cursor: pointer;
 `;
 
 export const SidebarFooter = (props: any) => {
+  const [profileImg, setProfileImg] = useState<any>(null);
+
+  useEffect(() => {
+    if (props.profileData.email) {
+      setProfileImg(`${API_URL}/v2/search/user/image?email=${props.profileData.email}`);
+    }
+  }, [props.profileData.email]);
+
   const username = extractUsername(props.profileData.email);
 
   const truncatedEmail = username.length > 8 ? username.slice(0, 8) + "···" : username;
@@ -30,10 +39,7 @@ export const SidebarFooter = (props: any) => {
     <div>
       <StyledSidebarFooter>
         <S.FooterItem>
-          <S.FooterIcon
-            src={`${API_URL}/v2/search/user/image?email=${props.profileData.email}`}
-            alt="logo"
-          />
+          {profileImg && <S.FooterIcon src={profileImg} alt="logo" />}
           <S.FooterText>
             <S.FooterTextBold>{props.profileData.name}</S.FooterTextBold> {truncatedEmail}
           </S.FooterText>
