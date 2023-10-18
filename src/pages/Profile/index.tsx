@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 import { ProfileHover } from "@components/ProfileHover";
 import { ConfirmAlert } from "@lib/Confirm";
 import { useLogout } from "@hooks/useLogout";
-import { ProfileHover } from "@components/ProfileHover";
 import { ProfileSideBar } from "@components/SideBar/SideBars/ProfileSideBar";
 import Hambuger from "@assets/Hambuger.svg";
 
