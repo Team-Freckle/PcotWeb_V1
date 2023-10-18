@@ -19,5 +19,17 @@ export const useWorkspaceList = () => {
     }
   };
 
-  return { onRecentsListGet };
+  const onWorkspacesListGet = async (name: any) => {
+    try {
+      const API = `${API_URL}/v2/search/workspace/?organization=test-org11&page=1`;
+      const response = await axios.get(API, {
+        withCredentials: true,
+      });
+      return response.data.data;
+    } catch {
+      console.log("error");
+    }
+  };
+
+  return { onRecentsListGet, onWorkspacesListGet };
 };

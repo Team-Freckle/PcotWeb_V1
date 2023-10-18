@@ -6,7 +6,7 @@ import * as S from "./style";
 import Profile from "@assets/Login-Logo.svg";
 import Serch from "@assets/search.svg";
 import Banner from "@assets/banner.svg";
-import { WorkspaceList } from "@components/WorkspaceList";
+import { WorkspaceList } from "@components/WorkspaceList/MainWorkspaceList";
 import { useGetProfile } from "@hooks/useGetProfile";
 import { SideBar } from "@components/SideBar";
 
