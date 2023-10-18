@@ -48,6 +48,7 @@ export const Signin = () => {
               name="name"
               value={name}
               onChange={onSignUpChange}
+              maxLength={8}
             />
             <S.Input
               id="sign_up_email"
