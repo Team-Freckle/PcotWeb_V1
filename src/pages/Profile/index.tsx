@@ -8,6 +8,8 @@ import { useGetProfile } from "@hooks/useGetProfile";
 import { useNavigate } from "react-router-dom";
 import { useLogout } from "@hooks/useLogout";
 import { ProfileHover } from "@components/ProfileHover";
+import { ProfileSideBar } from "@components/SideBar/SideBars/ProfileSideBar";
+import Hambuger from "@assets/Hambuger.svg";
 
 export const API_URL = process.env.REACT_APP_API;
 
@@ -35,10 +37,13 @@ const Profile = () => {
 
   return (
     <div>
-      <h1 style={{ color: "#316AE2" }}>Profile</h1>
+      <S.FloatBox>
+        <ProfileSideBar />
+      </S.FloatBox>
+      <S.Hambuger src={Hambuger} />
+      <h1 style={{ color: "#316AE2", marginTop: "0" }}>Profile</h1>
       <form onSubmit={onProfileSubmit}>
         <ProfileHover name="ProfileImg" value={ProfileImg} />
-
         <S.Box>
           <S.Inputs>
             <S.InputBoxs>

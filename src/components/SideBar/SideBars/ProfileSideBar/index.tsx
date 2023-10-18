@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
-import { SidebarHeader } from "./SideBarHeader";
-import { Typography } from "./Typography";
-import { SidebarFooter } from "./SideBarFooter";
+import { SidebarHeader } from "../../SideBarHeader";
+import { Typography } from "../../Typography";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
 import { useOrganizationList } from "@hooks/useOrganizationList";
 
 import * as S from "./style";
 
-export const SideBar = (props: any) => {
+export const ProfileSideBar = (props: any) => {
   const navigate = useNavigate();
   const { onRecentsListGet } = useOrganizationList();
   const [organizationList, setOrganizationList] = useState<Array<any>>([]);
@@ -100,9 +99,7 @@ export const SideBar = (props: any) => {
             onClick={() => {
               navigate("/profile");
             }}
-          >
-            <SidebarFooter profileData={props.profileData} />
-          </div>
+          ></div>
         </div>
       </Sidebar>
     </div>
