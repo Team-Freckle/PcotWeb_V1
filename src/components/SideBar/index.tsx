@@ -20,7 +20,14 @@ export const SideBar = (props: any) => {
       .then((res) => {
         setOrganizationList(
           res.map((list: any) => (
-            <MenuItem key={list.idx} prefix={<RxHamburgerMenu />} style={{ borderRadius: "10px" }}>
+            <MenuItem
+              key={list.idx}
+              prefix={<RxHamburgerMenu />}
+              style={{ borderRadius: "10px" }}
+              onClick={() => {
+                navigate(`/organization/${list.name}`);
+              }}
+            >
               <div style={{ textAlign: "left", marginLeft: "10px" }}>{list.name}</div>
             </MenuItem>
           )),
