@@ -2,10 +2,12 @@ import { useWorkspaceList } from "@hooks/useWorkspaceList";
 import React, { useEffect, useState } from "react";
 
 import * as S from "./style";
+import { useNavigate } from "react-router-dom";
 
 export const API_URL = process.env.REACT_APP_API;
 
 export const OrganizationWorkspaceList = (props: any) => {
+  const navigate = useNavigate();
   const { onWorkspacesListGet } = useWorkspaceList();
   const [WorkspaceList, setWorkspaceList] = useState<Array<any>>([]);
   useEffect(() => {
@@ -32,7 +34,13 @@ export const OrganizationWorkspaceList = (props: any) => {
     <S.Container>
       <S.Title>
         <S.TitleText>{props.name}</S.TitleText>
-        <S.TitleButton>+ add Workspace</S.TitleButton>
+        <S.TitleButton
+          onClick={() => {
+            navigate("/organization/create");
+          }}
+        >
+          + add Workspace
+        </S.TitleButton>
       </S.Title>
       {WorkspaceList ? <S.WorkspaceList>{WorkspaceList}</S.WorkspaceList> : <div>Loding</div>}
     </S.Container>
