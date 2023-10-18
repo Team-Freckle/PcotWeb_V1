@@ -7,8 +7,7 @@ export const Organization = () => {
 
   return (
     <div style={{ backgroundColor: "#F2F2F2", height: "100vh" }}>
-      {name}
-      <OrganizationWorkspaceList name="workspaces" />
+      <OrganizationWorkspaceList name={name} />
     </div>
   );
 };

@@ -5,12 +5,12 @@ import { useNavigate } from "react-router-dom";
 
 export const API_URL = process.env.REACT_APP_API;
 
-const useCreateWorkSpace = () => {
+export const useCreateWorkSpace = (name: any) => {
   const navigate = useNavigate();
   const [Name, setName] = useState<string>("");
   const [Comment, setComment] = useState<string>("");
 
-  const URL = `${API_URL}/v2/cloud/workspace/create/test-org`;
+  const URL = `${API_URL}/v2/cloud/workspace/create/${name}`;
 
   const onWorkSpaceChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -44,7 +44,5 @@ const useCreateWorkSpace = () => {
     }
   };
 
-  return { onWorkSpaceChange, Name, Comment };
+  return { onWorkSpaceChange, onWorkSpaceSubmit, Name, Comment };
 };
-
-export default useCreateWorkSpace;

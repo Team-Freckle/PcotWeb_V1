@@ -17,7 +17,6 @@ export const MakeOrganization = () => {
           name="OrganizationImg"
           value="https://avatars.githubusercontent.com/u/76847245?v=4"
         />
-
         <S.Container>
           <S.Box>
             <S.Inputs>

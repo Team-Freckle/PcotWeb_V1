@@ -21,7 +21,7 @@ export const useWorkspaceList = () => {
 
   const onWorkspacesListGet = async (name: any) => {
     try {
-      const API = `${API_URL}/v2/search/workspace/?organization=test-org11&page=1`;
+      const API = `${API_URL}/v2/search/workspace/?organization=${name}&page=1`;
       const response = await axios.get(API, {
         withCredentials: true,
       });

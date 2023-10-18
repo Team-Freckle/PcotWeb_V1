@@ -33,10 +33,10 @@ export const OrganizationWorkspaceList = (props: any) => {
   return (
     <S.Container>
       <S.Title>
-        <S.TitleText>{props.name}</S.TitleText>
+        <S.TitleText>Workspaces</S.TitleText>
         <S.TitleButton
           onClick={() => {
-            navigate("/organization/create");
+            navigate(`/workspace/create/${props.name}`);
           }}
         >
           + add Workspace
