@@ -16,6 +16,7 @@ export const useWorkspaceList = () => {
       }
     } catch (error) {
       console.log(error);
+<<<<<<< HEAD
     }
   };
 
@@ -28,6 +29,8 @@ export const useWorkspaceList = () => {
       return response.data.data;
     } catch {
       console.log("error");
+=======
+>>>>>>> SideBar
     }
   };
 
