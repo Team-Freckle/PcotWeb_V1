@@ -6,8 +6,9 @@ import ProfileImgd from "@assets/Login-Logo.svg";
 import { useChangeProfile } from "@hooks/useChangeProfile";
 import { useGetProfile } from "@hooks/useGetProfile";
 import { useNavigate } from "react-router-dom";
-import { useLogout } from "@hooks/useLogout";
 import { ProfileHover } from "@components/ProfileHover";
+import { ConfirmAlert } from "@lib/Confirm";
+import { useLogout } from "@hooks/useLogout";
 
 export const API_URL = process.env.REACT_APP_API;
 
@@ -81,12 +82,30 @@ const Profile = () => {
           <S.ButtonBox>
             <S.SubmitBtn type="submit">Edit</S.SubmitBtn>
           </S.ButtonBox>
+          <S.ButtonBox>
+            <S.LogoutBtn
+              type="button"
+              onClick={() => {
+                ConfirmAlert("로그아웃", "예", "아니오", "로그아웃 하셨습니다", (confirmed) => {
+                  if (confirmed) {
+                    onLogout();
+                  }
+                });
+              }}
+            >
+              로그아웃
+            </S.LogoutBtn>
+          </S.ButtonBox>
         </S.Box>
       </form>
       <div>
         <S.LogoutText
           onClick={() => {
-            onLogout();
+            ConfirmAlert("로그아웃", "예", "아니오", "로그아웃 하셨습니다", (confirmed) => {
+              if (confirmed) {
+                onLogout();
+              }
+            });
           }}
         >
           로그아웃
