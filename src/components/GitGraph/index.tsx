@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { Gitgraph, templateExtend, TemplateName, Orientation } from "@gitgraph/react";
 import Modal from "react-modal";
 
-// import { Popup } from "./Modal/index.tsx";
 import * as S from "./style";
-import Serch from "@assets/plus.svg";
+import Plus from "@assets/plus.svg";
+import Tree from "@assets/modal_img.png";
 
 export const GitGraph = () => {
-  const [mkNode, setMkNode] = useState(1);
+  const [mkNode, setMkNode] = useState(0);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  // console.log(mkNode);
+  const [timer, setTimer] = useState("00:00:00");
 
   const withoutAuthor = templateExtend(TemplateName.Metro, {
     commit: {
@@ -22,15 +22,35 @@ export const GitGraph = () => {
 
   const initGraph = (gitgraph: any) => {
     const main = gitgraph.branch("main").commit("zero");
-    main.commit("업데이트1");
+    console.log(mkNode);
+    if (mkNode == 1) {
+      main.commit("ddddd");
+      setMkNode(0);
+      console.log(mkNode);
+    }
   };
 
   // const node = () => {
   //   if (mkNode == 1) {
   //     console.log("gooooooooood");
   //     setMkNode(0);
+  //     main.commit("ddddd");
   //   }
   // };
+
+  const currentTimer = () => {
+    const date = new Date();
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+    const seconds = String(date.getSeconds()).padStart(2, "0");
+    setTimer(`${hours}:${minutes}:${seconds}`);
+  };
+
+  const startTimer = () => {
+    setInterval(currentTimer, 1000);
+  };
+
+  startTimer();
 
   return (
     <S.Container>
@@ -38,30 +58,47 @@ export const GitGraph = () => {
       <S.Button
         onClick={() => {
           setModalIsOpen(true);
-          // node();
-          // setMkNode(1);
         }}
       >
-        <img src={Serch} alt="Search" />
+        <img src={Plus} alt="Plus" />
       </S.Button>
 
       <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+        <img src={Tree} alt="Tree" />
+        <S.ModalTime> {timer} </S.ModalTime>
+
         <S.ModalText>Node Name</S.ModalText>
         <S.ModalInput />
 
         <S.ModalText>Select Node</S.ModalText>
-        {/* <S.ModalInput /> */}
-        <select>
-          <option disabled selected>
+        <S.SelectNode>
+          <S.OptionNode disabled selected>
+            노드선택하기
+          </S.OptionNode>
+          <S.OptionNode>Main</S.OptionNode>
+          <S.OptionNode>B</S.OptionNode>
+          <S.OptionNode>C</S.OptionNode>
+          <S.OptionNode>D</S.OptionNode>
+          {/* <option disabled selected>
             노드 선택하기
           </option>
           <option value="apple">apple</option>
           <option value="orange">orange</option>
           <option value="grape">grape</option>
-          <option value="melon">melon</option>
-        </select>
-
-        <S.ModalButton>Make node</S.ModalButton>
+          <option value="melon">melon</option> */}
+        </S.SelectNode>
+        <div>
+          <S.ModalButton
+            onClick={() => {
+              setModalIsOpen(false);
+              // node();
+              setMkNode(1);
+              console.log(mkNode);
+            }}
+          >
+            Make node
+          </S.ModalButton>
+        </div>
       </Modal>
 
       <S.GraphBox>

@@ -1,3 +1,4 @@
+// import ReactModal from "react-modal";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -44,6 +45,15 @@ export const GraphBox = styled.div`
   margin-top: 30px;
 `;
 
+export const ModalTime = styled.div`
+  font-family: Pretendard;
+  font-size: 18px;
+  font-style: normal;
+  color: #acacac;
+  margin-top: 10px;
+  text-align: center;
+`;
+
 export const ModalText = styled.div`
   width: 400px;
   font-family: Pretendard;
@@ -52,36 +62,35 @@ export const ModalText = styled.div`
   font-weight: 400;
   line-height: normal;
   text-align: left;
-  margin-top: 20px;
+  margin-top: 25px;
   margin-left: 35px;
 `;
 
 export const ModalInput = styled.input`
-  width: 400px;
+  width: 360px;
   height: 60px;
   border: none;
   border-radius: 15px;
   background-color: #e9e9e7;
   margin-top: 10px;
   margin-left: 20px;
-  padding-left: 20px;
 `;
 
 export const ModalButton = styled.button`
-  width: 400px;
+  width: 360px;
   height: 60px;
   border: none;
   background: #316ae2;
   border-radius: 15px;
   color: #ffffff;
   cursor: pointer;
-  font-family: "Pretendard";
+  font-family: Pretendard;
   font-style: normal;
   font-size: 20px;
   line-height: 135.5%;
   text-align: center;
   margin-left: 20px;
-  margin-top: 10px;
+  margin-top: 30px;
   /* @media screen and (min-width: 600px) {
     width: 94%;
     height: 73px;
@@ -91,6 +100,35 @@ export const ModalButton = styled.button`
     background: #585858;
     cursor: pointer;
   }
+`;
+
+export const SelectNode = styled.select`
+  width: 360px;
+  height: 60px;
+  border: none;
+  border-radius: 15px;
+  background-color: #e9e9e7;
+  margin-top: 10px;
+  margin-left: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  /* font-size: inherit;
+  line-height: inherit; */
+  &:focus {
+    background-color: #e4ecff;
+  }
+`;
+
+export const OptionNode = styled.option`
+  width: 400px;
+  height: auto;
+  /* position: absolute; */
+  transform: translate(-50%, -50%);
+  border-radius: 15px;
+  background-color: #ffffff;
+  font-family: Pretendard;
+  font-style: normal;
+  font-size: 14px;
 `;
 
 // const customModalStyles: ReactModal.Styles = {
