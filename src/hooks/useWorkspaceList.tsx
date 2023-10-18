@@ -14,8 +14,8 @@ export const useWorkspaceList = () => {
       } else {
         console.log("error");
       }
-    } catch {
-      console.log("error");
+    } catch (error) {
+      console.log(error);
     }
   };
 

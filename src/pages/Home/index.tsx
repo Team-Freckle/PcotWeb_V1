@@ -8,7 +8,8 @@ import Serch from "@assets/search.svg";
 import Banner from "@assets/banner.svg";
 import { WorkspaceList } from "@components/WorkspaceList/MainWorkspaceList";
 import { useGetProfile } from "@hooks/useGetProfile";
-import { SideBar } from "@components/SideBar";
+import { MainSideBar } from "@components/SideBar/SideBars/MainSideBar";
+import Hambuger from "@assets/Hambuger.svg";
 
 export const API_URL = process.env.REACT_APP_API;
 
@@ -17,6 +18,7 @@ export const Home = () => {
   const { onGetProfile } = useGetProfile();
   const [ProfileData, setProfileData] = useState<any>([{}]);
   const [ProfileImg, setProfileImg] = useState<any>(Profile);
+  const [toggle, setToggle] = useState<boolean>(false);
 
   useEffect(() => {
     onGetProfile()
@@ -26,14 +28,14 @@ export const Home = () => {
       })
       .catch((err) => {
         console.log(err);
-        // navigate("/login");
+        navigate("/login");
       });
   }, []);
 
   return (
     <div>
       <S.FloatBox>
-        <SideBar />
+        <MainSideBar toggle={toggle} setToggle={setToggle} profileData={ProfileData} />
       </S.FloatBox>
       <S.Container>
         <S.ProfileBox>
@@ -49,6 +51,7 @@ export const Home = () => {
             </S.LinkText>
           </div>
         </S.ProfileBox>
+        <S.Hambuger src={Hambuger} onClick={() => setToggle(!toggle)} />
 
         <S.InputBox>
           <S.InputLabel>

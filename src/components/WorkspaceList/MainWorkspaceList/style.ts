@@ -25,7 +25,7 @@ export const WorkspaceList = styled.div`
   flex-wrap: wrap;
   margin-left: 30px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 700px) {
     justify-content: center;
     margin-left: 0px;
   }

@@ -1,5 +1,21 @@
 import styled from "styled-components";
 
+export const FloatBox = styled.div`
+  float: left;
+`;
+
+export const Hambuger = styled.img`
+  position: absolute;
+  top: 1%;
+  left: 2%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  @media (min-width: 1200px) {
+    display: none;
+  }
+`;
+
 export const Box = styled.div`
   width: 100%;
 `;

@@ -8,11 +8,8 @@ import { NotFound } from "@components/NotFound";
 import { Home } from "@pages/Home";
 import { EmailVerify } from "@pages/EmailVerify";
 import GitGraph from "@components/GitGraph";
-import { SideBar } from "@components/SideBar";
-import { MakeOrganization } from "@pages/MakeOrganization";
-import { WorkspaceList } from "@components/WorkspaceList/MainWorkspaceList";
-import { Organization } from "@pages/Organization";
 import { MakeWorkSpace } from "@pages/MakeWorkSpace";
+import { MakeOrganization } from "@pages/MakeOrganization";
 
 export const Router = () => {
   return (
@@ -24,13 +21,13 @@ export const Router = () => {
         <Route path="/EmailVerify" element={<EmailVerify />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/profile" element={<Profile />} />
         <Route path="/graph" element={<GitGraph />} />
-        <Route path="/test" element={<SideBar />} />
-        <Route path="/work" element={<MakeOrganization />} />
-        <Route path="/list" element={<WorkspaceList />} />\
-        <Route path="/qwer" element={<MakeWorkSpace />} />\
-        <Route path="/organization" element={<Organization />} />\
+
+        {/* <Route path="organization" /> */}
+        <Route path="organization/create" element={<MakeOrganization />} />
+
+        {/* <Route path="workspace" /> */}
+        <Route path="workspace/create" element={<MakeWorkSpace />} />
       </Routes>
     </div>
   );
