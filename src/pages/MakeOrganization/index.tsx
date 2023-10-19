@@ -1,22 +1,33 @@
+import React, { useEffect, useState } from "react";
 import { ProfileHover } from "@components/ProfileHover";
-import React from "react";
-
-import * as S from "./style";
 import { Radio } from "@components/Radio";
 import { useCreateOrganization } from "@hooks/useCreateOrganization";
+
+import * as S from "./style";
+import ProfileImg from "@assets/Login-Logo.svg";
 
 export const MakeOrganization = () => {
   const { Name, Comment, setExposure, onOrganizationChange, onOrganizationSubmit } =
     useCreateOrganization();
+  const [PImg, setPImg] = useState<any>(ProfileImg);
+
+  const Change = (Img: any) => {
+    setPImg(Img);
+  };
+
+  useEffect(() => {
+    console.log("test");
+  }, [PImg]);
+
   return (
     <div>
       <h1 style={{ color: "#316AE2" }}>Organization</h1>
 
       <form onSubmit={onOrganizationSubmit}>
-        <ProfileHover
-          name="OrganizationImg"
-          value="https://avatars.githubusercontent.com/u/76847245?v=4"
-        />
+        <div onChange={onOrganizationChange}>
+          <ProfileHover name="OrganizationImg" value={PImg} id="profileImg" Change={Change} />
+        </div>
+
         <S.Container>
           <S.Box>
             <S.Inputs>
@@ -43,7 +54,7 @@ export const MakeOrganization = () => {
                   onChange={onOrganizationChange}
                 />
               </S.BioBox>
-              <Radio tab1="Public" tab2="Private" id="radio" onChange={setExposure} />
+              <Radio tab1="public" tab2="private" id="radio" onChange={setExposure} />
               <S.ButtonBox>
                 <S.SubmitBtn type="submit">Make Organization</S.SubmitBtn>
               </S.ButtonBox>

@@ -28,6 +28,7 @@ export const ProfileHover = (props: any) => {
       const image = selectedFile;
       const name = props.name;
       setProfileImg(URL.createObjectURL(image));
+      // props.Change(URL.createObjectURL(image));
       onProfileImgSubmit(name, image);
     }
   };

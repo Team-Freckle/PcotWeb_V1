@@ -4,11 +4,13 @@ import { useCreateWorkSpace } from "@hooks/useCreateWorkSpace";
 import { useParams } from "react-router-dom";
 
 import * as S from "./style";
+import { Radio } from "@components/Radio";
 
 export const MakeWorkSpace = () => {
   const { name } = useParams();
 
-  const { onWorkSpaceChange, onWorkSpaceSubmit, Name, Comment } = useCreateWorkSpace(name);
+  const { onWorkSpaceChange, onWorkSpaceSubmit, Name, Comment, setExposure } =
+    useCreateWorkSpace(name);
 
   return (
     <div>
@@ -45,6 +47,7 @@ export const MakeWorkSpace = () => {
                   onChange={onWorkSpaceChange}
                 />
               </S.BioBox>
+              <Radio tab1="public" tab2="private" id="radio" onChange={setExposure} />
               <S.ButtonBox>
                 <S.SubmitBtn type="submit">Make Workspace</S.SubmitBtn>
               </S.ButtonBox>
