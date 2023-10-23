@@ -6,7 +6,8 @@
       "@pages/*": ["./pages/*"],
       "@assets/*": ["./assets/*"],
       "@lib/*": ["./lib/*"],
-      "@hooks/*": ["./hooks/*"]
+      "@hooks/*": ["./hooks/*"],
+      "@styles/*": ["./styles/*"]
     }
   }
 }

@@ -1,18 +1,38 @@
 import styled from "styled-components";
 
+export const FloatBox = styled.div`
+  float: left;
+`;
+
 export const Container = styled.div`
-  width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100vh;
+`;
+
+export const Text = styled.div`
+  color: var(--316-ae-2, #316ae2);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 3; /* 54.2px */
 `;
 
 export const Box = styled.div`
-  width: 550px;
+  width: 370px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: white;
+  box-shadow: 1px 1px 20px 0px rgba(183, 183, 183, 0.2);
+  border-radius: 10px;
+  @media (max-width: 440px) {
+    width: 350px;
+  }
 `;
 
 export const Inputs = styled.div`
@@ -21,7 +41,7 @@ export const Inputs = styled.div`
 
 export const Input = styled.input`
   width: 270px;
-  height: 40px;
+  height: 50px;
   border-radius: 10px;
   border: none;
   margin-bottom: 10px;
@@ -51,7 +71,7 @@ export const InputText = styled.div`
 
 export const BioInput = styled.textarea`
   width: 270px;
-  height: 113px;
+  height: 140px;
   border-radius: 10px;
   border: none;
   margin-bottom: 10px;
@@ -91,6 +111,7 @@ export const SubmitBtn = styled.button`
 export const ButtonBox = styled.div`
   width: 100%;
   height: 80px;
+  margin-bottom: 20px;
 `;
 
 export const RadioButton = styled.div`

@@ -11,26 +11,29 @@ import GitGraph from "@components/GitGraph";
 import { MakeWorkSpace } from "@pages/MakeWorkSpace";
 import { MakeOrganization } from "@pages/MakeOrganization";
 import { Organization } from "@pages/Organization";
+import { AnimatePresence } from "framer-motion";
 
 export const Router = () => {
   return (
     <div>
-      <Routes>
-        <Route path="*" element={<NotFound />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/EmailVerify" element={<EmailVerify />} />
+      <AnimatePresence>
+        <Routes>
+          <Route path="*" element={<NotFound />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signin" element={<Signin />} />
+          <Route path="/EmailVerify" element={<EmailVerify />} />
 
-        <Route path="/" element={<Home />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/graph" element={<GitGraph />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/graph" element={<GitGraph />} />
 
-        <Route path="/organization/:name" element={<Organization />} />
-        <Route path="/organization/create" element={<MakeOrganization />} />
+          <Route path="/organization/:name" element={<Organization />} />
+          <Route path="/organization/create" element={<MakeOrganization />} />
 
-        {/* <Route path="workspace" /> */}
-        <Route path="/workspace/create/:name" element={<MakeWorkSpace />} />
-      </Routes>
+          {/* <Route path="workspace" /> */}
+          <Route path="/workspace/create/:name" element={<MakeWorkSpace />} />
+        </Routes>
+      </AnimatePresence>
     </div>
   );
 };
