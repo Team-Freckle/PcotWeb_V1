@@ -12,6 +12,7 @@ import { MakeWorkSpace } from "@pages/MakeWorkSpace";
 import { MakeOrganization } from "@pages/MakeOrganization";
 import { Organization } from "@pages/Organization";
 import { AnimatePresence } from "framer-motion";
+import { SetprofileImg } from "@pages/SetProfileImage";
 
 export const Router = () => {
   return (
@@ -29,6 +30,7 @@ export const Router = () => {
 
           <Route path="/organization/:name" element={<Organization />} />
           <Route path="/organization/create" element={<MakeOrganization />} />
+          <Route path="/organization/create/profile" element={<SetprofileImg />} />
 
           {/* <Route path="workspace" /> */}
           <Route path="/workspace/create/:name" element={<MakeWorkSpace />} />

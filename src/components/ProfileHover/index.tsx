@@ -28,8 +28,13 @@ export const ProfileHover = (props: any) => {
       const image = selectedFile;
       const name = props.name;
       setProfileImg(URL.createObjectURL(image));
-      // props.Change(URL.createObjectURL(image));
-      onProfileImgSubmit(name, image);
+      if (props.name === "ProfileImg") {
+        onProfileImgSubmit(name, image);
+      } else if (props.name === "OrganizationImg") {
+        console.log("sadasdsad");
+        props.setImg(URL.createObjectURL(image));
+        props.setData(image);
+      }
     }
   };
 

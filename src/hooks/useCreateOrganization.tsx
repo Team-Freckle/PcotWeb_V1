@@ -47,7 +47,7 @@ export const useCreateOrganization = () => {
       );
 
       ToastSuccess("조직 생성에 성공하였습니다.");
-      onOrganizationImgSubmit(ProfileImg, Name);
+      // onOrganizationImgSubmit(ProfileImg, Name); //TODO
       navigate("/");
       return response.data;
     } catch (error) {
