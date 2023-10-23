@@ -42,6 +42,7 @@ export const MakeOrganization = () => {
                     id="comment"
                     value={Comment}
                     onChange={onOrganizationChange}
+                    maxLength={600}
                   />
                 </S.BioBox>
                 <Radio tab1="public" tab2="private" id="radio" onChange={setExposure} />

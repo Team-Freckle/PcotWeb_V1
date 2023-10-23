@@ -25,7 +25,8 @@ export const Text = styled.div`
 
 export const Box = styled.div`
   width: 370px;
-  height: 550px;
+  /* height: 550px; */
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,4 +78,24 @@ export const ButtonBox = styled.div`
   width: 100%;
   height: 80px;
   margin-bottom: 20px;
+`;
+
+export const TextName = styled.div`
+  margin-top: 20px;
+  color: black;
+  text-align: center;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+`;
+
+export const TextComment = styled.div`
+  color: #7a7a7a;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 `;
