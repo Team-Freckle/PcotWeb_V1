@@ -7,7 +7,6 @@ import Profile from "@pages/Profile";
 import { NotFound } from "@components/NotFound";
 import { Home } from "@pages/Home";
 import { EmailVerify } from "@pages/EmailVerify";
-import { ProfileHover } from "@components/ProfileHover";
 
 export const Router = () => {
   return (
@@ -20,7 +19,6 @@ export const Router = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/test" element={<ProfileHover />} />
       </Routes>
     </div>
   );
