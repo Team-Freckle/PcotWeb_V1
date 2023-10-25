@@ -8,6 +8,7 @@ import { ProfileSideBar } from "@components/SideBar/SideBars/ProfileSideBar";
 import { ProfileHover } from "@components/ProfileHover";
 import { useChangeOrganizationImg } from "@hooks/useChangeOrganizationImg";
 import { ToastWarning } from "@lib/Toast";
+import { ConfirmAlert } from "@lib/Confirm";
 
 import img1 from "@assets/profileImg/1.svg";
 import img2 from "@assets/profileImg/2.svg";
@@ -20,7 +21,6 @@ import img8 from "@assets/profileImg/8.svg";
 import img9 from "@assets/profileImg/9.svg";
 import img10 from "@assets/profileImg/10.svg";
 import img11 from "@assets/profileImg/11.svg";
-import { ConfirmAlert } from "@lib/Confirm";
 
 const imageFiles = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11];
 
@@ -28,10 +28,8 @@ export const SetprofileImg = () => {
   const [Img, setImg] = useState<any | null>(null);
   const [Data, setData] = useState<any | null>(null);
 
-  const [OrgName, setOrgName] = useState<string>("임시이름");
-  const [OrgComment, setOrgComment] = useState<string>(
-    "ㄹㄷ곪;ㅐ덕래;ㅁ덪ㄹ;ㅐㅓㅈㅁㄷ래멎댈;ㅓㄷㅈㅁ;ㅐ럼ㅈㄷ;렂ㅁ;ㅐ럼ㅈ대렂ㅁ;ㅐㅑ렂매ㅑㄷ렂",
-  );
+  const [OrgName, setOrgName] = useState<string>("");
+  const [OrgComment, setOrgComment] = useState<string>("");
 
   const { onOrganizationImgSubmit } = useChangeOrganizationImg();
 
@@ -39,21 +37,16 @@ export const SetprofileImg = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // if (!location.state) {
-    //   ToastWarning("잘못된 접근입니다.");
-    //   navigate("/");
-    // } else {
-    //   const randomIndex = Math.floor(Math.random() * imageFiles.length);
-    //   const randomImage = imageFiles[randomIndex];
-    //   setImg(randomImage);
-    //   console.log(randomIndex);
-    // }
-    const randomIndex = Math.floor(Math.random() * imageFiles.length);
-    const randomImage = imageFiles[randomIndex];
-    setImg(randomImage);
-    // setOrgName(location.state.name);
-    // setOrgComment(location.state.comment);
-    console.log(randomIndex);
+    if (!location.state) {
+      ToastWarning("잘못된 접근입니다.");
+      navigate("/");
+    } else {
+      const randomIndex = Math.floor(Math.random() * imageFiles.length);
+      const randomImage = imageFiles[randomIndex];
+      setImg(randomImage);
+      setOrgName(location.state.name);
+      setOrgComment(location.state.comment);
+    }
   }, []);
 
   const onSubmit = () => {
@@ -63,8 +56,10 @@ export const SetprofileImg = () => {
     } else {
       const formData = new FormData();
       formData.append("image", Data);
-      formData.append("organization", "wqsdsfwaf");
+      formData.append("organization", OrgName);
       onOrganizationImgSubmit(formData);
+      navigate("", { replace: true });
+      navigate(`/organization/${OrgName}`);
     }
   };
 
@@ -73,7 +68,7 @@ export const SetprofileImg = () => {
     const randomImage = imageFiles[randomIndex];
     setImg(randomImage);
     const formData = new FormData();
-    formData.append("image", Img); // TODO : 이미지의 주소가 아닌 이미지 자체를 보내야 함
+    formData.append("image", Img); // TODO : 서버가 해결한대요
     formData.append("organization", "wqsdsfwaf");
     onOrganizationImgSubmit(formData);
   };

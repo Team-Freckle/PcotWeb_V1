@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "@styles/styles.css";
 import * as S from "./style";
@@ -26,6 +26,7 @@ export const Login = () => {
   const navigate = useNavigate();
   const { onLoginChange, email, pw, onLoginSubmit } = useLogin();
   const [pwIcon, setPwIcon] = useState(PwSee);
+  const [selectedProfileImage, setSelectedProfileImage] = useState<string>("");
 
   const onPwSee = () => {
     const pw = document.getElementById("input-pw") as HTMLInputElement;
@@ -38,10 +39,13 @@ export const Login = () => {
     }
   };
 
-  const randomIndex = Math.floor(Math.random() * profileImages.length);
-  const randomValue = Math.floor(Math.random() * 100);
-  const threshold = 1;
-  const selectedProfileImage = randomValue < threshold ? lol : profileImages[randomIndex];
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * profileImages.length);
+    const randomValue = Math.floor(Math.random() * 100);
+    const threshold = 1;
+    const selectedProfileImage = randomValue < threshold ? lol : profileImages[randomIndex];
+    setSelectedProfileImage(selectedProfileImage);
+  }, []);
 
   return (
     <div>

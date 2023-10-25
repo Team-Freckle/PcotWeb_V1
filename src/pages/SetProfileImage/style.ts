@@ -84,7 +84,7 @@ export const TextName = styled.div`
   margin-top: 20px;
   color: black;
   text-align: center;
-  font-family: Inter;
+  font-family: Pretendard;
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
