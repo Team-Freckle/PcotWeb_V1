@@ -52,7 +52,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
-            rm -rf *
+            find . -type f ! -name "deploy.sh" -exec rm -f {} +
 
       - name: Download artifact
         uses: actions/download-artifact@v2
