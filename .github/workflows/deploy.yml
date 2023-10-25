@@ -28,7 +28,7 @@ jobs:
 
       - name: Install dependencies and build
         run: |
-          npm install
+          npm install --save --legacy-peer-deps
           npm run build
 
       - name: zip create # S3에 올릴 zip 파일 생성. (빌드한 프로젝트를 압축)
