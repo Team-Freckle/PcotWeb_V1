@@ -52,7 +52,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
-            rm *
+            rm -rf *
 
       - name: Download artifact
         uses: actions/download-artifact@v2
