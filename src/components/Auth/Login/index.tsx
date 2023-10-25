@@ -29,7 +29,7 @@ export const Login = () => {
     <div>
       <S.Flex>
         <S.Form onSubmit={onLoginSubmit}>
-          <S.LoginText>Login</S.LoginText>
+          <S.LoginText>Loginn</S.LoginText>
           <Reservation />
           <S.Input
             id="input-id"
