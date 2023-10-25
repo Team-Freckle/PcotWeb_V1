@@ -7,7 +7,6 @@ import Profile from "@pages/Profile";
 import { NotFound } from "@components/NotFound";
 import { Home } from "@pages/Home";
 import { EmailVerify } from "@pages/EmailVerify";
-import GitGraph from "@components/GitGraph";
 import { ProfileHover } from "@components/ProfileHover";
 
 export const Router = () => {
@@ -21,7 +20,6 @@ export const Router = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/graph" element={<GitGraph />} />
         <Route path="/test" element={<ProfileHover />} />
       </Routes>
     </div>
