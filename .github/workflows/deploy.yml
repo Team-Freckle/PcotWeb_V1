@@ -52,7 +52,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
-            rm -qq -r pcot
+            rm -qq -r /home/ubuntu/pcot
           
       - name: mkdir
         uses: appleboy/ssh-action@master
