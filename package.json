@@ -1,7 +1,9 @@
 {
   "name": "my-app",
   "version": "0.1.0",
+  "proxy": "https://pcothub.com",
   "private": true,
+  "homepage": "https://pcothub.com",
   "dependencies": {
     "@craco/craco": "^7.1.0",
     "@gitgraph/react": "^1.6.0",
