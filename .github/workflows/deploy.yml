@@ -45,15 +45,6 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: delete all file
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.WEB_HOST_ID }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.PRIVATE_KEY }}
-          script: |
-            find . -type f ! -name "deploy.sh" -exec rm -f {} +
-
       - name: Download artifact
         uses: actions/download-artifact@v2
         with:
@@ -75,4 +66,4 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
-            sh /home/ubuntu/deploy.sh
+            sh /home/ubuntu/deploy/deploy.sh
