@@ -54,7 +54,7 @@ jobs:
           script: |
             rm -qq -rf /home/ubuntu/pcot
           
-      - name: mkdir
+      - name: mdir pcot
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.WEB_HOST_ID }}
