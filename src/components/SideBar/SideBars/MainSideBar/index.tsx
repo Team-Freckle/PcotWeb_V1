@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import { useOrganizationList } from "@hooks/useOrganizationList";
 
 import * as S from "./style";
-import { Link } from "react-router-dom";
 
 export const MainSideBar = (props: any) => {
   const navigate = useNavigate();
@@ -21,8 +20,8 @@ export const MainSideBar = (props: any) => {
       .then((res) => {
         setOrganizationList(
           res.map((list: any) => (
-            <Link
-              to={`/organization/${list.name}`}
+            <div
+              onClick={() => navigate(`/organization/${list.name}`)}
               key={list.idx}
               style={{ textDecoration: "none" }}
             >
@@ -32,7 +31,7 @@ export const MainSideBar = (props: any) => {
               >
                 <div style={{ textAlign: "left", marginLeft: "10px" }}>{list.name}</div>
               </MenuItem>
-            </Link>
+            </div>
           )),
         );
       })
