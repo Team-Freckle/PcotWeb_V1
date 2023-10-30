@@ -19,16 +19,18 @@ export const ProfileSideBar = (props: any) => {
       .then((res) => {
         setOrganizationList(
           res.map((list: any) => (
-            <MenuItem
+            <div
+              onClick={() => navigate(`/organization/${list.name}`)}
               key={list.idx}
-              prefix={<RxHamburgerMenu />}
-              style={{ borderRadius: "10px" }}
-              onClick={() => {
-                navigate(`/organization/${list.name}`);
-              }}
+              style={{ textDecoration: "none" }}
             >
-              <div style={{ textAlign: "left", marginLeft: "10px" }}>{list.name}</div>
-            </MenuItem>
+              <MenuItem
+                prefix={<RxHamburgerMenu />}
+                style={{ borderRadius: "10px", color: "black" }}
+              >
+                <div style={{ textAlign: "left", marginLeft: "10px" }}>{list.name}</div>
+              </MenuItem>
+            </div>
           )),
         );
       })

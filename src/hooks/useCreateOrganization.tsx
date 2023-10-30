@@ -7,6 +7,7 @@ export const API_URL = process.env.REACT_APP_API;
 
 export const useCreateOrganization = () => {
   const navigate = useNavigate();
+
   const [Name, setName] = useState<string>("");
   const [Comment, setComment] = useState<string>("");
   const [exposure, setExposure] = useState<string>("public");
@@ -17,16 +18,13 @@ export const useCreateOrganization = () => {
     console.log(exposure);
   }, [exposure]);
 
-  const onOrganizationChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
-      if (e.target.id === "name") {
-        setName(e.target.value);
-      } else if (e.target.id === "comment") {
-        setComment(e.target.value);
-      }
-    },
-    [],
-  );
+  const onOrganizationChange = useCallback((e: any) => {
+    if (e.target.id === "name") {
+      setName(e.target.value);
+    } else if (e.target.id === "comment") {
+      setComment(e.target.value);
+    }
+  }, []);
 
   const onOrganizationSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -42,7 +40,7 @@ export const useCreateOrganization = () => {
       );
 
       ToastSuccess("조직 생성에 성공하였습니다.");
-      navigate("/");
+      navigate("/organization/create/profile", { state: { name: Name, comment: Comment } });
       return response.data;
     } catch (error) {
       ToastError("조직 생성에 실패했습니다.");

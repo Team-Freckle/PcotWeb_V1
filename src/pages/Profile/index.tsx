@@ -14,7 +14,7 @@ import Hambuger from "@assets/Hambuger.svg";
 
 export const API_URL = process.env.REACT_APP_API;
 
-const Profile = () => {
+export const Profile = () => {
   const navigate = useNavigate();
   const { onProfileChange, Name, Email, Bio, setName, setEmail, setBio, onProfileSubmit } =
     useChangeProfile();
@@ -119,5 +119,3 @@ const Profile = () => {
     </div>
   );
 };
-
-export default Profile;

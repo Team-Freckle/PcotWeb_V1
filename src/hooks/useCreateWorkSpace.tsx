@@ -1,16 +1,21 @@
 import { ToastError, ToastSuccess } from "@lib/Toast";
 import axios from "axios";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const API_URL = process.env.REACT_APP_API;
 
-const useCreateWorkSpace = () => {
+export const useCreateWorkSpace = (name: any) => {
   const navigate = useNavigate();
   const [Name, setName] = useState<string>("");
   const [Comment, setComment] = useState<string>("");
+  const [exposure, setExposure] = useState<string>("public");
 
-  const URL = `${API_URL}/v2/cloud/workspace/create/test-org`;
+  const URL = `${API_URL}/v2/cloud/workspace/create/${name}`;
+
+  useEffect(() => {
+    console.log(exposure);
+  }, [exposure]);
 
   const onWorkSpaceChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -31,6 +36,7 @@ const useCreateWorkSpace = () => {
         {
           name: Name,
           comment: Comment,
+          exposure: exposure,
         },
         { withCredentials: true },
       );
@@ -44,7 +50,5 @@ const useCreateWorkSpace = () => {
     }
   };
 
-  return { onWorkSpaceChange, Name, Comment };
+  return { onWorkSpaceChange, onWorkSpaceSubmit, Name, Comment, setExposure };
 };
-
-export default useCreateWorkSpace;
