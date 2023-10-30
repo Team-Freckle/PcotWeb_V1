@@ -1,5 +1,5 @@
-// import ReactModal from "react-modal";
 import styled from "styled-components";
+import Modal from "react-modal";
 
 export const Container = styled.div`
   width: 100%;
@@ -38,11 +38,29 @@ export const Button = styled.button`
     background: #585858;
     cursor: pointer;
   }
+  img {
+    width: 40px;
+  }
 `;
 
 export const GraphBox = styled.div`
   margin-left: 70px;
   margin-top: 30px;
+`;
+
+export const ModalContainer = styled(Modal)`
+  width: 400px;
+  height: 650px;
+  margin: 0 auto;
+  padding: 10px;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+
+  img {
+    width: 260px;
+    margin-top: 30px;
+    /* align-self: center; */
+  }
 `;
 
 export const ModalTime = styled.div`

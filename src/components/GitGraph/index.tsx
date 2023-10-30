@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Gitgraph, templateExtend, TemplateName, Orientation } from "@gitgraph/react";
-import Modal from "react-modal";
+// import Modal from "react-modal";
 
 import * as S from "./style";
 import Plus from "@assets/plus.svg";
@@ -63,7 +63,7 @@ export const GitGraph = () => {
         <img src={Plus} alt="Plus" />
       </S.Button>
 
-      <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+      <S.ModalContainer isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
         <img src={Tree} alt="Tree" />
         <S.ModalTime> {timer} </S.ModalTime>
 
@@ -79,13 +79,6 @@ export const GitGraph = () => {
           <S.OptionNode>B</S.OptionNode>
           <S.OptionNode>C</S.OptionNode>
           <S.OptionNode>D</S.OptionNode>
-          {/* <option disabled selected>
-            노드 선택하기
-          </option>
-          <option value="apple">apple</option>
-          <option value="orange">orange</option>
-          <option value="grape">grape</option>
-          <option value="melon">melon</option> */}
         </S.SelectNode>
         <div>
           <S.ModalButton
@@ -99,7 +92,7 @@ export const GitGraph = () => {
             Make node
           </S.ModalButton>
         </div>
-      </Modal>
+      </S.ModalContainer>
 
       <S.GraphBox>
         <Gitgraph options={{ template: withoutAuthor, orientation: Orientation.VerticalReverse }}>
