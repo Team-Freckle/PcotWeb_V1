@@ -22,8 +22,11 @@
     "react": "^18.2.0",
     "react-burger-menu": "^3.0.9",
     "react-dom": "^18.2.0",
+<<<<<<< HEAD
     "react-google-charts": "^4.0.1",
     "react-modal": "^3.16.1",
+=======
+>>>>>>> Organization
     "react-icons": "^4.11.0",
     "react-modal": "^3.16.1",
     "react-pro-sidebar": "^1.1.0-alpha.1",
