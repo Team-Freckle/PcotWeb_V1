@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Gitgraph, templateExtend, TemplateName, Orientation } from "@gitgraph/react";
 // import Modal from "react-modal";
 
@@ -6,10 +6,15 @@ import * as S from "./style";
 import Plus from "@assets/plus.svg";
 import Tree from "@assets/modal_img.png";
 
-export const GitGraph = () => {
+export const GitGraph = (props: any) => {
   const [mkNode, setMkNode] = useState(0);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [timer, setTimer] = useState("00:00:00");
+
+  // useEffect(() => {
+  //   const name = props.name;
+
+  // });
 
   const withoutAuthor = templateExtend(TemplateName.Metro, {
     commit: {
@@ -22,6 +27,10 @@ export const GitGraph = () => {
 
   const initGraph = (gitgraph: any) => {
     const main = gitgraph.branch("main").commit("zero");
+    const graph = gitgraph.branch("graph").commit("first");
+    main.commit("second");
+    main.commit("third");
+    graph.commit("four");
     console.log(mkNode);
     if (mkNode == 1) {
       main.commit("ddddd");
@@ -49,7 +58,6 @@ export const GitGraph = () => {
   const startTimer = () => {
     setInterval(currentTimer, 1000);
   };
-
   startTimer();
 
   return (

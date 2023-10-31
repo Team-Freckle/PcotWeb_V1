@@ -34,10 +34,12 @@ export const Button = styled.button`
   right: 35px;
   bottom: 35px;
   cursor: pointer;
+
   :active {
     background: #585858;
     cursor: pointer;
   }
+
   img {
     width: 40px;
   }
