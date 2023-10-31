@@ -1,4 +1,4 @@
-import { ToastError, ToastSuccess } from "@lib/Toast";
+import { ToastError, ToastSuccess, ToastWarning } from "@lib/Toast";
 import React, { useCallback, useState } from "react";
 import axios from "axios";
 
@@ -21,17 +21,16 @@ export const useGitgraph = () => {
     }
   }, []);
 
-  const onNodeSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onNodeSubmit = async () => {
     try {
       const response = await axios.post(
         URL,
         {
           name: Name,
           comment: Comment,
-          parent: ParentName,
+          // parent: ParentName,
         },
-        { withCredentials: true },
+        // { withCredentials: true },
       );
 
       ToastSuccess("노드 생성에 성공하였습니다.");

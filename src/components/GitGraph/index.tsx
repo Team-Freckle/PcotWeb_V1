@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Gitgraph, templateExtend, TemplateName, Orientation } from "@gitgraph/react";
+import { useGitgraph } from "../../hooks/useGitgraph";
 // import Modal from "react-modal";
 
 import * as S from "./style";
@@ -7,6 +8,17 @@ import Plus from "@assets/plus.svg";
 import Tree from "@assets/modal_img.png";
 
 export const GitGraph = (props: any) => {
+  const {
+    onNodeChange,
+    Name,
+    Comment,
+    ParentName,
+    setName,
+    setComment,
+    setParentName,
+    onNodeSubmit,
+  } = useGitgraph();
+
   const [mkNode, setMkNode] = useState(0);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [timer, setTimer] = useState("00:00:00");
@@ -76,7 +88,10 @@ export const GitGraph = (props: any) => {
         <S.ModalTime> {timer} </S.ModalTime>
 
         <S.ModalText>Node Name</S.ModalText>
-        <S.ModalInput />
+        <S.ModalName name="name" onChange={onNodeChange} />
+
+        <S.ModalText>Node Comment</S.ModalText>
+        <S.ModalComment name="new node" onChange={onNodeChange} />
 
         <S.ModalText>Select Node</S.ModalText>
         <S.SelectNode>
@@ -88,12 +103,14 @@ export const GitGraph = (props: any) => {
           <S.OptionNode>C</S.OptionNode>
           <S.OptionNode>D</S.OptionNode>
         </S.SelectNode>
+
         <div>
           <S.ModalButton
             onClick={() => {
               setModalIsOpen(false);
               // node();
               setMkNode(1);
+              onNodeSubmit();
               console.log(mkNode);
             }}
           >

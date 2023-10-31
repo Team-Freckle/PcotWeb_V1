@@ -51,7 +51,7 @@ export const GraphBox = styled.div`
 `;
 
 export const ModalContainer = styled(Modal)`
-  width: 400px;
+  width: 310px;
   height: 650px;
   margin: 0 auto;
   padding: 10px;
@@ -59,7 +59,7 @@ export const ModalContainer = styled(Modal)`
   border-radius: 15px;
 
   img {
-    width: 260px;
+    width: 200px;
     margin-top: 30px;
     /* align-self: center; */
   }
@@ -67,7 +67,7 @@ export const ModalContainer = styled(Modal)`
 
 export const ModalTime = styled.div`
   font-family: Pretendard;
-  font-size: 18px;
+  font-size: 16px;
   font-style: normal;
   color: #acacac;
   margin-top: 10px;
@@ -77,40 +77,51 @@ export const ModalTime = styled.div`
 export const ModalText = styled.div`
   width: 400px;
   font-family: Pretendard;
-  font-size: 20px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  align-self: center;
   text-align: left;
-  margin-top: 25px;
+  margin-top: 15px;
   margin-left: 35px;
 `;
 
-export const ModalInput = styled.input`
-  width: 360px;
-  height: 60px;
+export const ModalName = styled.input`
+  width: 270px;
+  height: 40px;
   border: none;
-  border-radius: 15px;
+  border-radius: 10px;
   background-color: #e9e9e7;
-  margin-top: 10px;
+  margin-top: 5px;
+  margin-left: 20px;
+`;
+
+export const ModalComment = styled.input`
+  width: 270px;
+  height: 113px;
+  border: none;
+  border-radius: 10px;
+  background-color: #e9e9e7;
+  margin-top: 5px;
   margin-left: 20px;
 `;
 
 export const ModalButton = styled.button`
-  width: 360px;
-  height: 60px;
+  width: 270px;
+  height: 50px;
   border: none;
   background: #316ae2;
-  border-radius: 15px;
+  border-radius: 10px;
   color: #ffffff;
   cursor: pointer;
   font-family: Pretendard;
   font-style: normal;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 135.5%;
   text-align: center;
   margin-left: 20px;
-  margin-top: 30px;
+  margin-top: 20px;
   /* @media screen and (min-width: 600px) {
     width: 94%;
     height: 73px;
@@ -123,10 +134,10 @@ export const ModalButton = styled.button`
 `;
 
 export const SelectNode = styled.select`
-  width: 360px;
-  height: 60px;
+  width: 270px;
+  height: 40px;
   border: none;
-  border-radius: 15px;
+  border-radius: 10px;
   background-color: #e9e9e7;
   margin-top: 10px;
   margin-left: 20px;
