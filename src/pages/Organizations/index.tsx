@@ -1,5 +1,5 @@
 import React from "react";
 
-export const OrganizationList = () => {
+export const Organizations = () => {
   return <div></div>;
 };

@@ -10,7 +10,7 @@ import Wrapper from "@components/Wrapper";
 
 export const Signin = () => {
   const navigate = useNavigate();
-  const { onSignUpChange, name, email, pw1, pw2, onSignUpSubmit } = useSignin();
+  const { ...attr } = useSignin();
   const [pwIcon, setPwIcon] = useState(PwSee);
   const [pwIcon2, setPwIcon2] = useState(PwSee);
 
@@ -40,7 +40,7 @@ export const Signin = () => {
     <div>
       <Wrapper>
         <S.Flex>
-          <S.Form onSubmit={onSignUpSubmit}>
+          <S.Form onSubmit={attr.onSignUpSubmit}>
             <S.SigninText>Signup</S.SigninText>
             <S.Inputs>
               <S.Input
@@ -48,8 +48,8 @@ export const Signin = () => {
                 placeholder="Name"
                 type="text"
                 name="name"
-                value={name}
-                onChange={onSignUpChange}
+                value={attr.signUp.name}
+                onChange={attr.onSignUpChange}
                 maxLength={8}
               />
               <S.Input
@@ -57,17 +57,17 @@ export const Signin = () => {
                 placeholder="Email"
                 type="email"
                 name="email"
-                value={email}
-                onChange={onSignUpChange}
+                value={attr.signUp.email}
+                onChange={attr.onSignUpChange}
               />
               <S.InputLabel>
                 <S.Input
                   id="sign_up_password"
                   placeholder="Password"
                   type="password"
-                  name="password"
-                  value={pw1}
-                  onChange={onSignUpChange}
+                  name="pw1"
+                  value={attr.signUp.pw1}
+                  onChange={attr.onSignUpChange}
                 />
                 <S.InputButton src={pwIcon} onClick={onPwSee}></S.InputButton>
               </S.InputLabel>
@@ -76,9 +76,9 @@ export const Signin = () => {
                   id="sign_up_password_check"
                   placeholder="Password Check"
                   type="password"
-                  name="password2"
-                  value={pw2}
-                  onChange={onSignUpChange}
+                  name="pw2"
+                  value={attr.signUp.pw2}
+                  onChange={attr.onSignUpChange}
                 />
                 <S.InputButton src={pwIcon2} onClick={onPwSeeCK}></S.InputButton>
               </S.InputLabel>
