@@ -21,7 +21,7 @@ export const OrganizationWorkspaceList = (props: any) => {
                 src={`${API_URL}/v2/search/workspace/image?organization=${list.organizationName}&workspace=${list.name}`}
               />
               <S.WorkspaceName>{list.name}</S.WorkspaceName>
-              <S.WorkspaceSubName>워크스페이스</S.WorkspaceSubName>
+              <S.WorkspaceSubName>{list.comment}</S.WorkspaceSubName>
             </S.WorkspaceItem>
           )),
         );
