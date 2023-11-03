@@ -10,7 +10,9 @@ import { EmailVerify } from "@pages/EmailVerify";
 import { SideBar } from "@components/SideBar";
 import { MakeOrganization } from "@pages/MakeOrganization";
 import { WorkspaceList } from "@components/WorkspaceList";
-import Chart from "@components/Organization/Chart";
+import OrganizationChart from "@components/Organization/Chart";
+import Test from "@components/Organization/test";
+import NewsItem from "@components/Organization/test";
 
 export const Router = () => {
   return (
@@ -25,8 +27,9 @@ export const Router = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/test" element={<SideBar />} />
         <Route path="/work" element={<MakeOrganization />} />
-        <Route path="/list" element={<WorkspaceList />} />\
-        <Route path="/chart" element={<Chart />} />\
+        <Route path="/list" element={<WorkspaceList />} />
+        <Route path="/chart" element={<OrganizationChart />} />
+        <Route path="/newtest" element={<NewsItem />} />
       </Routes>
     </div>
   );

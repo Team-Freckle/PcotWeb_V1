@@ -58,7 +58,7 @@ export const Home = () => {
         </S.InputBox>
 
         <S.Banner src={Banner}></S.Banner>
-
+        <button onClick={() => navigate("/chart")}>가기</button>
         <S.Main>
           <WorkspaceList name="recents" />
         </S.Main>
