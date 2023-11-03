@@ -14,6 +14,7 @@ import { Organization } from "@pages/Organization";
 import { AnimatePresence } from "framer-motion";
 import { SetprofileImg } from "@pages/SetProfileImage";
 import { OrganizationList } from "@components/OrganizationList";
+import { PsdComparisonModal } from "@components/PsdComparisonModal";
 
 export const Router = () => {
   return (
@@ -37,6 +38,7 @@ export const Router = () => {
           {/* <Route path="workspace" /> */}
           <Route path="/workspace/create/:name" element={<MakeWorkSpace />} />
           <Route path="/test" element={<OrganizationList />} />
+          <Route path="/test2" element={<PsdComparisonModal />} />
         </Routes>
       </AnimatePresence>
     </div>
