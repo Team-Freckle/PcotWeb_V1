@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Gitgraph, templateExtend, TemplateName, Orientation } from "@gitgraph/react";
 import { useGitgraph } from "../../hooks/useGitgraph";
 // import Modal from "react-modal";
@@ -19,6 +20,7 @@ export const GitGraph = (props: any) => {
     onNodeSubmit,
   } = useGitgraph();
 
+  const navigate = useNavigate();
   const [mkNode, setMkNode] = useState(0);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [timer, setTimer] = useState("00:00:00");
@@ -119,7 +121,7 @@ export const GitGraph = (props: any) => {
         </div>
       </S.ModalContainer>
 
-      <S.GraphBox>
+      <S.GraphBox onClick={() => navigate("/Nodes/index.tsx")}>
         <Gitgraph options={{ template: withoutAuthor, orientation: Orientation.VerticalReverse }}>
           {(gitgraph) => {
             initGraph(gitgraph);
