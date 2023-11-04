@@ -1,45 +1,79 @@
-import React from "react";
-
-import * as S from "./style";
-import Chart from "react-google-charts";
-import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
+import OrgChart from "@balkangraph/orgchart.js";
 export const API_URL = process.env.REACT_APP_API;
-const OrganizationChart = () => {
-  const apiUrl = "http://API_URL/v2/cloud/organization/rank/edit/test-org11";
+import axios from "axios";
+import "./chart.css";
 
-  const data = [
-    {
-      name: "owner",
-      floor: 0,
-      parent: null,
-    },
-    {
-      name: "leader",
-      floor: 1,
-      parent: "owner",
-    },
-    {
-      name: "member",
-      floor: 2,
-      parent: "leader",
-    },
-  ];
+interface OrgData {
+  name: string;
+  floor: number;
+  parent: string | null;
+}
 
-  axios
-    .patch(apiUrl, data)
-    .then((response) => {
-      console.log("성공적으로 업데이트되었습니다.", response.data);
-    })
-    .catch((error) => {
-      console.error("오류 발생:", error);
-    });
+const MyOrgChart: React.FC = () => {
+  const chartRef = useRef<HTMLDivElement | null>(null);
+  const [data, setData] = useState<OrgData[]>([]);
 
-  const options = {
-    allowHtml: true,
-    allowCollapse: true,
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `${API_URL}/v2/search/organization/rank?organization=group-tester-org`,
+          { withCredentials: true },
+        );
+        const jsonData = response.data;
+        setData(jsonData.data as OrgData[]);
+      } catch (error) {
+        console.error("데이터를 가져오는 중에 오류 발생:", error);
+      }
+    };
 
-  return <Chart chartType="OrgChart" data={data} options={options} width="100%" />;
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    if (chartRef.current) {
+      const orgChartNodes = data.map((item) => {
+        return {
+          id: item.name,
+          name: item.name,
+          pid: item.parent || item.floor.toString(),
+        };
+      });
+      OrgChart.templates.ana.field_0 =
+        '<text width="230" style="font-size: 18px;" fill="#ffffff" x="125" y="95" text-anchor="middle" class="field_0">{val}</text>';
+      OrgChart.templates.ana.editFormHeaderColor = "#316ae2";
+      const chart = new OrgChart(chartRef.current, {
+        mouseScrool: OrgChart.action.none,
+        nodeBinding: {
+          field_0: "name",
+        },
+
+        align: OrgChart.ORIENTATION,
+        tags: {
+          assistant: {
+            template: "ula",
+          },
+        },
+        toolbar: {
+          zoom: true,
+          fit: true,
+        },
+        enableDragDrop: true,
+        nodes: orgChartNodes,
+        editForm: {
+          buttons: {
+            edit: null,
+            share: null,
+            pdf: null,
+          },
+          generateElementsFromFields: true,
+        },
+      });
+    }
+  }, [data]);
+
+  return <div ref={chartRef}></div>;
 };
 
-export default OrganizationChart;
+export default MyOrgChart;
