@@ -13,6 +13,8 @@ import { MakeOrganization } from "@pages/MakeOrganization";
 import { Organization } from "@pages/Organization";
 import { AnimatePresence } from "framer-motion";
 import { SetprofileImg } from "@pages/SetProfileImage";
+import { OrganizationList } from "@components/OrganizationList";
+import { PsdComparisonModal } from "@components/PsdComparisonModal";
 
 export const Router = () => {
   return (
@@ -28,12 +30,15 @@ export const Router = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/graph" element={<GitGraph />} />
 
+          {/* <Route path="/organization" element={<OrganizationList />} /> */}
           <Route path="/organization/:name" element={<Organization />} />
           <Route path="/organization/create" element={<MakeOrganization />} />
           <Route path="/organization/create/profile" element={<SetprofileImg />} />
 
           {/* <Route path="workspace" /> */}
           <Route path="/workspace/create/:name" element={<MakeWorkSpace />} />
+          <Route path="/test" element={<OrganizationList />} />
+          <Route path="/test2" element={<PsdComparisonModal />} />
         </Routes>
       </AnimatePresence>
     </div>

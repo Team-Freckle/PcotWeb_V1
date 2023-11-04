@@ -24,7 +24,7 @@ const profileImages = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img
 
 export const Login = () => {
   const navigate = useNavigate();
-  const { onLoginChange, email, pw, onLoginSubmit } = useLogin();
+  const { onLoginChange, login, onLoginSubmit } = useLogin();
   const [pwIcon, setPwIcon] = useState(PwSee);
   const [selectedProfileImage, setSelectedProfileImage] = useState<string>("");
 
@@ -58,7 +58,7 @@ export const Login = () => {
               id="input-id"
               placeholder="Email"
               name="email"
-              value={email}
+              value={login.email}
               onChange={onLoginChange}
             ></S.Input>
             <S.InputLabel>
@@ -66,8 +66,8 @@ export const Login = () => {
                 id="input-pw"
                 type="password"
                 placeholder="Password"
-                name="password"
-                value={pw}
+                name="pw"
+                value={login.pw}
                 onChange={onLoginChange}
               ></S.Input>
               <S.InputButton src={pwIcon} onClick={onPwSee}></S.InputButton>

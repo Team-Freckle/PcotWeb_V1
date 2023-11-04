@@ -8,43 +8,40 @@ export const API_URL = process.env.REACT_APP_API;
 
 export const useLogin = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState<string>("");
-  const [pw, setPw] = useState<string>("");
+  const [login, setLogin] = useState({
+    email: "",
+    pw: "",
+  });
 
   const URL = `${API_URL}/v2/login.do`;
 
   const onLoginChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.name === "email") {
-      setEmail(e.target.value);
-    } else if (e.target.name === "password") {
-      setPw(e.target.value);
-    }
+    const { name, value } = e.target;
+    setLogin((prev) => ({ ...prev, [name]: value }));
   }, []);
 
-  const onLoginSubmit = useCallback(
-    async (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      if (email && pw) {
-        try {
-          const response = await axios.post(
-            URL,
-            {
-              email: email,
-              password: pw,
-            },
-            { withCredentials: true },
-          );
-          ToastSuccess("로그인에 성공하였습니다.");
-          navigate("/");
-          return response.data;
-        } catch (error) {
-          ToastError("로그인에 실패했습니다.");
-        }
-      } else {
-        ToastWarning("모든 항목을 입력해주세요");
+  const onLoginSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const { email, pw } = login;
+    if (email && pw) {
+      try {
+        const response = await axios.post(
+          URL,
+          {
+            email: email,
+            password: pw,
+          },
+          { withCredentials: true },
+        );
+        ToastSuccess("로그인에 성공하였습니다.");
+        navigate("/");
+        return response.data;
+      } catch (error) {
+        ToastError("로그인에 실패했습니다.");
       }
-    },
-    [email, pw, URL],
-  );
-  return { onLoginChange, email, pw, onLoginSubmit };
+    } else {
+      ToastWarning("모든 항목을 입력해주세요");
+    }
+  };
+  return { onLoginChange, login, onLoginSubmit };
 };

@@ -31,7 +31,7 @@ export const SetprofileImg = () => {
   const [OrgName, setOrgName] = useState<string>("");
   const [OrgComment, setOrgComment] = useState<string>("");
 
-  const { onOrganizationImgSubmit } = useChangeOrganizationImg();
+  const { onOrganizationImgSubmit, onOrganizationDefaltImg } = useChangeOrganizationImg();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -64,13 +64,7 @@ export const SetprofileImg = () => {
   };
 
   const onNotChangeSubmit = () => {
-    const randomIndex = Math.floor(Math.random() * imageFiles.length);
-    const randomImage = imageFiles[randomIndex];
-    setImg(randomImage);
-    const formData = new FormData();
-    formData.append("image", Img); // TODO : 서버가 해결한대요
-    formData.append("organization", "wqsdsfwaf");
-    onOrganizationImgSubmit(formData);
+    onOrganizationDefaltImg(OrgName);
   };
 
   return (
