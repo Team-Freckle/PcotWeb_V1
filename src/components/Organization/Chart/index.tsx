@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import OrgChart from "@balkangraph/orgchart.js";
 export const API_URL = process.env.REACT_APP_API;
 import axios from "axios";
+import "./chart.css";
 
 interface OrgData {
   name: string;
@@ -39,28 +40,35 @@ const MyOrgChart: React.FC = () => {
           pid: item.parent || item.floor.toString(),
         };
       });
-
+      OrgChart.templates.ana.field_0 =
+        '<text width="230" style="font-size: 18px;" fill="#ffffff" x="125" y="95" text-anchor="middle" class="field_0">{val}</text>';
+      OrgChart.templates.ana.editFormHeaderColor = "#316ae2";
       const chart = new OrgChart(chartRef.current, {
         mouseScrool: OrgChart.action.none,
         nodeBinding: {
           field_0: "name",
-          field_1: "title",
-          img_0: "img",
         },
+
+        align: OrgChart.ORIENTATION,
         tags: {
           assistant: {
             template: "ula",
           },
         },
-        // nodeMenu: {
-        //   details: { text: "Details" },
-        //   edit: { text: "Edit" },
-        //   add: { text: "Add" },
-        //   remove: { text: "Remove" },
-        //   assistant: { text: "Assistant" },
-        // },
+        toolbar: {
+          zoom: true,
+          fit: true,
+        },
         enableDragDrop: true,
         nodes: orgChartNodes,
+        editForm: {
+          buttons: {
+            edit: null,
+            share: null,
+            pdf: null,
+          },
+          generateElementsFromFields: true,
+        },
       });
     }
   }, [data]);
