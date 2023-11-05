@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Gitgraph, templateExtend, TemplateName, Orientation } from "@gitgraph/react";
 import { useGitgraph } from "../../hooks/useGitgraph";
-// import Modal from "react-modal";
+// import { storiesOf } from "@storybook/react";
 
 import * as S from "./style";
+import { PsdNodeModal } from "@components/GitGraph/PsdNodeModal";
 import Plus from "@assets/plus.svg";
 import Tree from "@assets/modal_img.png";
 
@@ -25,9 +26,23 @@ export const GitGraph = (props: any) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [timer, setTimer] = useState("00:00:00");
 
-  // useEffect(() => {
-  //   const name = props.name;
-
+  // const nodeClick = storiesOf("gitgraph-react/3. Events", module).add("on commit dot click", () => {
+  //   return React.createElement(
+  //     Gitgraph,
+  //     { options: { generateCommitHash: createFixedHashGenerator() } },
+  //     function (gitgraph) {
+  //       const onClick = action("click on dot");
+  //       const master = gitgraph.branch("master");
+  //       master.commit({
+  //         subject: "Hello",
+  //         onClick: onClick,
+  //       });
+  //       master.commit({
+  //         subject: "World",
+  //         onClick: onClick,
+  //       });
+  //     },
+  //   );
   // });
 
   const withoutAuthor = templateExtend(TemplateName.Metro, {
@@ -40,6 +55,21 @@ export const GitGraph = (props: any) => {
   });
 
   const initGraph = (gitgraph: any) => {
+    const master = gitgraph.branch("master");
+    master.commit({
+      subject: "Hello",
+      onClick: () => {
+        navigate("/PsdNodeModal");
+      },
+    });
+    master.commit({
+      subject: "World",
+      onClick: () => {
+        // <PsdNodeModal />;
+        navigate("/PsdNodeModal");
+      },
+    });
+
     const main = gitgraph.branch("main").commit("zero");
     const graph = gitgraph.branch("graph").commit("first");
     main.commit("second");
@@ -52,14 +82,6 @@ export const GitGraph = (props: any) => {
       console.log(mkNode);
     }
   };
-
-  // const node = () => {
-  //   if (mkNode == 1) {
-  //     console.log("gooooooooood");
-  //     setMkNode(0);
-  //     main.commit("ddddd");
-  //   }
-  // };
 
   const currentTimer = () => {
     const date = new Date();
@@ -121,7 +143,7 @@ export const GitGraph = (props: any) => {
         </div>
       </S.ModalContainer>
 
-      <S.GraphBox onClick={() => navigate("/Nodes/index.tsx")}>
+      <S.GraphBox>
         <Gitgraph options={{ template: withoutAuthor, orientation: Orientation.VerticalReverse }}>
           {(gitgraph) => {
             initGraph(gitgraph);
