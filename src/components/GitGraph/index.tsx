@@ -5,7 +5,7 @@ import { useGitgraph } from "../../hooks/useGitgraph";
 // import { storiesOf } from "@storybook/react";
 
 import * as S from "./style";
-import { PsdNodeModal } from "@components/GitGraph/PsdNodeModal";
+import PsdNodeModal from "@components/GitGraph/PsdNodeModal";
 import Plus from "@assets/plus.svg";
 import Tree from "@assets/modal_img.png";
 
@@ -28,7 +28,7 @@ export const GitGraph = (props: any) => {
   const [timer, setTimer] = useState("00:00:00");
 
   const psdNodeClick = () => {
-    setNodeModalOpen(!nodemodalOpen);
+    setNodeModalOpen((prev) => !prev);
   };
 
   // const nodeClick = storiesOf("gitgraph-react/3. Events", module).add("on commit dot click", () => {
@@ -64,7 +64,8 @@ export const GitGraph = (props: any) => {
     master.commit({
       subject: "Hello",
       onClick: () => {
-        psdNodeClick();
+        console.log(nodemodalOpen);
+        setNodeModalOpen((prev) => !prev);
         console.log("complete");
       },
     });
@@ -104,6 +105,7 @@ export const GitGraph = (props: any) => {
 
   return (
     <S.Container>
+      {nodemodalOpen && <PsdNodeModal active={nodemodalOpen} setActive={setNodeModalOpen} />}
       <S.ContributesText>Node Graph</S.ContributesText>
       <S.Button
         onClick={() => {
@@ -128,10 +130,10 @@ export const GitGraph = (props: any) => {
           <S.OptionNode disabled selected>
             노드선택하기
           </S.OptionNode>
-          <S.OptionNode>Main</S.OptionNode>
-          <S.OptionNode>B</S.OptionNode>
-          <S.OptionNode>C</S.OptionNode>
-          <S.OptionNode>D</S.OptionNode>
+          <S.OptionNode value="Main">Main</S.OptionNode>
+          <S.OptionNode value="B">B</S.OptionNode>
+          <S.OptionNode value="C">C</S.OptionNode>
+          <S.OptionNode value="D">D</S.OptionNode>
         </S.SelectNode>
 
         <div>
