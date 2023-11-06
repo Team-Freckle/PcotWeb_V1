@@ -24,7 +24,12 @@ export const GitGraph = (props: any) => {
   const navigate = useNavigate();
   const [mkNode, setMkNode] = useState(0);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [nodemodalOpen, setNodeModalOpen] = useState(false);
   const [timer, setTimer] = useState("00:00:00");
+
+  const psdNodeClick = () => {
+    setNodeModalOpen(!nodemodalOpen);
+  };
 
   // const nodeClick = storiesOf("gitgraph-react/3. Events", module).add("on commit dot click", () => {
   //   return React.createElement(
@@ -59,14 +64,15 @@ export const GitGraph = (props: any) => {
     master.commit({
       subject: "Hello",
       onClick: () => {
-        navigate("/PsdNodeModal");
+        psdNodeClick();
+        console.log("complete");
       },
     });
     master.commit({
       subject: "World",
       onClick: () => {
-        // <PsdNodeModal />;
-        navigate("/PsdNodeModal");
+        psdNodeClick();
+        console.log("complete");
       },
     });
 

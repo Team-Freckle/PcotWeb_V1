@@ -4,13 +4,13 @@ import * as S from "./style";
 
 import Chart from "@components/Organization/Chart";
 import Gitgraph from "@components/GitGraph";
-import { ProfileSideBar } from "@components/SideBar/SideBars/ProfileSideBar";
+import { OrganizationSideBar } from "@components/SideBar/SideBars/OrganizationSideBar";
 
 export const Workspace = () => {
   return (
     <div>
       <S.FloatBox>
-        <ProfileSideBar />
+        <OrganizationSideBar />
       </S.FloatBox>
       <Chart />
       <Gitgraph />
