@@ -9,6 +9,9 @@ import addMemberBtn from "@assets/addMemberBtn.png";
 
 export const OrganizationSideBar = (props: any) => {
   const navigate = useNavigate();
+
+  // const { Rank, setRank, Receiver, setReceiver } = userInvite();
+
   return (
     <div style={{ display: "flex", height: "100vh" }}>
       <Sidebar
