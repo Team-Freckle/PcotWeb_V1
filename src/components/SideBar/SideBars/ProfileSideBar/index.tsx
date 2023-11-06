@@ -97,11 +97,6 @@ export const ProfileSideBar = (props: any) => {
               </div>
             </Menu>
           </div>
-          <div
-            onClick={() => {
-              navigate("/profile");
-            }}
-          ></div>
         </div>
       </Sidebar>
     </div>
