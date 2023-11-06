@@ -55,6 +55,7 @@ export const ModalContainer = styled(Modal)`
   height: 650px;
   margin: 0 auto;
   padding: 10px;
+  background-color: #ffffff;
   box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
 
