@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Gitgraph, templateExtend, TemplateName, Orientation } from "@gitgraph/react";
-import { useGitgraph } from "../../hooks/useGitgraph";
+import { useGitgraph } from "@hooks/useGitgraph";
 
 import * as S from "./style";
 import PsdNodeModal from "@components/GitGraph/PsdNodeModal";
@@ -25,12 +25,9 @@ export const GitGraph = (props: any) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [nodemodalOpen, setNodeModalOpen] = useState(false);
   const [timer, setTimer] = useState("00:00:00");
+  const [data, setData] = useState<any>({});
 
   const { organization, workspace } = useParams();
-
-  useEffect(() => {
-    drawNodeTree(organization, workspace).then((res) => {});
-  }, []);
 
   const withoutAuthor = templateExtend(TemplateName.Metro, {
     commit: {
@@ -41,30 +38,51 @@ export const GitGraph = (props: any) => {
     },
   });
 
-  const initGraph = (gitgraph: any) => {
-    // const master = gitgraph.branch("master");
-    // master.commit({
-    //   subject: "Hello",
-    //   onClick: () => {
-    //     console.log(nodemodalOpen);
-    //     setNodeModalOpen((prev) => !prev);
-    //     console.log("complete");
-    //   },
+  useEffect(() => {
+    // 데이터를 가져오는 부분을 대체하십시오.
+    // drawNodeTree(organization, workspace).then((res) => {
+    //   setData(res.data.data);
     // });
-    // master.commit({
-    //   subject: "World",
-    //   onClick: () => {
-    //     console.log(nodemodalOpen);
-    //     setNodeModalOpen((prev) => !prev);
-    //     console.log("complete");
-    //   },
-    // });
-    // const main = gitgraph.branch("main").commit("zero");
-    // const graph = gitgraph.branch("graph").commit("first");
-    // main.commit("second");
-    // main.commit("third");
-    // graph.commit("four");
-    // console.log(mkNode);
+    const hardCodedData = {
+      data: {
+        name: "main",
+        comment: "Root Node",
+        child: [
+          {
+            name: "design",
+            comment: "디자인",
+            child: [
+              {
+                name: "color",
+                comment: "전반적으로 노란색이고 발과 배, 그리고 꼬리부분만 흰색털",
+                child: [],
+              },
+              {
+                name: "color-b",
+                comment: "주황색털에 부분부분 흰색 털",
+                child: [],
+              },
+            ],
+          },
+        ],
+      },
+      status: 200,
+    };
+
+    if (hardCodedData.data) {
+      setData(hardCodedData.data);
+    }
+  }, []);
+
+  const initGraph = (gitgraph: any, nodeData: any) => {
+    const createBranchAndCommits = (branch: any, nodeData: any) => {
+      const commit = branch.commit(nodeData.comment);
+      for (const childNode of nodeData.child) {
+        createBranchAndCommits(commit, childNode);
+      }
+    };
+
+    createBranchAndCommits(gitgraph.branch(data.name), data);
   };
 
   const currentTimer = () => {
@@ -131,7 +149,7 @@ export const GitGraph = (props: any) => {
       <S.GraphBox>
         <Gitgraph options={{ template: withoutAuthor, orientation: Orientation.VerticalReverse }}>
           {(gitgraph) => {
-            initGraph(gitgraph);
+            initGraph(gitgraph, data);
           }}
           {/* {initGraph.bind(this)} */}
         </Gitgraph>
