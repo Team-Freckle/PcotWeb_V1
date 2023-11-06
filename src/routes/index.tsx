@@ -38,11 +38,11 @@ export const Router = () => {
           <Route path="/organization/create/profile" element={<SetprofileImg />} />
 
           {/* <Route path="workspace" /> */}
+          <Route path="/compare" element={<PsdComparisonModal />} />
           <Route path="/node" element={<PsdNodeModal />} />
-          <Route path="/workspace/:name" element={<Workspace />} />
+          <Route path="workspace/:organization/:workspace" element={<Workspace />} />
           <Route path="/workspace/create/:name" element={<MakeWorkSpace />} />
           <Route path="/test" element={<OrganizationList />} />
-          <Route path="/test2" element={<OrganizationSodeBar />} />
         </Routes>
       </AnimatePresence>
     </div>
