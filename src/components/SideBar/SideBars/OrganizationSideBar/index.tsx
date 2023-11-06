@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import * as S from "./style";
 import addMemberBtn from "@assets/addMemberBtn.png";
 
-export const OrganizationSodeBar = (props: any) => {
+export const OrganizationSideBar = (props: any) => {
   const navigate = useNavigate();
   return (
     <div style={{ display: "flex", height: "100vh" }}>
