@@ -30,7 +30,7 @@ export const useGitgraph = () => {
           comment: Comment,
           // parent: ParentName,
         },
-        // { withCredentials: true },
+        { withCredentials: true },
       );
 
       ToastSuccess("노드 생성에 성공하였습니다.");
@@ -49,19 +49,12 @@ export const useGitgraph = () => {
       });
       return response.data;
     } catch {
-      ToastError("응 에러야");
+      ToastError("에러");
     }
   };
 
   return {
     onNodeChange,
-    Name,
-    Comment,
-    ParentName,
-    setName,
-    setComment,
-    setParentName,
-    onNodeSubmit,
     drawNodeTree,
   };
 };

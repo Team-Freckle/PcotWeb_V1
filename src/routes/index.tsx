@@ -1,5 +1,7 @@
 import React from "react";
 
+import { useState } from "react";
+
 import { Route, Routes } from "react-router-dom";
 import { Login } from "@components/Auth/Login";
 import { Signin } from "@components/Auth/Signin";
@@ -19,6 +21,7 @@ import { Workspace } from "@pages/Workspace";
 import PsdNodeModal from "@components/GitGraph/PsdNodeModal";
 
 export const Router = () => {
+  const [nodemodalOpen, setNodeModalOpen] = useState(true);
   return (
     <div>
       <AnimatePresence>
@@ -39,7 +42,10 @@ export const Router = () => {
 
           {/* <Route path="workspace" /> */}
           <Route path="/compare" element={<PsdComparisonModal />} />
-          {/* <Route path="/node" element={<PsdNodeModal />} /> */}
+          <Route
+            path="/node"
+            element={<PsdNodeModal active={nodemodalOpen} setActive={setNodeModalOpen} />}
+          />
           <Route path="/workspace/:organization/:workspace" element={<Workspace />} />
           <Route path="/workspace/create/:name" element={<MakeWorkSpace />} />
           <Route path="/test" element={<OrganizationList />} />

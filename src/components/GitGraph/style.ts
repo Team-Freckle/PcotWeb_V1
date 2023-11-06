@@ -163,28 +163,38 @@ export const OptionNode = styled.option`
   font-size: 14px;
 `;
 
-// const customModalStyles: ReactModal.Styles = {
-//   overlay: {
-//     backgroundColor: " rgba(0, 0, 0, 0.4)",
-//     width: "100%",
-//     height: "100vh",
-//     zIndex: 10,
-//     position: "fixed",
-//     top: 0,
-//     left: 0,
-//   },
-//   content: {
-//     width: "360px",
-//     height: "180px",
-//     zIndex: 150,
-//     position: "absolute",
-//     top: "50%",
-//     left: "50%",
-//     transform: "translate(-50%, -50%)",
-//     borderRadius: "10px",
-//     boxShadow: "2px 2px 2px rgba(0, 0, 0, 0.25)",
-//     backgroundColor: "white",
-//     justifyContent: "center",
-//     overflow: "auto",
-//   },
-// };
+export const NodeContainer = styled.div`
+  width: 100%;
+  height: 30%;
+`;
+
+export const NodeBox = styled.div`
+  margin: 0;
+  padding-top: 5px;
+`;
+
+export const NodeTextName = styled.p`
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  align-self: center;
+  text-align: left;
+  margin-top: 10px;
+  margin-left: 35px;
+  margin-bottom: 0;
+`;
+
+export const NodeTextComment = styled.p`
+  color: #7a7a7a;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  align-self: center;
+  text-align: left;
+  margin-top: 2px;
+  margin-left: 35px;
+`;

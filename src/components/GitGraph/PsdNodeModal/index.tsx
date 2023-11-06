@@ -1,5 +1,7 @@
 import { PopupModal } from "@components/Modal";
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useNodeInfo } from "@hooks/useNodeInfo";
 
 import X from "@assets/X.png";
 
@@ -12,6 +14,25 @@ const PsdNodeModal = ({
   active: boolean;
   setActive?: Dispatch<SetStateAction<boolean>>;
 }) => {
+  const { NodePsdInfoGet, LayerPsdInfoGet } = useNodeInfo();
+  const { organization, workspace, psdname, psdimg } = useParams();
+  const [data, setData] = useState<any>({});
+
+  useEffect(() => {
+    NodePsdInfoGet(organization, workspace, psdname, psdimg).then((res) => {
+      setData(res);
+      console.log(res.data.name);
+      <div>
+        <S.Img src="https://via.placeholder.com/300" alt="testimg" />
+        <S.ModalTitle>{res.name}</S.ModalTitle>
+        <S.ModalInfoText>{res.size}</S.ModalInfoText>
+        <S.ModalPsdComment>{res.comment}</S.ModalPsdComment>
+        <S.ModalInfoText>{res.uploadUserName}</S.ModalInfoText>
+        <S.ModalInfoText>{res.uploadTime}</S.ModalInfoText>
+      </div>;
+    });
+  }, []);
+
   return (
     <div>
       <PopupModal active={active} setActive={setActive}>
@@ -21,10 +42,13 @@ const PsdNodeModal = ({
             <div>
               <S.Img src="https://via.placeholder.com/300" alt="testimg" />
               <S.ModalTitle>노드 이름</S.ModalTitle>
+              <S.ModalInfoText>808682</S.ModalInfoText>
               <S.ModalPsdComment>
                 워크스페이스 코멘트임. 워크스페이스 코멘트 주르르루루루루루루ㅜ루루ㅜㄺ일 예정.
                 워크스페이스 코멘트
               </S.ModalPsdComment>
+              <S.ModalInfoText>test@test.er</S.ModalInfoText>
+              <S.ModalInfoText>2023-11-01 [10:35]</S.ModalInfoText>
             </div>
           </S.Layout>
           <S.LayerLayout>
