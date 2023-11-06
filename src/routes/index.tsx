@@ -13,6 +13,7 @@ import { WorkspaceList } from "@components/WorkspaceList";
 import OrganizationChart from "@components/Organization/Chart";
 import Test from "@components/Organization/test";
 import NewsItem from "@components/Organization/test";
+import Alarm from "@components/Alarm";
 
 export const Router = () => {
   return (
@@ -29,7 +30,7 @@ export const Router = () => {
         <Route path="/work" element={<MakeOrganization />} />
         <Route path="/list" element={<WorkspaceList />} />
         <Route path="/chart" element={<OrganizationChart />} />
-        <Route path="/newtest" element={<NewsItem />} />
+        <Route path="/testa" element={<Alarm />} />
       </Routes>
     </div>
   );

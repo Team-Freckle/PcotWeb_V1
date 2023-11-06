@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import OrgChart from "@balkangraph/orgchart.js";
-export const API_URL = process.env.REACT_APP_API;
 import axios from "axios";
 import "./chart.css";
 
@@ -10,23 +9,13 @@ interface OrgData {
   parent: string | null;
 }
 
+export const API_URL = process.env.REACT_APP_API;
+
 const MyOrgChart: React.FC = () => {
   const chartRef = useRef<HTMLDivElement | null>(null);
   const [data, setData] = useState<OrgData[]>([]);
 
-  const POST_URL = `${API_URL}/v2/cloud/organization/rank/edit/group-tester-org`;
-
-  const postDataIfChanged = async (newData: OrgData[]) => {
-    if (JSON.stringify(data) !== JSON.stringify(newData)) {
-      try {
-        const response = await axios.patch(POST_URL, { data: newData }, { withCredentials: true });
-        console.log("데이터 업데이트 완료:", response.data);
-        setData(newData);
-      } catch (error) {
-        console.error("데이터 업데이트 중 오류 발생:", error);
-      }
-    }
-  };
+  const PATCH_URL = `${API_URL}/v2/cloud/organization/rank/edit/group-tester-org`;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,13 +38,40 @@ const MyOrgChart: React.FC = () => {
     if (chartRef.current) {
       const orgChartNodes = data.map((item) => {
         return {
+          id: item.name,
           name: item.name,
-          floor: item.floor,
-          parent: item.parent,
+          pid: item.parent || item.floor.toString(),
         };
       });
-
-      postDataIfChanged(orgChartNodes);
+      OrgChart.templates.ana.field_0 =
+        '<text width="230" style="font-size: 18px;" fill="#ffffff" x="125" y="95" text-anchor="middle" class="field_0">{val}</text>';
+      OrgChart.templates.ana.editFormHeaderColor = "#316ae2";
+      const chart = new OrgChart(chartRef.current, {
+        mouseScrool: OrgChart.action.none,
+        nodeBinding: {
+          field_0: "name",
+        },
+        align: OrgChart.ORIENTATION,
+        tags: {
+          assistant: {
+            template: "ula",
+          },
+        },
+        toolbar: {
+          zoom: true,
+          fit: true,
+        },
+        enableDragDrop: true,
+        nodes: orgChartNodes,
+        editForm: {
+          buttons: {
+            edit: null,
+            share: null,
+            pdf: null,
+          },
+          generateElementsFromFields: true,
+        },
+      });
     }
   }, [data]);
 
