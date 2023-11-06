@@ -40,7 +40,7 @@ export const Router = () => {
           {/* <Route path="workspace" /> */}
           <Route path="/compare" element={<PsdComparisonModal />} />
           {/* <Route path="/node" element={<PsdNodeModal />} /> */}
-          <Route path="/:organization/:workspace" element={<Workspace />} />
+          <Route path="/workspace/:organization/:workspace" element={<Workspace />} />
           <Route path="/workspace/create/:name" element={<MakeWorkSpace />} />
           <Route path="/test" element={<OrganizationList />} />
         </Routes>

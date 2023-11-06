@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useCallback, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { Gitgraph, templateExtend, TemplateName, Orientation } from "@gitgraph/react";
 import { useGitgraph } from "../../hooks/useGitgraph";
-// import { storiesOf } from "@storybook/react";
 
 import * as S from "./style";
 import PsdNodeModal from "@components/GitGraph/PsdNodeModal";
@@ -19,36 +18,19 @@ export const GitGraph = (props: any) => {
     setComment,
     setParentName,
     onNodeSubmit,
+    drawNodeTree,
   } = useGitgraph();
 
-  const navigate = useNavigate();
   const [mkNode, setMkNode] = useState(0);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [nodemodalOpen, setNodeModalOpen] = useState(false);
   const [timer, setTimer] = useState("00:00:00");
 
-  const psdNodeClick = () => {
-    setNodeModalOpen((prev) => !prev);
-  };
+  const { organization, workspace } = useParams();
 
-  // const nodeClick = storiesOf("gitgraph-react/3. Events", module).add("on commit dot click", () => {
-  //   return React.createElement(
-  //     Gitgraph,
-  //     { options: { generateCommitHash: createFixedHashGenerator() } },
-  //     function (gitgraph) {
-  //       const onClick = action("click on dot");
-  //       const master = gitgraph.branch("master");
-  //       master.commit({
-  //         subject: "Hello",
-  //         onClick: onClick,
-  //       });
-  //       master.commit({
-  //         subject: "World",
-  //         onClick: onClick,
-  //       });
-  //     },
-  //   );
-  // });
+  useEffect(() => {
+    drawNodeTree(organization, workspace).then((res) => {});
+  }, []);
 
   const withoutAuthor = templateExtend(TemplateName.Metro, {
     commit: {
@@ -60,34 +42,29 @@ export const GitGraph = (props: any) => {
   });
 
   const initGraph = (gitgraph: any) => {
-    const master = gitgraph.branch("master");
-    master.commit({
-      subject: "Hello",
-      onClick: () => {
-        console.log(nodemodalOpen);
-        setNodeModalOpen((prev) => !prev);
-        console.log("complete");
-      },
-    });
-    master.commit({
-      subject: "World",
-      onClick: () => {
-        psdNodeClick();
-        console.log("complete");
-      },
-    });
-
-    const main = gitgraph.branch("main").commit("zero");
-    const graph = gitgraph.branch("graph").commit("first");
-    main.commit("second");
-    main.commit("third");
-    graph.commit("four");
-    console.log(mkNode);
-    if (mkNode == 1) {
-      main.commit("ddddd");
-      setMkNode(0);
-      console.log(mkNode);
-    }
+    // const master = gitgraph.branch("master");
+    // master.commit({
+    //   subject: "Hello",
+    //   onClick: () => {
+    //     console.log(nodemodalOpen);
+    //     setNodeModalOpen((prev) => !prev);
+    //     console.log("complete");
+    //   },
+    // });
+    // master.commit({
+    //   subject: "World",
+    //   onClick: () => {
+    //     console.log(nodemodalOpen);
+    //     setNodeModalOpen((prev) => !prev);
+    //     console.log("complete");
+    //   },
+    // });
+    // const main = gitgraph.branch("main").commit("zero");
+    // const graph = gitgraph.branch("graph").commit("first");
+    // main.commit("second");
+    // main.commit("third");
+    // graph.commit("four");
+    // console.log(mkNode);
   };
 
   const currentTimer = () => {

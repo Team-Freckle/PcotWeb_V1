@@ -41,6 +41,18 @@ export const useGitgraph = () => {
     }
   };
 
+  const drawNodeTree = async (OrgName: any, WokName: any) => {
+    const getUrl = `${API_URL}/v2/search/node/get/${OrgName}/${WokName}`;
+    try {
+      const response = await axios.get(getUrl, {
+        withCredentials: true,
+      });
+      return response.data;
+    } catch {
+      ToastError("응 에러야");
+    }
+  };
+
   return {
     onNodeChange,
     Name,
@@ -50,5 +62,6 @@ export const useGitgraph = () => {
     setComment,
     setParentName,
     onNodeSubmit,
+    drawNodeTree,
   };
 };
