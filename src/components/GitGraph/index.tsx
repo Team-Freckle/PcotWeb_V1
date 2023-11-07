@@ -16,7 +16,9 @@ export const GitGraph = () => {
   const [nodemodalOpen, setNodeModalOpen] = useState(false);
   const [timer, setTimer] = useState("00:00:00");
   const [data, setData] = useState([]);
-  function renderTree(node: any) {
+
+  const renderTree = (node: any) => {
+    console.log("asd");
     return (
       <S.NodeBox key={node.name}>
         <S.NodeTextName
@@ -33,7 +35,7 @@ export const GitGraph = () => {
         {node.child.map((childNode: any) => renderTree(childNode))}
       </S.NodeBox>
     );
-  }
+  };
 
   useEffect(() => {
     drawNodeTree(organization, workspace).then((res) => {

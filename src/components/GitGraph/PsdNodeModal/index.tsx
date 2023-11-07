@@ -16,16 +16,31 @@ const PsdNodeModal = ({
 }) => {
   const { NodePsdInfoGet, LayerPsdInfoGet } = useNodeInfo();
   const { organization, workspace, psdname, psdimg } = useParams();
-  const [data, setData] = useState<any>({});
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     NodePsdInfoGet(organization, workspace, psdname, psdimg).then((res) => {
       setData(res);
-      console.log(res.data.name);
+      console.log(res);
       <div>
         <S.Img src="https://via.placeholder.com/300" alt="testimg" />
         <S.ModalTitle>{res.name}</S.ModalTitle>
         <S.ModalInfoText>{res.size}</S.ModalInfoText>
+        <S.ModalPsdComment>{res.comment}</S.ModalPsdComment>
+        <S.ModalInfoText>{res.uploadUserName}</S.ModalInfoText>
+        <S.ModalInfoText>{res.uploadTime}</S.ModalInfoText>
+      </div>;
+    });
+  }, []);
+
+  useEffect(() => {
+    LayerPsdInfoGet(organization, workspace, psdname, psdimg).then((res) => {
+      setData(res);
+      console.log(res);
+      <div>
+        <S.Img src="https://via.placeholder.com/300" alt="testimg" />
+        <S.ModalTitle>{res.width}</S.ModalTitle>
+        <S.ModalInfoText>{res.height}</S.ModalInfoText>
         <S.ModalPsdComment>{res.comment}</S.ModalPsdComment>
         <S.ModalInfoText>{res.uploadUserName}</S.ModalInfoText>
         <S.ModalInfoText>{res.uploadTime}</S.ModalInfoText>
