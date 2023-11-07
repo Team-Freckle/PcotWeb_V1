@@ -28,7 +28,7 @@ export const useGitgraph = () => {
         {
           name: Name,
           comment: Comment,
-          // parent: ParentName,
+          parent: ParentName,
         },
         { withCredentials: true },
       );
@@ -56,5 +56,6 @@ export const useGitgraph = () => {
   return {
     onNodeChange,
     drawNodeTree,
+    onNodeSubmit,
   };
 };

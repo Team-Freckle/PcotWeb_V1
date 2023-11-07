@@ -6,6 +6,7 @@ import * as S from "./style";
 import PsdNodeModal from "@components/GitGraph/PsdNodeModal";
 import Plus from "@assets/plus.svg";
 import Tree from "@assets/modal_img.png";
+import Wrapper from "@components/Wrapper";
 
 export const GitGraph = () => {
   const { onNodeChange, drawNodeTree } = useGitgraph();
@@ -40,6 +41,7 @@ export const GitGraph = () => {
   useEffect(() => {
     drawNodeTree(organization, workspace).then((res) => {
       setData(res.data);
+      console.log(data);
 
       const rootNode = res.data;
       const tree = renderTree(rootNode);
@@ -62,52 +64,54 @@ export const GitGraph = () => {
   startTimer();
 
   return (
-    <S.Container>
-      {nodemodalOpen && <PsdNodeModal active={nodemodalOpen} setActive={setNodeModalOpen} />}
-      <S.ContributesText>Node Graph</S.ContributesText>
-      {NodeList}
-      <S.Button
-        onClick={() => {
-          setModalIsOpen(true);
-        }}
-      >
-        <img src={Plus} alt="Plus" />
-      </S.Button>
+    <Wrapper>
+      <S.Container>
+        {nodemodalOpen && <PsdNodeModal active={nodemodalOpen} setActive={setNodeModalOpen} />}
+        <S.ContributesText>Node Graph</S.ContributesText>
+        {NodeList}
+        <S.Button
+          onClick={() => {
+            setModalIsOpen(true);
+          }}
+        >
+          <img src={Plus} alt="Plus" />
+        </S.Button>
 
-      <S.ModalContainer isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-        <img src={Tree} alt="Tree" />
-        <S.ModalTime> {timer} </S.ModalTime>
+        <S.ModalContainer isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+          <img src={Tree} alt="Tree" />
+          <S.ModalTime> {timer} </S.ModalTime>
 
-        <S.ModalText>Node Name</S.ModalText>
-        <S.ModalName name="name" onChange={onNodeChange} />
+          <S.ModalText>Node Name</S.ModalText>
+          <S.ModalName name="name" onChange={onNodeChange} />
 
-        <S.ModalText>Node Comment</S.ModalText>
-        <S.ModalComment name="new node" onChange={onNodeChange} />
+          <S.ModalText>Node Comment</S.ModalText>
+          <S.ModalComment name="new node" onChange={onNodeChange} />
 
-        <S.ModalText>Select Node</S.ModalText>
-        <S.SelectNode>
-          <S.OptionNode disabled selected>
-            노드선택하기
-          </S.OptionNode>
-          <S.OptionNode value="Main">Main</S.OptionNode>
-          <S.OptionNode value="B">B</S.OptionNode>
-          <S.OptionNode value="C">C</S.OptionNode>
-          <S.OptionNode value="D">D</S.OptionNode>
-        </S.SelectNode>
+          <S.ModalText>Select Node</S.ModalText>
+          <S.SelectNode>
+            <S.OptionNode disabled selected>
+              노드선택하기
+            </S.OptionNode>
+            <S.OptionNode value="Main">Main</S.OptionNode>
+            <S.OptionNode value="B">B</S.OptionNode>
+            <S.OptionNode value="C">C</S.OptionNode>
+            <S.OptionNode value="D">D</S.OptionNode>
+          </S.SelectNode>
 
-        <div>
-          <S.ModalButton
-            onClick={() => {
-              setModalIsOpen(false);
-            }}
-          >
-            Make node
-          </S.ModalButton>
-        </div>
-      </S.ModalContainer>
+          <div>
+            <S.ModalButton
+              onClick={() => {
+                setModalIsOpen(false);
+              }}
+            >
+              Make node
+            </S.ModalButton>
+          </div>
+        </S.ModalContainer>
 
-      <S.NodeContainer>{NodeList ? NodeList : <div>Loading</div>}</S.NodeContainer>
-    </S.Container>
+        <S.NodeContainer>{NodeList ? NodeList : <div>Loading</div>}</S.NodeContainer>
+      </S.Container>
+    </Wrapper>
   );
 };
 

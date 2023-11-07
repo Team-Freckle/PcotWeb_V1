@@ -15,8 +15,6 @@ const MyOrgChart: React.FC = () => {
   const chartRef = useRef<HTMLDivElement | null>(null);
   const [data, setData] = useState<OrgData[]>([]);
 
-  const PATCH_URL = `${API_URL}/v2/cloud/organization/rank/edit/group-tester-org`;
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -46,7 +44,7 @@ const MyOrgChart: React.FC = () => {
       OrgChart.templates.ana.field_0 =
         '<text width="230" style="font-size: 18px;" fill="#ffffff" x="125" y="95" text-anchor="middle" class="field_0">{val}</text>';
       OrgChart.templates.ana.editFormHeaderColor = "#316ae2";
-      const chart = new OrgChart(chartRef.current, {
+      new OrgChart(chartRef.current, {
         mouseScrool: OrgChart.action.none,
         nodeBinding: {
           field_0: "name",
