@@ -24,6 +24,7 @@ const PsdNodeModal = ({
   useEffect(() => {
     PsdImgGet(organization, workspace, psdname, psdimg).then((res) => {
       setData(res);
+      console.log(data);
 
       const psd = res.data;
       const psdInfo = renderPsdImg(psd);

@@ -16,7 +16,13 @@ export const OrganizationWorkspaceList = (props: any) => {
       .then((res) => {
         setWorkspaceList(
           res.map((list: any) => (
-            <S.WorkspaceItem key={list.createTime}>
+            <S.WorkspaceItem
+              key={list.createTime}
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                navigate(`/workspace/${list.organizationName}/${list.name}`);
+              }}
+            >
               <S.WorkspaceImg
                 src={`${API_URL}/v2/search/workspace/image?organization=${list.organizationName}&workspace=${list.name}`}
               />

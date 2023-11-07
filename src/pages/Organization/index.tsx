@@ -1,4 +1,5 @@
 import { OrganizationWorkspaceList } from "@components/WorkspaceList/OrganizationWorkspaceList";
+import Wrapper from "@components/Wrapper";
 import React from "react";
 import { useParams } from "react-router-dom";
 
@@ -7,7 +8,9 @@ export const Organization = () => {
 
   return (
     <div style={{ backgroundColor: "#F2F2F2", height: "100vh" }}>
-      <OrganizationWorkspaceList name={name} />
+      <Wrapper>
+        <OrganizationWorkspaceList name={name} />
+      </Wrapper>
     </div>
   );
 };
