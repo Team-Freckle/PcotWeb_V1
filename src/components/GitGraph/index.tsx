@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { useGitgraph } from "@hooks/useGitgraph";
 
 import * as S from "./style";
@@ -11,11 +11,11 @@ export const GitGraph = () => {
   const { onNodeChange, drawNodeTree } = useGitgraph();
   const { organization, workspace } = useParams();
   const [NodeList, setNodeList] = useState<any>([]);
-  const [mkNode, setMkNode] = useState(0);
+  const [data, setData] = useState([]);
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [nodemodalOpen, setNodeModalOpen] = useState(false);
   const [timer, setTimer] = useState("00:00:00");
-  const [data, setData] = useState([]);
 
   const renderTree = (node: any) => {
     console.log("asd");
@@ -99,8 +99,6 @@ export const GitGraph = () => {
           <S.ModalButton
             onClick={() => {
               setModalIsOpen(false);
-              // node();
-              setMkNode(1);
             }}
           >
             Make node
