@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import OrgChart from "@balkangraph/orgchart.js";
-export const API_URL = process.env.REACT_APP_API;
 import axios from "axios";
 import "./chart.css";
 
@@ -10,9 +9,13 @@ interface OrgData {
   parent: string | null;
 }
 
+export const API_URL = process.env.REACT_APP_API;
+
 const MyOrgChart: React.FC = () => {
   const chartRef = useRef<HTMLDivElement | null>(null);
   const [data, setData] = useState<OrgData[]>([]);
+
+  const PATCH_URL = `${API_URL}/v2/cloud/organization/rank/edit/group-tester-org`;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,7 +51,6 @@ const MyOrgChart: React.FC = () => {
         nodeBinding: {
           field_0: "name",
         },
-
         align: OrgChart.ORIENTATION,
         tags: {
           assistant: {
