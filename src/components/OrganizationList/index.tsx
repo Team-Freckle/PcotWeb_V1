@@ -1,80 +1,42 @@
 import { useOrganizationList } from "@hooks/useOrganizationList";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import * as S from "./style";
 
 export const OrganizationList = () => {
+  const { query } = useParams();
   const navigate = useNavigate();
-  const { onRecentsListGet } = useOrganizationList();
+  const { onSearchListGet } = useOrganizationList();
   const [organizationList, setOrganizationList] = useState<Array<any>>([]);
-  // useEffect(() => {
-  //   onRecentsListGet()
-  //     .then((res) => {
-  //       setOrganizationList(
-  //         res.map((list: any) => (
-  //           <div
-  //             onClick={() => navigate(`/organization/${list.name}`)}
-  //             key={list.idx}
-  //             style={{ textDecoration: "none" }}
-  //           ></div>
-  //         )),
-  //       );
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
+  useEffect(() => {
+    onSearchListGet(query, 1)
+      .then((res) => {
+        const orgList = res.map((list: any) => (
+          <div
+            onClick={() => navigate(`/organization/${list.name}`)}
+            key={list.idx}
+            style={{ textDecoration: "none" }}
+          >
+            <S.Box>
+              <S.img src={`https://via.placeholder.com/300`} />
+              <S.TextBox>
+                <S.TitleBox>{list.name}</S.TitleBox>
+                <S.DescriptionBox>{list.comment}</S.DescriptionBox>
+              </S.TextBox>
+            </S.Box>
+          </div>
+        ));
+        setOrganizationList(orgList);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div>
-      <S.Container>
-        <S.Box>
-          <S.img src={`https://via.placeholder.com/300`} />
-          <S.TextBox>
-            <S.TitleBox>asdasdsa</S.TitleBox>
-            <S.DescriptionBox>
-              ㅇㄴ로ㅠㄴㄹ늉리ㅓㅇ뉴ㅓㅗㄹ유너로ㅠㅇ너륭뉼나러오뉴란어ㅠ라널
-            </S.DescriptionBox>
-          </S.TextBox>
-        </S.Box>
-        <S.Box>
-          <S.img src={`https://via.placeholder.com/300`} />
-          <S.TextBox>
-            <S.TitleBox>asdasdsa</S.TitleBox>
-            <S.DescriptionBox>
-              ㅇㄴ로ㅠㄴㄹ늉리ㅓㅇ뉴ㅓㅗㄹ유너로ㅠㅇ너륭뉼나러오뉴란어ㅠ라널
-            </S.DescriptionBox>
-          </S.TextBox>
-        </S.Box>
-        <S.Box>
-          <S.img src={`https://via.placeholder.com/300`} />
-          <S.TextBox>
-            <S.TitleBox>asdasdsa</S.TitleBox>
-            <S.DescriptionBox>
-              ㅇㄴ로ㅠㄴㄹ늉리ㅓㅇ뉴ㅓㅗㄹ유너로ㅠㅇ너륭뉼나러오뉴란어ㅠ라널
-            </S.DescriptionBox>
-          </S.TextBox>
-        </S.Box>
-        <S.Box>
-          <S.img src={`https://via.placeholder.com/300`} />
-          <S.TextBox>
-            <S.TitleBox>asdasdsa</S.TitleBox>
-            <S.DescriptionBox>
-              ㅇㄴ로ㅠㄴㄹ늉리ㅓㅇ뉴ㅓㅗㄹ유너로ㅠㅇ너륭뉼나러오뉴란어ㅠ라널
-            </S.DescriptionBox>
-          </S.TextBox>
-        </S.Box>
-        <S.Box>
-          <S.img src={`https://via.placeholder.com/300`} />
-          <S.TextBox>
-            <S.TitleBox>asdasdsa</S.TitleBox>
-            <S.DescriptionBox>
-              ㅇㄴ로ㅠㄴㄹ늉리ㅓㅇ뉴ㅓㅗㄹ유너로ㅠㅇ너륭뉼나러오뉴란어ㅠ라널
-            </S.DescriptionBox>
-          </S.TextBox>
-        </S.Box>
-      </S.Container>
+      <S.Container>{organizationList}</S.Container>
     </div>
   );
 };

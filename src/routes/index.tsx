@@ -47,7 +47,7 @@ export const Router = () => {
           />
           <Route path="/workspace/:organization/:workspace" element={<Workspace />} />
           <Route path="/workspace/create/:name" element={<MakeWorkSpace />} />
-          <Route path="/test" element={<OrganizationList />} />
+          <Route path="/test/:query" element={<OrganizationList />} />
         </Routes>
       </AnimatePresence>
     </div>
