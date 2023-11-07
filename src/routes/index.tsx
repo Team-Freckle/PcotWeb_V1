@@ -36,6 +36,7 @@ export const Router = () => {
 
           {/* <Route path="/organization" element={<OrganizationList />} /> */}
           <Route path="/organization/:name" element={<Organization />} />
+          <Route path="/organization/list/:query" element={<OrganizationList />} />
           <Route path="/organization/create" element={<MakeOrganization />} />
           <Route path="/organization/create/profile" element={<SetprofileImg />} />
 
@@ -47,7 +48,6 @@ export const Router = () => {
           />
           <Route path="/workspace/:organization/:workspace" element={<Workspace />} />
           <Route path="/workspace/create/:name" element={<MakeWorkSpace />} />
-          <Route path="/test/:query" element={<OrganizationList />} />
         </Routes>
       </AnimatePresence>
     </div>

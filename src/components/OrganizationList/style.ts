@@ -45,3 +45,24 @@ export const DescriptionBox = styled.div`
   font-weight: 400;
   line-height: normal;
 `;
+
+export const header = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const pageName = styled.div`
+  font-family: Pretendard;
+  font-size: 30px;
+  margin-top: 50px;
+  margin-left: 100px;
+`;
+
+export const createOrganization = styled.div`
+  font-family: Pretendard;
+  font-size: 15px;
+  color: blue;
+  margin-top: 50px;
+  margin-right: 100px;
+  cursor: pointer;
+`;

@@ -36,6 +36,16 @@ export const OrganizationList = () => {
 
   return (
     <div>
+      <S.header>
+        <S.pageName>Organization</S.pageName>
+        <S.createOrganization
+          onClick={() => {
+            navigate("/organization/create");
+          }}
+        >
+          + add Organization
+        </S.createOrganization>
+      </S.header>
       <S.Container>{organizationList}</S.Container>
     </div>
   );

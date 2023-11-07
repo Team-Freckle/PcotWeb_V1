@@ -12,7 +12,6 @@ import { MainSideBar } from "@components/SideBar/SideBars/MainSideBar";
 import Alarm from "@components/Alarm";
 import Wrapper from "@components/Wrapper";
 import Hambuger from "@assets/Hambuger.svg";
-import { animate } from "framer-motion";
 
 export const API_URL = process.env.REACT_APP_API;
 
@@ -40,8 +39,14 @@ export const Home = () => {
     setQuery(e.target.value);
   };
 
+  const handleOnQueryKeyPress = (e: any) => {
+    if (e.key == "Enter") {
+      handleSerch();
+    }
+  };
+
   const handleSerch = () => {
-    navigate(`/test/${query}`);
+    navigate(`/organization/list/${query}`);
   };
 
   return (
@@ -71,6 +76,7 @@ export const Home = () => {
               <S.SerchInput
                 placeholder="검색어를 입력해주세요."
                 onChange={handleSerchChange}
+                onKeyPress={handleOnQueryKeyPress}
                 value={query}
               />
               <S.InputButton src={Serch} onClick={handleSerch} />
