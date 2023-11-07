@@ -40,7 +40,7 @@ export const Router = () => {
           <Route path="/organization/create/profile" element={<SetprofileImg />} />
 
           {/* <Route path="workspace" /> */}
-          <Route path="/compare" element={<PsdComparisonModal />} />
+          {/* <Route path="/compare" element={<PsdComparisonModal />} /> */}
           <Route
             path="/node"
             element={<PsdNodeModal active={nodemodalOpen} setActive={setNodeModalOpen} />}

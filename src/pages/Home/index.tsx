@@ -8,8 +8,10 @@ import Serch from "@assets/search.svg";
 import Banner from "@assets/banner.svg";
 import { WorkspaceList } from "@components/WorkspaceList/MainWorkspaceList";
 import { useGetProfile } from "@hooks/useGetProfile";
-import { SideBar } from "@components/SideBar";
+import { MainSideBar } from "@components/SideBar/SideBars/MainSideBar";
 import Alarm from "@components/Alarm";
+import Wrapper from "@components/Wrapper";
+import Hambuger from "@assets/Hambuger.svg";
 
 export const API_URL = process.env.REACT_APP_API;
 
@@ -54,13 +56,13 @@ export const Home = () => {
           </S.ProfileBox>
           <S.Hambuger src={Hambuger} onClick={() => setToggle(!toggle)} />
 
-        <S.InputBox>
-          <S.InputLabel>
-            <S.SerchInput placeholder="검색어를 입력해주세요." />
-            <S.InputButton src={Serch} />
-          </S.InputLabel>
-        </S.InputBox>
-        <Alarm />
+          <S.InputBox>
+            <S.InputLabel>
+              <S.SerchInput placeholder="검색어를 입력해주세요." />
+              <S.InputButton src={Serch} />
+            </S.InputLabel>
+          </S.InputBox>
+          <Alarm />
 
           <S.Banner src={Banner}></S.Banner>
 
