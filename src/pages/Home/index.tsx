@@ -9,6 +9,7 @@ import Banner from "@assets/banner.svg";
 import { WorkspaceList } from "@components/WorkspaceList";
 import { useGetProfile } from "@hooks/useGetProfile";
 import { SideBar } from "@components/SideBar";
+import Alarm from "@components/Alarm";
 
 export const API_URL = process.env.REACT_APP_API;
 
@@ -56,6 +57,7 @@ export const Home = () => {
             <S.InputButton src={Serch} />
           </S.InputLabel>
         </S.InputBox>
+        <Alarm />
 
         <S.Banner src={Banner}></S.Banner>
         <S.Main>

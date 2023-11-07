@@ -13,6 +13,28 @@ interface OrgData {
 const Alarm = () => {
   const [data, setData] = useState<OrgData[]>([]);
 
+  const [isVisible, setIsVisible] = useState(false);
+
+  const handleMouseClick = () => {
+    setIsVisible(!isVisible);
+  };
+
+  function Testit({ title, path, time }: { title: string; path: string; time: string }) {
+    const navigate = useNavigate();
+    console.log(path);
+    console.log(time);
+    console.log(title);
+    return (
+      <>
+        <S.content onClick={() => navigate(path)}>
+          <S.title>{title}</S.title>
+          <S.path>{path}</S.path>
+          <S.time>{time}</S.time>
+        </S.content>
+      </>
+    );
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -29,24 +51,22 @@ const Alarm = () => {
     fetchData();
   }, []);
 
-  function Testit({ title, path, time }: { title: string; path: string; time: string }) {
-    const navigate = useNavigate();
-
-    return (
-      <S.content onClick={() => navigate(path)}>
-        <S.title>{title}</S.title>
-        <S.path>{path}</S.path>
-        <S.time>{time}</S.time>
-      </S.content>
-    );
-  }
-
   return (
-    <S.box>
-      {data.map((orgData, index) => (
-        <Testit title={orgData.text} path={orgData.path} time={orgData.registerTime} key={index} />
-      ))}
-    </S.box>
+    <>
+      <S.AlarmBtn onClick={handleMouseClick} />
+      {isVisible && (
+        <S.box>
+          {data.map((orgData, index) => (
+            <Testit
+              title={orgData.text}
+              path={orgData.path}
+              time={orgData.registerTime}
+              key={index}
+            />
+          ))}
+        </S.box>
+      )}
+    </>
   );
 };
 
