@@ -15,12 +15,21 @@ export const GitGraph = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [nodemodalOpen, setNodeModalOpen] = useState(false);
   const [timer, setTimer] = useState("00:00:00");
-
+  const [data, setData] = useState([]);
   function renderTree(node: any) {
     return (
       <S.NodeBox key={node.name}>
-        <S.NodeTextName>{node.name}</S.NodeTextName>
-        <S.NodeTextComment>{node.comment}</S.NodeTextComment>
+        <S.NodeTextName
+          onClick={() => {
+            console.log(node.name);
+            PsdNodeModal;
+          }}
+        >
+          {node.name}
+        </S.NodeTextName>
+        <S.NodeTextComment onClick={() => console.log(node.comment)}>
+          {node.comment}
+        </S.NodeTextComment>
         {node.child.map((childNode: any) => renderTree(childNode))}
       </S.NodeBox>
     );
@@ -28,27 +37,27 @@ export const GitGraph = () => {
 
   useEffect(() => {
     drawNodeTree(organization, workspace).then((res) => {
-      console.log(res.data);
+      setData(res.data);
+
       const rootNode = res.data;
       const tree = renderTree(rootNode);
 
-      // Set the rendered tree in the state
       setNodeList(tree);
     });
   }, []);
 
-  // const currentTimer = () => {
-  //   const date = new Date();
-  //   const hours = String(date.getHours()).padStart(2, "0");
-  //   const minutes = String(date.getMinutes()).padStart(2, "0");
-  //   const seconds = String(date.getSeconds()).padStart(2, "0");
-  //   setTimer(`${hours}:${minutes}:${seconds}`);
-  // };
+  const currentTimer = () => {
+    const date = new Date();
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+    const seconds = String(date.getSeconds()).padStart(2, "0");
+    setTimer(`${hours}:${minutes}:${seconds}`);
+  };
 
-  // const startTimer = () => {
-  //   setInterval(currentTimer, 1000);
-  // };
-  // startTimer();
+  const startTimer = () => {
+    setInterval(currentTimer, 1000);
+  };
+  startTimer();
 
   return (
     <S.Container>
@@ -90,7 +99,6 @@ export const GitGraph = () => {
               setModalIsOpen(false);
               // node();
               setMkNode(1);
-              console.log(mkNode);
             }}
           >
             Make node
@@ -99,7 +107,6 @@ export const GitGraph = () => {
       </S.ModalContainer>
 
       <S.NodeContainer>{NodeList ? NodeList : <div>Loading</div>}</S.NodeContainer>
-      {/* <button onClick={() => drawNodeTree(organization, workspace)}></button> */}
     </S.Container>
   );
 };
