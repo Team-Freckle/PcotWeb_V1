@@ -8,7 +8,7 @@ export const ProfileHover = (props: any) => {
   const [ProfileBg, setProfileBg] = useState<string>("");
   const [ProfileImg, setProfileImg] = useState<any>("");
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const { onProfileImgChange } = useChangeProfileImg();
+  const { onProfileImgSubmit } = useChangeProfileImg();
 
   useEffect(() => {
     setProfileImg(props.value);
@@ -26,8 +26,15 @@ export const ProfileHover = (props: any) => {
     const selectedFile = e.target.files?.[0];
     if (selectedFile) {
       const image = selectedFile;
-      setProfileImg(URL.createObjectURL(selectedFile));
-      onProfileImgChange(image);
+      const name = props.name;
+      setProfileImg(URL.createObjectURL(image));
+      if (props.name === "ProfileImg") {
+        onProfileImgSubmit(name, image);
+      } else if (props.name === "OrganizationImg") {
+        console.log("sadasdsad");
+        props.setImg(URL.createObjectURL(image));
+        props.setData(image);
+      }
     }
   };
 

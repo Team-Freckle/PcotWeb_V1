@@ -1,0 +1,32 @@
+.boc-edit-form-header {
+  background-color: black;
+}
+
+[data-n-id] rect {
+  fill: #e9e9e7;
+}
+/* 
+[data-n-id] rect > text {
+    fill: #000000;   
+} */
+
+.field_0 {
+  fill: black;
+  font-weight: 600;
+}
+
+/* [data-n-id] circle {
+    fill: #949f97;
+} */
+
+/* [data-l-id] path {
+    stroke: #c4adad;
+} */
+
+[data-ctrl-ec-id] circle {
+  fill: #252525 !important;
+}
+
+.boc-input label {
+  color: red;
+}

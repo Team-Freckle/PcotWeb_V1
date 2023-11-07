@@ -14,10 +14,22 @@ export const useWorkspaceList = () => {
       } else {
         console.log("error");
       }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const onWorkspacesListGet = async (name: any) => {
+    try {
+      const API = `${API_URL}/v2/search/workspace/?organization=${name}&page=1`;
+      const response = await axios.get(API, {
+        withCredentials: true,
+      });
+      return response.data.data;
     } catch {
       console.log("error");
     }
   };
 
-  return { onRecentsListGet };
+  return { onRecentsListGet, onWorkspacesListGet };
 };

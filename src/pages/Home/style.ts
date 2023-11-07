@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+export const FloatBox = styled.div`
+  float: left;
+`;
+
 export const Container = styled.div`
   display: grid;
   grid-template-rows: repeat(3, 200px);
@@ -8,19 +12,31 @@ export const Container = styled.div`
     "header . serch"
     "banner banner banner"
     "main main main";
-  @media (max-width: 768px) {
+  @media (max-width: 1040px) {
     grid-template-rows: repeat(3, 200px);
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: 50px 1fr;
     grid-template-areas:
-      "serch"
+      "hambuger serch"
       "banner"
       "main";
   }
 `;
 
+export const Hambuger = styled.img`
+  grid-area: header;
+  width: 50px;
+  height: 50px;
+  margin-top: 50px;
+  margin-left: 20%;
+  cursor: pointer;
+  @media (min-width: 1200px) {
+    display: none;
+  }
+`;
+
 export const ProfileBox = styled.div`
   grid-area: header;
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     display: none;
   }
 `;
@@ -77,7 +93,7 @@ export const InputBox = styled.div`
   margin-top: 50px;
   width: 400px;
   margin-right: 40px;
-  @media (max-width: 768px) {
+  @media (max-width: 1040px) {
     width: 100%;
   }
 `;

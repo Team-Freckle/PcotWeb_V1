@@ -1,5 +1,21 @@
 import styled from "styled-components";
 
+export const FloatBox = styled.div`
+  float: left;
+`;
+
+export const Hambuger = styled.img`
+  position: absolute;
+  top: 1%;
+  left: 2%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  @media (min-width: 1200px) {
+    display: none;
+  }
+`;
+
 export const Box = styled.div`
   width: 100%;
 `;
@@ -90,9 +106,31 @@ export const SubmitBtn = styled.button`
   }
 `;
 
+export const LogoutBtn = styled.button`
+  width: 290px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 5px;
+  background-color: #ff2c2c;
+  color: white;
+  font-family: "pretendard";
+  font-weight: 600;
+  cursor: pointer;
+
+  @media screen {
+    @media (min-width: 599px) {
+      display: none;
+    }
+  }
+  :active {
+    background-color: #252525;
+  }
+`;
+
 export const ButtonBox = styled.div`
   width: 100%;
-  height: 80px;
+  height: 70px;
 `;
 
 export const ImgBox = styled.div`
@@ -130,4 +168,9 @@ export const LogoutText = styled.div`
   font-size: 20px;
   text-decoration: underline;
   cursor: pointer;
+  @media screen {
+    @media (max-width: 599px) {
+      display: none;
+    }
+  }
 `;

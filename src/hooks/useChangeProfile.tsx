@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useCallback, useState } from "react";
 import { ToastError, ToastSuccess } from "@lib/Toast";
 import { useNavigate } from "react-router-dom";
-import { useChangeProfileImg } from "./useChangeProfileImg";
 
 export const API_URL = process.env.REACT_APP_API;
 
@@ -11,8 +10,6 @@ export const useChangeProfile = () => {
   const [Name, setName] = useState<string>("");
   const [Email, setEmail] = useState<string>("");
   const [Bio, setBio] = useState<string>("");
-
-  const { onProfileImgSubmit } = useChangeProfileImg();
 
   const ProfileEditURL = `${API_URL}/v2/user/info/edit`;
 
@@ -33,8 +30,6 @@ export const useChangeProfile = () => {
     async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       try {
-        const name = "profileImg";
-        onProfileImgSubmit(name);
         const response = await axios.put(
           ProfileEditURL,
           {

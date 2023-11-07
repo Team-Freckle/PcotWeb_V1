@@ -1,9 +1,10 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
+  "name": "pcot",
+  "version": "1.0.0",
   "private": true,
   "homepage": ".",
   "dependencies": {
+    "@balkangraph/orgchart.js": "^8.13.1",
     "@craco/craco": "^7.1.0",
     "@gitgraph/react": "^1.6.0",
     "@testing-library/jest-dom": "^5.14.1",
@@ -12,18 +13,26 @@
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
+    "@types/react-burger-menu": "^2.8.3",
+    "@types/react-dnd": "^3.0.2",
     "@types/react-dom": "^18.0.0",
+    "@types/react-modal": "^3.16.1",
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.4.0",
     "cross-env": "^7.0.3",
     "env-cmd": "^10.1.0",
+    "framer-motion": "^10.16.4",
     "react": "^18.2.0",
+    "react-burger-menu": "^3.0.9",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.2.0",
+    "react-google-charts": "^4.0.1",
+    "react-modal": "^3.16.1",
+    "react-icons": "^4.11.0",
+    "react-pro-sidebar": "^1.1.0-alpha.1",
     "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
-    "semantic-ui-css": "^2.5.0",
-    "semantic-ui-less": "^2.5.0",
-    "semantic-ui-react": "^2.1.4",
     "styled-components": "^5.3.11",
     "sweetalert2": "^11.7.10",
     "typescript": "^5.0.4",
@@ -67,5 +76,11 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "prettier": "^2.8.8"
-  }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.js"
+  ]
 }
