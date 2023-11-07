@@ -12,6 +12,7 @@ import { MainSideBar } from "@components/SideBar/SideBars/MainSideBar";
 import Alarm from "@components/Alarm";
 import Wrapper from "@components/Wrapper";
 import Hambuger from "@assets/Hambuger.svg";
+import { animate } from "framer-motion";
 
 export const API_URL = process.env.REACT_APP_API;
 
@@ -21,6 +22,7 @@ export const Home = () => {
   const [ProfileData, setProfileData] = useState<any>([{}]);
   const [ProfileImg, setProfileImg] = useState<any>(Profile);
   const [toggle, setToggle] = useState<boolean>(false);
+  const [query, setQuery] = useState<any>("");
 
   useEffect(() => {
     onGetProfile()
@@ -33,6 +35,14 @@ export const Home = () => {
         navigate("/login");
       });
   }, []);
+
+  const handleSerchChange = (e: any) => {
+    setQuery(e.target.value);
+  };
+
+  const handleSerch = () => {
+    navigate(`/test/${query}`);
+  };
 
   return (
     <div>
@@ -58,8 +68,12 @@ export const Home = () => {
 
           <S.InputBox>
             <S.InputLabel>
-              <S.SerchInput placeholder="검색어를 입력해주세요." />
-              <S.InputButton src={Serch} />
+              <S.SerchInput
+                placeholder="검색어를 입력해주세요."
+                onChange={handleSerchChange}
+                value={query}
+              />
+              <S.InputButton src={Serch} onClick={handleSerch} />
             </S.InputLabel>
           </S.InputBox>
           <Alarm />
