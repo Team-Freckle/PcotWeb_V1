@@ -21,7 +21,7 @@ export const title = styled.h1`
 
 export const path = styled.h3`
   font-size: small;
-  width: 100%;
+  width: 90%;
   color: gray;
 `;
 
