@@ -1,40 +1,108 @@
 import { PopupModal } from "@components/Modal";
-import React from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useNodeInfo } from "@hooks/useNodeInfo";
 
 import X from "@assets/X.png";
 
 import * as S from "./style";
 
-export const PsdNodeModal = () => {
+const PsdNodeModal = ({
+  active,
+  setActive,
+}: {
+  active: boolean;
+  setActive?: Dispatch<SetStateAction<boolean>>;
+}) => {
+  const { PsdImgGet, NodePsdInfoGet, LayerPsdInfoGet } = useNodeInfo();
+  const { organization, workspace, psdname, psdimg } = useParams();
+  const [data, setData] = useState([]);
+  const [renderImg, setRenderImg] = useState<any>([]);
+  const [renderNode, setRenderNode] = useState<any>([]);
+  const [renderLayer, setRenderLayer] = useState<any>([]);
+
+  useEffect(() => {
+    PsdImgGet(organization, workspace, psdname, psdimg).then((res) => {
+      setData(res);
+
+      const psd = res.data;
+      const psdInfo = renderPsdImg(psd);
+
+      setRenderImg(psdInfo);
+    });
+  });
+
+  useEffect(() => {
+    NodePsdInfoGet(organization, workspace, psdname, psdimg).then((res) => {
+      setData(res);
+
+      const node = res.data;
+      const nodeInfo = renderPsdInfo(node);
+
+      setRenderNode(nodeInfo);
+    });
+  }, []);
+
+  useEffect(() => {
+    LayerPsdInfoGet(organization, workspace, psdname, psdimg).then((res) => {
+      setData(res);
+
+      const layer = res.data;
+      const layerInfo = renderLayerInfo(layer);
+
+      setRenderLayer(layerInfo);
+    });
+  }, []);
+
+  const renderPsdImg = (info: any) => {
+    console.log(info);
+    return (
+      <div>
+        <S.Img>{info.file}</S.Img>
+      </div>
+    );
+  };
+
+  const renderPsdInfo = (info: any) => {
+    console.log(info);
+    return (
+      <div>
+        <S.ModalTitle>{info.name}</S.ModalTitle>
+        <S.ModalInfoText>{info.size}</S.ModalInfoText>
+        <S.ModalPsdComment>{info.comment}</S.ModalPsdComment>
+        <S.ModalInfoText>{info.uploadUserName}</S.ModalInfoText>
+        <S.ModalInfoText>{info.uploadTime}</S.ModalInfoText>
+      </div>
+    );
+  };
+
+  const renderLayerInfo = (info: any) => {
+    console.log(info);
+    return (
+      <div>
+        <S.ModalInfoText>{info.name}</S.ModalInfoText>
+        <S.ModalInfoText>{info.width}</S.ModalInfoText>
+        <S.ModalInfoText>{info.height}</S.ModalInfoText>
+        <S.ModalInfoText>{info.modeKey}</S.ModalInfoText>
+        <S.ModalInfoText>{info.transeparency}</S.ModalInfoText>
+        <S.ModalInfoText>{info.clipping}</S.ModalInfoText>
+        <S.ModalInfoText>{info.vision}</S.ModalInfoText>
+        <S.ModalInfoText>{info.folderYn}</S.ModalInfoText>
+      </div>
+    );
+  };
+
   return (
     <div>
-      <PopupModal>
-        <S.X src={X} alt="testimg" />
-        <S.Layout>
-          <div>
-            <S.Img src="https://via.placeholder.com/300" alt="testimg" />
-            <S.ModalTitle>노드 이름</S.ModalTitle>
-            <S.ModalPsdComment>
-              워크스페이스 코멘트임. 워크스페이스 코멘트 주르르루루루루루루ㅜ루루ㅜㄺ일 예정.
-              워크스페이스 코멘트
-            </S.ModalPsdComment>
-          </div>
-        </S.Layout>
-        <S.LayerLayout>
-          <S.ModalTitle>Node Name</S.ModalTitle>
-          <S.LayerItem>
-            <S.LayerImg src="https://via.placeholder.com/30" alt="testimg" />
-            <S.LayerText>layer1</S.LayerText>
-          </S.LayerItem>
-          <S.LayerItem>
-            <S.LayerImg src="https://via.placeholder.com/30" alt="testimg" />
-            <S.LayerText>layer2</S.LayerText>
-          </S.LayerItem>
-          <S.LayerItem>
-            <S.LayerImg src="https://via.placeholder.com/30" alt="testimg" />
-            <S.LayerText>layer3</S.LayerText>
-          </S.LayerItem>
-        </S.LayerLayout>
+      <PopupModal active={active} setActive={setActive}>
+        <div>
+          <S.X src={X} alt="testimg" />
+          <S.Layout>
+            {renderImg ? renderImg : <div>Loading</div>}
+            {renderNode ? renderNode : <div>Loading</div>}
+          </S.Layout>
+          <S.LayerLayout>{renderLayer ? renderLayer : <div>Loading</div>}</S.LayerLayout>
+        </div>
       </PopupModal>
     </div>
   );

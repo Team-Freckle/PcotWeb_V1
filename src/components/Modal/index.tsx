@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Dispatch, ReactElement, SetStateAction, useState } from "react";
 import Modal from "react-modal";
 
 const customModalStyles: ReactModal.Styles = {
@@ -30,13 +30,21 @@ const customModalStyles: ReactModal.Styles = {
   },
 };
 
-export const PopupModal = ({ children }: any) => {
+export const PopupModal = ({
+  children,
+  active,
+  setActive,
+}: {
+  children?: ReactElement;
+  active?: boolean;
+  setActive?: Dispatch<SetStateAction<boolean>>;
+}) => {
   const [modalOpen, setModalOpen] = useState(true);
   return (
     <div>
       <Modal
-        isOpen={modalOpen}
-        onRequestClose={() => setModalOpen(false)}
+        isOpen={active != null ? active : modalOpen}
+        onRequestClose={() => (setActive ? setActive(false) : setModalOpen(false))}
         style={customModalStyles}
         ariaHideApp={false}
         contentLabel="Pop up Message"

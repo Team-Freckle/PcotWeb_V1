@@ -52,6 +52,19 @@ export const ModalTitle = styled.div`
   margin-left: 35px;
 `;
 
+export const ModalInfoText = styled.p`
+  color: #7a7a7a;
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  align-self: center;
+  text-align: left;
+  margin-top: 15px;
+  margin-left: 35px;
+`;
+
 export const LayerLayout = styled.div`
   display: flex;
   flex-direction: column;

@@ -1,87 +1,52 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Gitgraph, templateExtend, TemplateName, Orientation } from "@gitgraph/react";
-import { useGitgraph } from "../../hooks/useGitgraph";
-// import { storiesOf } from "@storybook/react";
+import { useParams } from "react-router-dom";
+import { useGitgraph } from "@hooks/useGitgraph";
 
 import * as S from "./style";
-import { PsdNodeModal } from "@components/GitGraph/PsdNodeModal";
+import PsdNodeModal from "@components/GitGraph/PsdNodeModal";
 import Plus from "@assets/plus.svg";
 import Tree from "@assets/modal_img.png";
 
-export const GitGraph = (props: any) => {
-  const {
-    onNodeChange,
-    Name,
-    Comment,
-    ParentName,
-    setName,
-    setComment,
-    setParentName,
-    onNodeSubmit,
-  } = useGitgraph();
+export const GitGraph = () => {
+  const { onNodeChange, drawNodeTree } = useGitgraph();
+  const { organization, workspace } = useParams();
+  const [NodeList, setNodeList] = useState<any>([]);
+  const [data, setData] = useState([]);
 
-  const navigate = useNavigate();
-  const [mkNode, setMkNode] = useState(0);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [nodemodalOpen, setNodeModalOpen] = useState(false);
   const [timer, setTimer] = useState("00:00:00");
 
-  // const nodeClick = storiesOf("gitgraph-react/3. Events", module).add("on commit dot click", () => {
-  //   return React.createElement(
-  //     Gitgraph,
-  //     { options: { generateCommitHash: createFixedHashGenerator() } },
-  //     function (gitgraph) {
-  //       const onClick = action("click on dot");
-  //       const master = gitgraph.branch("master");
-  //       master.commit({
-  //         subject: "Hello",
-  //         onClick: onClick,
-  //       });
-  //       master.commit({
-  //         subject: "World",
-  //         onClick: onClick,
-  //       });
-  //     },
-  //   );
-  // });
-
-  const withoutAuthor = templateExtend(TemplateName.Metro, {
-    commit: {
-      message: {
-        displayAuthor: false,
-        displayHash: false,
-      },
-    },
-  });
-
-  const initGraph = (gitgraph: any) => {
-    const master = gitgraph.branch("master");
-    master.commit({
-      subject: "Hello",
-      onClick: () => {
-        navigate("/PsdNodeModal");
-      },
-    });
-    master.commit({
-      subject: "World",
-      onClick: () => {
-        // <PsdNodeModal />;
-        navigate("/PsdNodeModal");
-      },
-    });
-
-    const main = gitgraph.branch("main").commit("zero");
-    const graph = gitgraph.branch("graph").commit("first");
-    main.commit("second");
-    main.commit("third");
-    graph.commit("four");
-    console.log(mkNode);
-    if (mkNode == 1) {
-      main.commit("ddddd");
-      setMkNode(0);
-      console.log(mkNode);
-    }
+  const renderTree = (node: any) => {
+    console.log("asd");
+    return (
+      <S.NodeBox key={node.name}>
+        <S.NodeTextName
+          onClick={() => {
+            console.log(node.name);
+            PsdNodeModal;
+          }}
+        >
+          {node.name}
+        </S.NodeTextName>
+        <S.NodeTextComment onClick={() => console.log(node.comment)}>
+          {node.comment}
+        </S.NodeTextComment>
+        {node.child.map((childNode: any) => renderTree(childNode))}
+      </S.NodeBox>
+    );
   };
+
+  useEffect(() => {
+    drawNodeTree(organization, workspace).then((res) => {
+      setData(res.data);
+
+      const rootNode = res.data;
+      const tree = renderTree(rootNode);
+
+      setNodeList(tree);
+    });
+  }, []);
 
   const currentTimer = () => {
     const date = new Date();
@@ -98,7 +63,9 @@ export const GitGraph = (props: any) => {
 
   return (
     <S.Container>
+      {nodemodalOpen && <PsdNodeModal active={nodemodalOpen} setActive={setNodeModalOpen} />}
       <S.ContributesText>Node Graph</S.ContributesText>
+      {NodeList}
       <S.Button
         onClick={() => {
           setModalIsOpen(true);
@@ -122,20 +89,16 @@ export const GitGraph = (props: any) => {
           <S.OptionNode disabled selected>
             노드선택하기
           </S.OptionNode>
-          <S.OptionNode>Main</S.OptionNode>
-          <S.OptionNode>B</S.OptionNode>
-          <S.OptionNode>C</S.OptionNode>
-          <S.OptionNode>D</S.OptionNode>
+          <S.OptionNode value="Main">Main</S.OptionNode>
+          <S.OptionNode value="B">B</S.OptionNode>
+          <S.OptionNode value="C">C</S.OptionNode>
+          <S.OptionNode value="D">D</S.OptionNode>
         </S.SelectNode>
 
         <div>
           <S.ModalButton
             onClick={() => {
               setModalIsOpen(false);
-              // node();
-              setMkNode(1);
-              onNodeSubmit();
-              console.log(mkNode);
             }}
           >
             Make node
@@ -143,14 +106,7 @@ export const GitGraph = (props: any) => {
         </div>
       </S.ModalContainer>
 
-      <S.GraphBox>
-        <Gitgraph options={{ template: withoutAuthor, orientation: Orientation.VerticalReverse }}>
-          {(gitgraph) => {
-            initGraph(gitgraph);
-          }}
-          {/* {initGraph.bind(this)} */}
-        </Gitgraph>
-      </S.GraphBox>
+      <S.NodeContainer>{NodeList ? NodeList : <div>Loading</div>}</S.NodeContainer>
     </S.Container>
   );
 };

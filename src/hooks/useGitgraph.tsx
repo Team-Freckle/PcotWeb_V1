@@ -1,4 +1,4 @@
-import { ToastError, ToastSuccess, ToastWarning } from "@lib/Toast";
+import { ToastError, ToastSuccess } from "@lib/Toast";
 import React, { useCallback, useState } from "react";
 import axios from "axios";
 
@@ -30,7 +30,7 @@ export const useGitgraph = () => {
           comment: Comment,
           // parent: ParentName,
         },
-        // { withCredentials: true },
+        { withCredentials: true },
       );
 
       ToastSuccess("노드 생성에 성공하였습니다.");
@@ -41,14 +41,20 @@ export const useGitgraph = () => {
     }
   };
 
+  const drawNodeTree = async (OrgName: any, WokName: any) => {
+    const getUrl = `${API_URL}/v2/search/node/get/${OrgName}/${WokName}`;
+    try {
+      const response = await axios.get(getUrl, {
+        withCredentials: true,
+      });
+      return response.data;
+    } catch {
+      ToastError("에러");
+    }
+  };
+
   return {
     onNodeChange,
-    Name,
-    Comment,
-    ParentName,
-    setName,
-    setComment,
-    setParentName,
-    onNodeSubmit,
+    drawNodeTree,
   };
 };
