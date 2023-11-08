@@ -29,5 +29,30 @@ export const usePsd = () => {
       ToastError("PSD 업로드에 실패했습니다.");
     }
   };
-  return { uploadPsd };
+
+  const nodePsdList = async (OrgName: any, WokName: any, nodeName: any) => {
+    try {
+      const API = `${API_URL}/v2/cloud/info/psd/list/${OrgName}/${WokName}/${nodeName}`;
+      const response = await axios.get(API, {
+        withCredentials: true,
+      });
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const psdLayerList = async (OrgName: any, WokName: any, nodeName: any, psdName: any) => {
+    try {
+      const API = `${API_URL}/v2/cloud/info/layer/${OrgName}/${WokName}/${nodeName}/${psdName}`;
+      const response = await axios.get(API, {
+        withCredentials: true,
+      });
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return { uploadPsd, nodePsdList, psdLayerList };
 };

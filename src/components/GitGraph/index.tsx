@@ -19,7 +19,9 @@ export const GitGraph = () => {
   const { organization, workspace } = useParams();
   const { drawNodeTree } = useGitgraph();
   const [data, setData] = useState<GitTreeNode | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false); // Add state to control the modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [nodeName, setNodeName] = useState<string>("");
+  const [nodeComment, setNodeComment] = useState<any>(null);
 
   useEffect(() => {
     drawNodeTree(organization, workspace).then((res) => {
@@ -29,7 +31,9 @@ export const GitGraph = () => {
 
   const handleNodeClick = (node: GitTreeNode) => {
     console.log(node);
-    setIsModalOpen(true); // Open the modal when a node is clicked
+    setIsModalOpen(true);
+    setNodeName(node.name);
+    setNodeComment(node.comment);
   };
 
   return (
@@ -67,12 +71,12 @@ export const GitGraph = () => {
           <div>Loading</div>
         )}
       </S.Container>
-      {/* Render the modal component when isModalOpen is true */}
       {isModalOpen && (
         <PsdNodeModal
           active={isModalOpen}
           setActive={setIsModalOpen}
-          // Pass any necessary props to your modal component
+          nodeName={nodeName}
+          nodeComment={nodeComment}
         />
       )}
       <S.addNode
