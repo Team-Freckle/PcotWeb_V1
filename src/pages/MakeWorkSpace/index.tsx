@@ -19,10 +19,6 @@ export const MakeWorkSpace = () => {
         <h1 style={{ color: "#316AE2" }}>Workspace</h1>
 
         <form onSubmit={onWorkSpaceSubmit}>
-          <ProfileHover
-            name="WorkspaceImg"
-            value="https://avatars.githubusercontent.com/u/76847245?v=4"
-          />
           <S.Container>
             <S.Box>
               <S.Inputs>

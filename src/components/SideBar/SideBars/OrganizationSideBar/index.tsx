@@ -2,7 +2,7 @@ import { SidebarHeader } from "@components/SideBar/SideBarHeader";
 import { Typography } from "@components/SideBar/Typography";
 import React, { useEffect, useState } from "react";
 import { Sidebar } from "react-pro-sidebar";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import * as S from "./style";
 import addMemberBtn from "@assets/addMemberBtn.png";
@@ -13,7 +13,6 @@ export const API_URL = process.env.REACT_APP_API;
 
 export const OrganizationSideBar = (props: any) => {
   const navigate = useNavigate();
-  const { organization } = useParams();
   const [organizationInfo, setOrganizationInfo] = useState<any>([]);
   const [organizationMember, setOrganizationMember] = useState<Array<any>>([]);
   const [workspaceList, setWorkspaceList] = useState<Array<any>>([]);
@@ -21,10 +20,10 @@ export const OrganizationSideBar = (props: any) => {
   const { onRecentsListGet } = useWorkspaceList();
 
   useEffect(() => {
-    serchOrganizationMoreInfo(organization).then((res) => {
+    serchOrganizationMoreInfo(props.name).then((res) => {
       setOrganizationInfo(res.data);
     });
-    serchOrganizationMamber(organization).then((res) => {
+    serchOrganizationMamber(props.name).then((res) => {
       setOrganizationMember(
         res.data.map((list: any) => (
           <S.BottomMember
