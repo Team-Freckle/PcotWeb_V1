@@ -2,10 +2,10 @@ import axios from "axios";
 
 export const API_URL = process.env.REACT_APP_API;
 
-export const useOrganizationList = () => {
-  const onRecentsListGet = async () => {
+export const useAlarm = () => {
+  const onGetAlarm = async (page: any) => {
     try {
-      const API = `${API_URL}/v2/search/organization/belong?page=1`;
+      const API = `${API_URL}/v2/search/alarm/get?page=${page}`;
       const response = await axios.get(API, {
         withCredentials: true,
       });
@@ -15,10 +15,10 @@ export const useOrganizationList = () => {
     }
   };
 
-  const onSearchListGet = async (query: any, page: any) => {
+  const onPatchAlarm = async (idx: any) => {
     try {
-      const API = `${API_URL}/v2/search/organization/?query=${query}&page=${page}`;
-      const response = await axios.get(API, {
+      const API = `${API_URL}/v2/search/alarm/check?idx=${idx}`;
+      const response = await axios.patch(API, null, {
         withCredentials: true,
       });
       return response.data.data;
@@ -27,5 +27,5 @@ export const useOrganizationList = () => {
     }
   };
 
-  return { onRecentsListGet, onSearchListGet };
+  return { onGetAlarm, onPatchAlarm };
 };
