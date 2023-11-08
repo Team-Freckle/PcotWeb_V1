@@ -2,6 +2,8 @@ import { useGitgraph } from "@hooks/useGitgraph";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+import * as S from "./style";
+
 export const CreateNode = () => {
   const { organization, workspace } = useParams();
   const { drawNodeTree } = useGitgraph();
@@ -24,32 +26,67 @@ export const CreateNode = () => {
 
   return (
     <div>
-      <input type="text" placeholder="name" name="Name" onChange={onNodeChange} value={Name} />
-      <input
-        type="text"
-        placeholder="comment"
-        name="Comment"
-        onChange={onNodeChange}
-        value={Comment}
-      />
-      <select onChange={onNodeChange} name="ParentName">
-        {names.map((name) => (
-          <option key={name} value={name}>
-            {name}
-          </option>
-        ))}
-      </select>
-      <input type="file" name="Psd" id="Psd" accept=".psd" onChange={onNodeChange} />
-      <input
-        type="text"
-        name="PsdName"
-        id="PsdName"
-        placeholder="PsdName"
-        value={PsdName}
-        onChange={onNodeChange}
-      />
+      <S.InputBoxs>
+        <S.InputBox>
+          <S.InputText style={{ bottom: "60px" }}>Name</S.InputText>
+          <S.Input
+            type="text"
+            placeholder="name"
+            name="Name"
+            onChange={onNodeChange}
+            value={Name}
+          />
+        </S.InputBox>
 
-      <button onClick={() => onNodeSubmit(organization, workspace)}>submit</button>
+        <S.InputBox>
+          <S.InputText style={{ bottom: "60px" }}>Comment</S.InputText>
+          <S.Input
+            type="text"
+            placeholder="comment"
+            name="Comment"
+            onChange={onNodeChange}
+            value={Comment}
+          />
+        </S.InputBox>
+
+        <S.InputBox>
+          <S.InputText style={{ bottom: "60px" }}>Parent Node</S.InputText>
+          <S.SelectParent onChange={onNodeChange} name="ParentName">
+            <S.OptionParent disabled selected>
+              ==Select Option==
+            </S.OptionParent>
+            {names.map((name) => (
+              <S.OptionParent key={name} value={name}>
+                {name}
+              </S.OptionParent>
+            ))}
+          </S.SelectParent>
+        </S.InputBox>
+      </S.InputBoxs>
+
+      <S.PsdBoxs>
+        <S.InputBox>
+          <input type="file" name="Psd" id="Psd" accept=".psd" onChange={onNodeChange} />
+        </S.InputBox>
+
+        <S.InputBox>
+          <S.InputText style={{ bottom: "60px" }}>PSD Name</S.InputText>
+          <S.Input
+            type="text"
+            name="PsdName"
+            id="PsdName"
+            placeholder="PsdName"
+            value={PsdName}
+            onChange={onNodeChange}
+          />
+        </S.InputBox>
+      </S.PsdBoxs>
+
+      <S.ButtonBox>
+        <S.CompleteBtn onClick={() => onNodeSubmit(organization, workspace)}>
+          Complete
+        </S.CompleteBtn>
+      </S.ButtonBox>
     </div>
   );
 };
