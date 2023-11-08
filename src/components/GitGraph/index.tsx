@@ -1,118 +1,87 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useGitgraph } from "@hooks/useGitgraph";
+import { useNavigate, useParams } from "react-router-dom";
+import { Gitgraph } from "@gitgraph/react";
+import { TemplateName, Orientation } from "@gitgraph/core";
 
 import * as S from "./style";
-import PsdNodeModal from "@components/GitGraph/PsdNodeModal";
-import Plus from "@assets/plus.svg";
-import Tree from "@assets/modal_img.png";
-import Wrapper from "@components/Wrapper";
+import addNode from "@assets/addNode.svg";
+import { useGitgraph } from "@hooks/useGitgraph";
+import PsdNodeModal from "@components/PsdNodeModal";
+
+interface GitTreeNode {
+  name: string;
+  comment: string;
+  child: GitTreeNode[];
+}
 
 export const GitGraph = () => {
-  const { onNodeChange, drawNodeTree } = useGitgraph();
+  const navigate = useNavigate();
   const { organization, workspace } = useParams();
-  const [NodeList, setNodeList] = useState<any>([]);
-  const [data, setData] = useState([]);
-
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [nodemodalOpen, setNodeModalOpen] = useState(false);
-  const [timer, setTimer] = useState("00:00:00");
-
-  const renderTree = (node: any) => {
-    console.log("asd");
-    return (
-      <S.NodeBox key={node.name}>
-        <S.NodeTextName
-          onClick={() => {
-            console.log(node.name);
-            PsdNodeModal;
-          }}
-        >
-          {node.name}
-        </S.NodeTextName>
-        <S.NodeTextComment onClick={() => console.log(node.comment)}>
-          {node.comment}
-        </S.NodeTextComment>
-        {node.child.map((childNode: any) => renderTree(childNode))}
-      </S.NodeBox>
-    );
-  };
+  const { drawNodeTree } = useGitgraph();
+  const [data, setData] = useState<GitTreeNode | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false); // Add state to control the modal
 
   useEffect(() => {
     drawNodeTree(organization, workspace).then((res) => {
       setData(res.data);
-      console.log(data);
-
-      const rootNode = res.data;
-      const tree = renderTree(rootNode);
-
-      setNodeList(tree);
     });
-  }, []);
+  }, [organization, workspace]);
 
-  const currentTimer = () => {
-    const date = new Date();
-    const hours = String(date.getHours()).padStart(2, "0");
-    const minutes = String(date.getMinutes()).padStart(2, "0");
-    const seconds = String(date.getSeconds()).padStart(2, "0");
-    setTimer(`${hours}:${minutes}:${seconds}`);
+  const handleNodeClick = (node: GitTreeNode) => {
+    console.log(node);
+    setIsModalOpen(true); // Open the modal when a node is clicked
   };
-
-  const startTimer = () => {
-    setInterval(currentTimer, 1000);
-  };
-  startTimer();
 
   return (
-    <Wrapper>
+    <div>
       <S.Container>
-        {nodemodalOpen && <PsdNodeModal active={nodemodalOpen} setActive={setNodeModalOpen} />}
-        <S.ContributesText>Node Graph</S.ContributesText>
-        {NodeList}
-        <S.Button
-          onClick={() => {
-            setModalIsOpen(true);
-          }}
-        >
-          <img src={Plus} alt="Plus" />
-        </S.Button>
+        {data ? (
+          <Gitgraph
+            options={{
+              orientation: Orientation.Horizontal,
+              template: TemplateName.Metro,
+            }}
+          >
+            {(gitgraph: any) => {
+              const master = gitgraph.branch("main");
 
-        <S.ModalContainer isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-          <img src={Tree} alt="Tree" />
-          <S.ModalTime> {timer} </S.ModalTime>
+              const drawBranch = (node: GitTreeNode, parentBranch: any) => {
+                const branch = parentBranch.branch(node.name);
+                branch.commit({
+                  subject: node.comment,
+                  onClick: () => handleNodeClick(node),
+                });
+                if (node.child.length > 0) {
+                  node.child.forEach((child) => {
+                    drawBranch(child, branch);
+                  });
+                }
+              };
 
-          <S.ModalText>Node Name</S.ModalText>
-          <S.ModalName name="name" onChange={onNodeChange} />
-
-          <S.ModalText>Node Comment</S.ModalText>
-          <S.ModalComment name="new node" onChange={onNodeChange} />
-
-          <S.ModalText>Select Node</S.ModalText>
-          <S.SelectNode>
-            <S.OptionNode disabled selected>
-              노드선택하기
-            </S.OptionNode>
-            <S.OptionNode value="Main">Main</S.OptionNode>
-            <S.OptionNode value="B">B</S.OptionNode>
-            <S.OptionNode value="C">C</S.OptionNode>
-            <S.OptionNode value="D">D</S.OptionNode>
-          </S.SelectNode>
-
-          <div>
-            <S.ModalButton
-              onClick={() => {
-                setModalIsOpen(false);
-              }}
-            >
-              Make node
-            </S.ModalButton>
-          </div>
-        </S.ModalContainer>
-
-        <S.NodeContainer>{NodeList ? NodeList : <div>Loading</div>}</S.NodeContainer>
+              if (data) {
+                drawBranch(data, master);
+              }
+            }}
+          </Gitgraph>
+        ) : (
+          <div>Loading</div>
+        )}
       </S.Container>
-    </Wrapper>
+      {/* Render the modal component when isModalOpen is true */}
+      {isModalOpen && (
+        <PsdNodeModal
+          active={isModalOpen}
+          setActive={setIsModalOpen}
+          // Pass any necessary props to your modal component
+        />
+      )}
+      <S.addNode
+        src={addNode}
+        alt="plus"
+        onClick={() => {
+          navigate(`/create-node/${organization}/${workspace}`);
+        }}
+      />
+    </div>
   );
 };
-
-export default GitGraph;

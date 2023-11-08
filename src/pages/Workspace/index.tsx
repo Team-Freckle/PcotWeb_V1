@@ -3,7 +3,7 @@ import React from "react";
 import * as S from "./style";
 
 import Chart from "@components/Organization/Chart";
-import Gitgraph from "@components/GitGraph";
+import { GitGraph } from "@components/GitGraph";
 import { OrganizationSideBar } from "@components/SideBar/SideBars/OrganizationSideBar";
 import Wrapper from "@components/Wrapper";
 
@@ -15,7 +15,7 @@ export const Workspace = () => {
           <OrganizationSideBar />
         </S.FloatBox>
         <Chart />
-        <Gitgraph />
+        <GitGraph />
       </Wrapper>
     </div>
   );
