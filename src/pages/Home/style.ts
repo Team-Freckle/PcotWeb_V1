@@ -106,9 +106,10 @@ export const InputButton = styled.img`
 
 export const Banner = styled.img`
   grid-area: banner;
-  width: 100%;
+  width: 80%;
   height: auto;
   max-height: 250px;
+  margin-left: 10%;
 `;
 
 export const Main = styled.div`
