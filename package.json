@@ -1,6 +1,6 @@
 {
   "name": "pcot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "dependencies": {
     "@balkangraph/orgchart.js": "^8.13.1",
