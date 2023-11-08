@@ -3,6 +3,7 @@ import { PopupModal } from "@components/Modal";
 import * as S from "./style";
 import { usePsd } from "@hooks/usePsd";
 import { useParams } from "react-router-dom";
+import { PsdComparisonModal } from "@components/PsdComparisonModal";
 
 export const API_URL = process.env.REACT_APP_API;
 
@@ -21,6 +22,7 @@ const PsdNodeModal = ({
   const { organization, workspace } = useParams();
   const [filteredData, setFilteredData] = useState([]);
   const [psdImg, setPsdImg] = useState("");
+  const [compareModalVisible, setCompareModalVisible] = useState(false);
 
   useEffect(() => {
     nodePsdList(organization, workspace, nodeName).then((res) => {
@@ -46,6 +48,10 @@ const PsdNodeModal = ({
     });
   }, []);
 
+  const handleCompareClick = () => {
+    setCompareModalVisible(true);
+  };
+
   return (
     <div>
       <PopupModal active={active} setActive={setActive}>
@@ -53,7 +59,7 @@ const PsdNodeModal = ({
           <S.LeftBox>
             <S.imgBox>
               <S.Img src={psdImg} alt="PsdImg" />
-              <S.compareButton>Compare</S.compareButton>
+              <S.compareButton onClick={handleCompareClick}>Compare</S.compareButton>
             </S.imgBox>
             <S.Texts>
               <S.nodeName>{nodeName}</S.nodeName>
@@ -69,6 +75,9 @@ const PsdNodeModal = ({
           </S.RightBox>
         </S.MainBox>
       </PopupModal>
+      {compareModalVisible && (
+        <PsdComparisonModal closeModal={() => setCompareModalVisible(false)} />
+      )}
     </div>
   );
 };
