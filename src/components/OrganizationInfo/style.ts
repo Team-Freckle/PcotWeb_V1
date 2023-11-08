@@ -26,6 +26,7 @@ export const TitleText = styled.div`
   grid-area: title;
   justify-self: start;
   margin-left: 50px;
+  margin-top: 15px;
   @media (max-width: 768px) {
     display: none;
   }
