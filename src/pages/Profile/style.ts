@@ -165,7 +165,7 @@ export const LogoutText = styled.div`
   color: #7a7a7a;
   font-family: "pretendard";
   font-weight: 600;
-  font-size: 20px;
+  font-size: 16px;
   text-decoration: underline;
   cursor: pointer;
   @media screen {

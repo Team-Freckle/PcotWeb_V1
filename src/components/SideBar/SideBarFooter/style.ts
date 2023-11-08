@@ -16,7 +16,7 @@ export const FooterIcon = styled.img`
 export const FooterText = styled.div`
   grid-area: text;
   font-family: Pretendard;
-  font-size: 20px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
