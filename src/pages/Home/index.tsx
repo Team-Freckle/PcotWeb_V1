@@ -21,6 +21,7 @@ export const Home = () => {
   const [ProfileData, setProfileData] = useState<any>([{}]);
   const [ProfileImg, setProfileImg] = useState<any>(Profile);
   const [toggle, setToggle] = useState<boolean>(false);
+  const [query, setQuery] = useState<any>("");
 
   useEffect(() => {
     onGetProfile()
@@ -33,6 +34,20 @@ export const Home = () => {
         navigate("/login");
       });
   }, []);
+
+  const handleSerchChange = (e: any) => {
+    setQuery(e.target.value);
+  };
+
+  const handleOnQueryKeyPress = (e: any) => {
+    if (e.key == "Enter") {
+      handleSerch();
+    }
+  };
+
+  const handleSerch = () => {
+    navigate(`/organization/list/${query}`);
+  };
 
   return (
     <div>
@@ -55,14 +70,20 @@ export const Home = () => {
             </div>
           </S.ProfileBox>
           <S.Hambuger src={Hambuger} onClick={() => setToggle(!toggle)} />
-
           <S.InputBox>
             <S.InputLabel>
-              <S.SerchInput placeholder="검색어를 입력해주세요." />
-              <S.InputButton src={Serch} />
+              <S.SerchInput
+                placeholder="검색어를 입력해주세요."
+                onChange={handleSerchChange}
+                onKeyPress={handleOnQueryKeyPress}
+                value={query}
+              />
+              <S.InputButton src={Serch} onClick={handleSerch} />
             </S.InputLabel>
+            <S.AlamBox>
+              <Alarm />
+            </S.AlamBox>
           </S.InputBox>
-          <Alarm />
 
           <S.Banner src={Banner}></S.Banner>
 

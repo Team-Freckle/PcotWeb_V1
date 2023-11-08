@@ -8,6 +8,7 @@ export const Img = styled.img`
   width: 150px;
   height: 150px;
   border-radius: 50%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.12);
 `;
 
 export const BottomLayout = styled.div`
@@ -37,6 +38,7 @@ export const BottomMember = styled.img`
   margin-left: 5px;
   margin-bottom: 5px;
   cursor: pointer;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 `;
 
 export const BottomWorkspace = styled.img`
