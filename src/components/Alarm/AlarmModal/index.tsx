@@ -12,7 +12,7 @@ const AlarmModal = ({
   active: boolean;
   setActive?: Dispatch<SetStateAction<boolean>>;
 }) => {
-  const { onGetAlarm } = useAlarm();
+  const { onGetAlarm, onPatchAlarm } = useAlarm();
   const navigate = useNavigate();
   const [alarmList, setAlarmList] = useState<Array<any>>([]);
 
@@ -33,10 +33,17 @@ const AlarmModal = ({
       .catch((err) => {
         console.log(err);
       });
-  });
+  }, []);
+
+  const onClickBox = (list: any) => {
+    onPatchAlarm(list.idx).then((res: any) => {
+      console.log(res);
+    });
+    navigate(`${list.path}`);
+  };
 
   const box = (list: any) => (
-    <S.content onClick={() => navigate(`${list.path}`)}>
+    <S.content onClick={() => onClickBox(list)}>
       <S.title>{list.text}</S.title>
       <S.path>{list.path}</S.path>
       <S.time>{list.registerTime}</S.time>

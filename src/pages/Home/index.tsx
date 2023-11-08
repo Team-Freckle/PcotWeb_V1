@@ -70,7 +70,6 @@ export const Home = () => {
             </div>
           </S.ProfileBox>
           <S.Hambuger src={Hambuger} onClick={() => setToggle(!toggle)} />
-
           <S.InputBox>
             <S.InputLabel>
               <S.SerchInput
@@ -81,8 +80,10 @@ export const Home = () => {
               />
               <S.InputButton src={Serch} onClick={handleSerch} />
             </S.InputLabel>
+            <S.AlamBox>
+              <Alarm />
+            </S.AlamBox>
           </S.InputBox>
-          <Alarm />
 
           <S.Banner src={Banner}></S.Banner>
 

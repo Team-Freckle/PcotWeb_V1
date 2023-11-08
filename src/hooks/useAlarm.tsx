@@ -15,5 +15,17 @@ export const useAlarm = () => {
     }
   };
 
-  return { onGetAlarm };
+  const onPatchAlarm = async (idx: any) => {
+    try {
+      const API = `${API_URL}/v2/search/alarm/check?idx=${idx}`;
+      const response = await axios.patch(API, null, {
+        withCredentials: true,
+      });
+      return response.data.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return { onGetAlarm, onPatchAlarm };
 };

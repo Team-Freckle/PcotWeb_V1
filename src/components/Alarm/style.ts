@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-export const AlarmBtn = styled.div`
+export const AlarmBtn = styled.img`
   border-radius: 50%;
-  width: 5%;
-  height: 10%;
-
-  background-color: black;
+  margin-top: 3px;
+  width: 27px;
+  height: 30px;
+  right: 45px;
 `;

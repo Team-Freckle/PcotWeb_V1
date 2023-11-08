@@ -115,3 +115,7 @@ export const Main = styled.div`
   grid-area: main;
   margin-top: 70px;
 `;
+
+export const AlamBox = styled.div`
+  margin: 5px;
+`;
