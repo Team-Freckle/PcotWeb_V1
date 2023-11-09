@@ -4,13 +4,6 @@ export const Container = styled.div`
   text-align: left;
 `;
 
-export const InfoArea = styled.div`
-  margin-left: 325px;
-  margin-right: 75px;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: "info";
-`;
-
 export const Title = styled.span`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -32,39 +25,37 @@ export const TitleText = styled.div`
   }
 `;
 
-export const OrganizationName = styled.div`
-  grid-area: imgname;
-  font-family: Pretendard;
-  font-size: 25px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  margin-bottom: 10px;
-  align-self: center;
-  margin-right: 10px;
+export const EditArea = styled.div`
+  margin-left: 325px;
+  margin-right: 75px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "info";
 `;
 
-export const Comment = styled.div`
+export const Edit = styled.div`
   grid-area: imgname;
+  color: black;
+  cursor: pointer;
   font-family: Pretendard;
-  font-size: 20px;
+  font-size: 23px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   align-self: center;
-  margin-top: 2px;
+  margin-top: 4px;
 `;
 
-export const Info = styled.div`
+export const EditWarning = styled.div`
   grid-area: imgname;
-  color: #7a7a7a;
+  color: red;
+  cursor: pointer;
   font-family: Pretendard;
-  font-size: 15px;
+  font-size: 23px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   align-self: center;
-  margin-top: 2px;
+  margin-top: 4px;
 `;
 
 export const Date = styled.h1`

@@ -11,6 +11,12 @@ export const OrganizationManupulate = (props: any) => {
       <S.Title>
         <S.TitleText>Manipulate</S.TitleText>
       </S.Title>
+      <S.EditArea>
+        <S.Edit>Invite people</S.Edit>
+        <S.Edit>Change Profile Image</S.Edit>
+        <S.EditWarning>Change Exposure</S.EditWarning>
+        <S.EditWarning>Delete Organization</S.EditWarning>
+      </S.EditArea>
     </S.Container>
   );
 };
