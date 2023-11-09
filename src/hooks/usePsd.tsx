@@ -29,5 +29,49 @@ export const usePsd = () => {
       ToastError("PSD 업로드에 실패했습니다.");
     }
   };
-  return { uploadPsd };
+
+  const nodePsdList = async (OrgName: any, WokName: any, nodeName: any) => {
+    try {
+      const API = `${API_URL}/v2/cloud/info/psd/list/${OrgName}/${WokName}/${nodeName}`;
+      const response = await axios.get(API, {
+        withCredentials: true,
+      });
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const psdLayerList = async (OrgName: any, WokName: any, nodeName: any, psdName: any) => {
+    try {
+      const API = `${API_URL}/v2/cloud/info/layer/${OrgName}/${WokName}/${nodeName}/${psdName}`;
+      const response = await axios.get(API, {
+        withCredentials: true,
+      });
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const psdCompare = async (
+    OrgName: any,
+    WokName: any,
+    befnodeName: any,
+    aftnodeName: any,
+    psdName1: any,
+    psdName2: any,
+  ) => {
+    try {
+      const API = `${API_URL}/v2/cloud/info/compare/${OrgName}/${WokName}?before_node=${befnodeName}&after_node=${aftnodeName}&before_time=${psdName1}&after_time=${psdName2}`;
+      const response = await axios.get(API, {
+        withCredentials: true,
+      });
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return { uploadPsd, nodePsdList, psdLayerList, psdCompare };
 };

@@ -27,6 +27,9 @@ const customModalStyles: ReactModal.Styles = {
     backgroundColor: "white",
     justifyContent: "center",
     overflow: "auto",
+    scrollbarWidth: "none",
+    msOverflowStyle: "none",
+    WebkitScrollSnapType: "none",
   },
 };
 
