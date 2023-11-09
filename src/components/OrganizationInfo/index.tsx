@@ -15,11 +15,11 @@ export const OrganizationInfo = (props: any) => {
         console.log(res.data);
         setOrganizationInfo(
           <S.InfoArea>
-            <S.OrganizationName>{res.data.name}</S.OrganizationName>
+            <S.Flex>
+              <S.OrganizationName>{res.data.name}</S.OrganizationName>
+              <S.Info>{res.data.exposure}</S.Info>
+            </S.Flex>
             <S.Comment>{res.data.comment}</S.Comment>
-            <S.Info>{res.data.intro}</S.Info>
-            <S.Info>{res.data.exposure}</S.Info>
-            <S.Info>{res.data.intro}</S.Info>
             <S.Info>{res.data.planName}</S.Info>
             <S.Date>{res.data.createTime}</S.Date>
           </S.InfoArea>,

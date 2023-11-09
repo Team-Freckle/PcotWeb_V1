@@ -6,6 +6,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 
 import * as S from "./style";
+import { OrganizationManupulate } from "@components/OrganizationManipulate";
 
 export const Organization = () => {
   const { organization } = useParams();
@@ -18,6 +19,7 @@ export const Organization = () => {
         </S.FloatBox>
         <OrganizationInfo name={organization} />
         <OrganizationWorkspaceList name={organization} />
+        <OrganizationManupulate name={organization} />
       </Wrapper>
     </div>
   );
