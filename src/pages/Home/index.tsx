@@ -5,7 +5,7 @@ import * as S from "./style";
 
 import Profile from "@assets/Login-Logo.svg";
 import Serch from "@assets/search.svg";
-import Banner from "@assets/banner.svg";
+import Banner from "@assets/banner.png";
 import { WorkspaceList } from "@components/WorkspaceList/MainWorkspaceList";
 import { useGetProfile } from "@hooks/useGetProfile";
 import { MainSideBar } from "@components/SideBar/SideBars/MainSideBar";

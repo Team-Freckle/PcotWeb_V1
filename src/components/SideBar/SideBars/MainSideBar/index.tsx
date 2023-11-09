@@ -88,7 +88,7 @@ export const MainSideBar = (props: any) => {
                 <Typography
                   variant="body1"
                   color="#607489"
-                  style={{ textAlign: "left", cursor: "pointer" }}
+                  style={{ textAlign: "left", cursor: "pointer", marginTop: "7px" }}
                   onClick={() => {
                     navigate("/organization/create");
                   }}

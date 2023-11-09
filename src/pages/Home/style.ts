@@ -92,6 +92,7 @@ export const InputBox = styled.div`
   grid-area: serch;
   margin-top: 50px;
   width: 400px;
+  height: 100px;
   margin-right: 40px;
   @media (max-width: 1040px) {
     width: 100%;
@@ -106,9 +107,12 @@ export const InputButton = styled.img`
 
 export const Banner = styled.img`
   grid-area: banner;
-  width: 100%;
+  width: 80%;
   height: auto;
+  border-radius: 10px;
   max-height: 250px;
+  margin-left: 10%;
+  margin-top: 0;
 `;
 
 export const Main = styled.div`
