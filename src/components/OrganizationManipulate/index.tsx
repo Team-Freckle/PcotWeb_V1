@@ -15,7 +15,7 @@ export const OrganizationManupulate = (props: any) => {
         <S.Edit>Invite people</S.Edit>
         <S.Edit>Change Profile Image</S.Edit>
         <S.EditWarning>Change Exposure</S.EditWarning>
-        <S.EditWarning>Delete Organization</S.EditWarning>
+        <S.EditWarning>Delete</S.EditWarning>
       </S.EditArea>
     </S.Container>
   );
