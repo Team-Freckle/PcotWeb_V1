@@ -30,7 +30,7 @@ export const Router = () => {
           <Route path="/profile" element={<Profile />} />
 
           {/* <Route path="/organization" element={<OrganizationList />} /> */}
-          <Route path="/organization/:name" element={<Organization />} />
+          <Route path="/organization/:organization" element={<Organization />} />
           <Route path="/organization/list/:query" element={<OrganizationList />} />
           <Route path="/organization/create" element={<MakeOrganization />} />
           <Route path="/organization/create/profile" element={<SetprofileImg />} />
@@ -38,7 +38,7 @@ export const Router = () => {
           {/* <Route path="workspace" /> */}
           {/* <Route path="/compare" element={<PsdComparisonModal />} /> */}
           <Route path="/workspace/:organization/:workspace" element={<Workspace />} />
-          <Route path="/workspace/create/:name" element={<MakeWorkSpace />} />
+          <Route path="/workspace/create/:organization" element={<MakeWorkSpace />} />
           <Route path="/create-node/:organization/:workspace" element={<CreateNode />} />
           <Route path="/test" element={<OrganizationList />} />
         </Routes>

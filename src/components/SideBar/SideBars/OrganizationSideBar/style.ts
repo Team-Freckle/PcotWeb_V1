@@ -32,20 +32,20 @@ export const BottomMembers = styled.div`
 `;
 
 export const BottomMember = styled.img`
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
-  margin-left: 5px;
-  margin-bottom: 5px;
+  margin-left: 9px;
+  margin-bottom: 9px;
   cursor: pointer;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 `;
 
 export const BottomWorkspace = styled.img`
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
+  margin-left: 9px;
+  margin-bottom: 9px;
   border-radius: 5px;
-  margin-left: 5px;
-  margin-bottom: 5px;
   cursor: pointer;
 `;

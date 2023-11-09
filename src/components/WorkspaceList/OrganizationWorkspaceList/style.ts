@@ -14,7 +14,7 @@ export const TitleText = styled.div`
   font-family: Pretendard;
   font-size: 30px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   line-height: normal;
   grid-area: title;
   justify-self: start;
