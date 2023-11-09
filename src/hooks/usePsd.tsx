@@ -54,5 +54,24 @@ export const usePsd = () => {
     }
   };
 
-  return { uploadPsd, nodePsdList, psdLayerList };
+  const psdCompare = async (
+    OrgName: any,
+    WokName: any,
+    befnodeName: any,
+    aftnodeName: any,
+    psdName1: any,
+    psdName2: any,
+  ) => {
+    try {
+      const API = `${API_URL}/v2/cloud/info/compare/${OrgName}/${WokName}?before_node=${befnodeName}&after_node=${aftnodeName}&before_time=${psdName1}&after_time=${psdName2}`;
+      const response = await axios.get(API, {
+        withCredentials: true,
+      });
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return { uploadPsd, nodePsdList, psdLayerList, psdCompare };
 };

@@ -39,11 +39,30 @@ export const CenterLogo = styled.img`
   }
 `;
 
-export const BottomItem = styled.div`
+export const BottomItemNomal = styled.div`
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  background-color: #fff;
+`;
+export const BottomItemChange = styled.div`
   width: 100%;
   height: 50px;
   line-height: 50px;
   background-color: #f1f8ff;
+`;
+export const BottomItemDelete = styled.div`
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  background-color: #ffeef0;
+`;
+
+export const BottomItemCreate = styled.div`
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  background-color: #e6ffed;
 `;
 
 export const X = styled.img`

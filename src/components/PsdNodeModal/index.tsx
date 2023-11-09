@@ -23,18 +23,20 @@ const PsdNodeModal = ({
   const [filteredData, setFilteredData] = useState([]);
   const [psdImg, setPsdImg] = useState("");
   const [compareModalVisible, setCompareModalVisible] = useState(false);
+  const [psdName, setPsdName] = useState("");
 
   useEffect(() => {
     nodePsdList(organization, workspace, nodeName).then((res) => {
-      const psdName = res.data[0].name;
-      psdLayerList(organization, workspace, nodeName, psdName).then((res) => {
+      setPsdName(res.data[0].name);
+      const psdNamed = res.data[0].name;
+      psdLayerList(organization, workspace, nodeName, psdNamed).then((res) => {
         console.log(res.data);
         const filteredData = res.data.filter((item: any) => item.folderYn === "N");
         setFilteredData(
           filteredData.map((item: any, index: any) => (
             <S.Layer key={index}>
               <S.LayerImg
-                src={`${API_URL}/v2/cloud/pull/image/layer/${organization}/${workspace}/${nodeName}/${psdName}/${item.name}`}
+                src={`${API_URL}/v2/cloud/pull/image/layer/${organization}/${workspace}/${nodeName}/${psdNamed}/${item.name}`}
                 alt="layer"
               />
               <S.LayerName>{item.name}</S.LayerName>
@@ -42,7 +44,7 @@ const PsdNodeModal = ({
           )),
         );
         setPsdImg(
-          `${API_URL}/v2/cloud/pull/image/preview/${organization}/${workspace}/${nodeName}/${psdName}`,
+          `${API_URL}/v2/cloud/pull/image/preview/${organization}/${workspace}/${nodeName}/${psdNamed}`,
         );
       });
     });
@@ -76,7 +78,11 @@ const PsdNodeModal = ({
         </S.MainBox>
       </PopupModal>
       {compareModalVisible && (
-        <PsdComparisonModal closeModal={() => setCompareModalVisible(false)} />
+        <PsdComparisonModal
+          closeModal={() => setCompareModalVisible(false)}
+          Name={nodeName}
+          psdName={psdName}
+        />
       )}
     </div>
   );

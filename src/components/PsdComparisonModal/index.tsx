@@ -7,13 +7,23 @@ import X from "@assets/X.png";
 import * as S from "./style";
 import { useGitgraph } from "@hooks/useGitgraph";
 import { useParams } from "react-router-dom";
+import { usePsd } from "@hooks/usePsd";
 
-export const PsdComparisonModal = ({ closeModal }: { closeModal: () => void }) => {
+export const PsdComparisonModal = ({
+  closeModal,
+  Name,
+  psdName,
+}: {
+  closeModal: () => void;
+  Name: any;
+  psdName: any;
+}) => {
   const { drawNodeTree } = useGitgraph();
+  const { psdCompare, nodePsdList } = usePsd();
   const { organization, workspace } = useParams();
   const [names, setNames] = useState<string[]>([]);
   const [selectedNode1, setSelectedNode1] = useState("");
-  const [selectedNode2, setSelectedNode2] = useState("");
+  const [bottomItems, setBottomItems] = useState<string[]>([]);
 
   useEffect(() => {
     drawNodeTree(organization, workspace).then((res) => {
@@ -33,14 +43,38 @@ export const PsdComparisonModal = ({ closeModal }: { closeModal: () => void }) =
     const selectedNode = e.target.value;
     if (nodeNumber === 1) {
       setSelectedNode1(selectedNode);
-    } else if (nodeNumber === 2) {
-      setSelectedNode2(selectedNode);
     }
   };
 
   useEffect(() => {
-    console.log(`Node 1: ${selectedNode1}, Node 2: ${selectedNode2}`);
-  }, [selectedNode1, selectedNode2]);
+    console.log(`Node 1: ${selectedNode1}`);
+    if (!selectedNode1) return;
+    nodePsdList(organization, workspace, selectedNode1).then((res) => {
+      psdCompare(organization, workspace, selectedNode1, Name, res.data[0].name, psdName).then(
+        (res) => {
+          console.log(res.data.layer);
+          const bottomItems = res.data.layer.map((item: any) => {
+            if (item.status === "create") {
+              return (
+                <S.BottomItemCreate key={item.after.name}>{item.after.name}</S.BottomItemCreate>
+              );
+            } else if (item.status === "edit") {
+              return (
+                <S.BottomItemChange key={item.after.name}>{item.after.name}</S.BottomItemChange>
+              );
+            } else if (item.status === "delete") {
+              return (
+                <S.BottomItemDelete key={item.before.name}>{item.before.name}</S.BottomItemDelete>
+              );
+            } else if (item.status === "immutable") {
+              return <S.BottomItemNomal key={item.after.name}>{item.after.name}</S.BottomItemNomal>;
+            }
+          });
+          setBottomItems(bottomItems);
+        },
+      );
+    });
+  }, [selectedNode1]);
 
   return (
     <div>
@@ -49,41 +83,26 @@ export const PsdComparisonModal = ({ closeModal }: { closeModal: () => void }) =
           <S.X onClick={closeModal} src={X} alt="testimg" />
           <S.Layout>
             <div>
-              <select onChange={(e) => onNodeChange(e, 1)} name="ParentName">
-                {names.map((name) => (
-                  <option key={name} value={name}>
-                    {name}
-                  </option>
-                ))}
-              </select>
+              <p>
+                <select onChange={(e) => onNodeChange(e, 1)} name="ParentName">
+                  <option value="">선택</option>
+                  {names.map((name) => (
+                    <option key={name} value={name}>
+                      {name}
+                    </option>
+                  ))}
+                </select>
+              </p>
+
               <S.Img src="https://via.placeholder.com/300" alt="testimg" />
             </div>
             <S.CenterLogo src={changeBtn} alt="textlogo" />
             <div>
-              <select onChange={(e) => onNodeChange(e, 2)} name="ParentName">
-                {names.map((name) => (
-                  <option key={name} value={name}>
-                    {name}
-                  </option>
-                ))}
-              </select>
+              <p>{Name}</p>
               <S.Img src="https://via.placeholder.com/300" alt="testimg2" />
             </div>
           </S.Layout>
-          <S.BottomLayout>
-            <S.BottomItem>line1</S.BottomItem>
-            <S.BottomItem>line1</S.BottomItem>
-            <S.BottomItem>line1</S.BottomItem>
-            <S.BottomItem>line1</S.BottomItem>
-            <S.BottomItem>line1</S.BottomItem>
-            <S.BottomItem>line1</S.BottomItem>
-            <S.BottomItem>line1</S.BottomItem>
-            <S.BottomItem>line1</S.BottomItem>
-            <S.BottomItem>line1</S.BottomItem>
-            <S.BottomItem>line1</S.BottomItem>
-            <S.BottomItem>line1</S.BottomItem>
-            <S.BottomItem>line1</S.BottomItem>
-          </S.BottomLayout>
+          <S.BottomLayout>{bottomItems}</S.BottomLayout>
         </div>
       </PopupModal>
     </div>
