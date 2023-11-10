@@ -8,6 +8,9 @@ import * as S from "./style";
 import { useGitgraph } from "@hooks/useGitgraph";
 import { useParams } from "react-router-dom";
 import { usePsd } from "@hooks/usePsd";
+import selectNodeImg from "@assets/selectNodeImg.png";
+
+export const API_URL = process.env.REACT_APP_API;
 
 export const PsdComparisonModal = ({
   closeModal,
@@ -23,7 +26,9 @@ export const PsdComparisonModal = ({
   const { organization, workspace } = useParams();
   const [names, setNames] = useState<string[]>([]);
   const [selectedNode1, setSelectedNode1] = useState("");
-  const [bottomItems, setBottomItems] = useState<string[]>([]);
+  const [bottomItems, setBottomItems] = useState("");
+  const [psdImg, setPsdImg] = useState("");
+  const [beforePsdImg, setBeforePsdImg] = useState(selectNodeImg);
 
   useEffect(() => {
     drawNodeTree(organization, workspace).then((res) => {
@@ -37,6 +42,9 @@ export const PsdComparisonModal = ({
       };
       extractNames(res.data);
     });
+    setPsdImg(
+      `${API_URL}/v2/cloud/pull/image/preview/${organization}/${workspace}/${Name}/${psdName}`,
+    );
   }, []);
 
   const onNodeChange = (e: React.ChangeEvent<HTMLSelectElement>, nodeNumber: number) => {
@@ -50,6 +58,9 @@ export const PsdComparisonModal = ({
     console.log(`Node 1: ${selectedNode1}`);
     if (!selectedNode1) return;
     nodePsdList(organization, workspace, selectedNode1).then((res) => {
+      setBeforePsdImg(
+        `${API_URL}/v2/cloud/pull/image/preview/${organization}/${workspace}/${selectedNode1}/${res.data[0].name}`,
+      );
       psdCompare(organization, workspace, selectedNode1, Name, res.data[0].name, psdName).then(
         (res) => {
           console.log(res.data.layer);
@@ -94,15 +105,17 @@ export const PsdComparisonModal = ({
                 </select>
               </p>
 
-              <S.Img src="https://via.placeholder.com/300" alt="testimg" />
+              <S.Img src={beforePsdImg} alt="testimg" />
             </div>
             <S.CenterLogo src={changeBtn} alt="textlogo" />
             <div>
               <p>{Name}</p>
-              <S.Img src="https://via.placeholder.com/300" alt="testimg2" />
+              <S.Img src={psdImg} alt="testimg2" />
             </div>
           </S.Layout>
-          <S.BottomLayout>{bottomItems}</S.BottomLayout>
+          <S.BottomLayout>
+            {bottomItems ? bottomItems : <div>노드를 선택해주세요</div>}
+          </S.BottomLayout>
         </div>
       </PopupModal>
     </div>

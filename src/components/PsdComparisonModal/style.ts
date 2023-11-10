@@ -16,10 +16,12 @@ export const BottomLayout = styled.div`
 `;
 
 export const Img = styled.img`
-  width: 80%;
+  width: 300px;
+  height: 300px;
   max-width: 300px;
   max-height: 300px;
   border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 `;
 
 export const CenterLogo = styled.img`
