@@ -5,7 +5,7 @@ export const API_URL = process.env.REACT_APP_API;
 export const useNodeInfo = () => {
   const PsdImgGet = async (OrgName: any, WokName: any, psdName: any, psdImg: any) => {
     try {
-      const API = `${API_URL}/v2/cloud/pull/source/${OrgName}/${WokName}/${psdName}/${psdName}/${psdImg}`;
+      const API = `${API_URL}/v2/cloud/pull/source/${OrgName}/${WokName}/${psdName}/${psdImg}`;
       const response = await axios.get(API, {
         withCredentials: true,
       });

@@ -1,4 +1,3 @@
-import { ProfileHover } from "@components/ProfileHover";
 import React from "react";
 import { useCreateWorkSpace } from "@hooks/useCreateWorkSpace";
 import { useParams } from "react-router-dom";

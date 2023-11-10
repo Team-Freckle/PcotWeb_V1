@@ -17,8 +17,10 @@ export const Workspace = () => {
         <S.FloatBox>
           <OrganizationSideBar name={organization} />
         </S.FloatBox>
-        <Chart />
-        <GitGraph />
+        <S.Main>
+          <Chart />
+          <GitGraph />
+        </S.Main>
       </Wrapper>
     </div>
   );
