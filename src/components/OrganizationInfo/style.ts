@@ -32,6 +32,12 @@ export const TitleText = styled.div`
   }
 `;
 
+export const Volume = styled.div``;
+
+export const VolumeData = styled.div`
+  display: flex;
+`;
+
 export const OrganizationName = styled.div`
   grid-area: imgname;
   font-family: Pretendard;
