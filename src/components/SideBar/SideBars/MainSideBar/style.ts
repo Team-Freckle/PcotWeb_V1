@@ -7,6 +7,7 @@ export const SeeMore = styled.button`
   border-radius: 5px;
   border: 1px solid #e9e9e7;
   background-color: #eeeeee;
+
   cursor: pointer;
   :hover {
     background-color: #e2e2e2;
