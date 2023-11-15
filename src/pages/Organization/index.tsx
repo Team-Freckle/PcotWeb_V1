@@ -19,7 +19,7 @@ export const Organization = () => {
         </S.FloatBox>
         <OrganizationInfo name={organization} />
         <OrganizationWorkspaceList name={organization} />
-        <OrganizationManupulate name={organization} />
+        <OrganizationManupulate />
       </Wrapper>
     </div>
   );

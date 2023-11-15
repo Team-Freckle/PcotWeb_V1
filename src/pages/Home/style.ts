@@ -36,6 +36,10 @@ export const Hambuger = styled.img`
 
 export const ProfileBox = styled.div`
   grid-area: header;
+  float: inherit;
+  position: fixed;
+  background-color: white;
+  width: 100%;
   @media (max-width: 1200px) {
     display: none;
   }
@@ -94,6 +98,10 @@ export const InputBox = styled.div`
   width: 400px;
   height: 100px;
   margin-right: 40px;
+
+  float: right;
+  position: fixed;
+  justify-self: last baseline;
   @media (max-width: 1040px) {
     width: 100%;
   }
@@ -117,9 +125,14 @@ export const Banner = styled.img`
 
 export const Main = styled.div`
   grid-area: main;
+
   margin-top: 70px;
 `;
 
 export const AlamBox = styled.div`
   margin: 5px;
+`;
+
+export const Overflow = styled.div`
+  position: fixed;
 `;
