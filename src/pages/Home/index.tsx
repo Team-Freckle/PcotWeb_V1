@@ -69,6 +69,7 @@ export const Home = () => {
               </S.LinkText>
             </div>
           </S.ProfileBox>
+
           <S.Hambuger src={Hambuger} onClick={() => setToggle(!toggle)} />
           <S.InputBox>
             <S.InputLabel>
